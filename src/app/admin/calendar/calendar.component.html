@@ -1,0 +1,41 @@
+<app-calendar-heder
+  [(view)]="view"
+  [(viewDate)]="viewDate"
+  (viewDateChange)="fetchEvents()"
+  (viewChange)="fetchEvents()">
+</app-calendar-heder>
+<ng-template #loading>
+  <div fxLayout="column wrap" fxLayoutAlign="center center"  fxLayoutGap="" style="height: 100%" >
+    <div fxFlexAlign="center">   <mat-progress-spinner  mode="indeterminate" color="primary" [strokeWidth]="10"></mat-progress-spinner>
+    </div>
+  </div>
+</ng-template>
+<div style="width: 100vw">
+<div *ngIf="events1$ | async; else loading; let events" [ngStyle]="{'background':'white'}">
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view
+      *ngSwitchCase="'month'"
+      [viewDate]="viewDate"
+      [events]="gino"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="eventClicked($event.event)">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="'week'"
+      [viewDate]="viewDate"
+      [events]="gino"
+      (eventClicked)="eventClicked($event.event)">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="'day'"
+      [viewDate]="viewDate"
+      [events]="gino"
+      (eventClicked)="eventClicked($event.event)"
+      [dayStartHour]="10"
+      [dayEndHour]="23" >
+
+    </mwl-calendar-day-view>
+  </div>
+</div>
+</div>

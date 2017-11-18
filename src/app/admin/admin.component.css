@@ -1,0 +1,28 @@
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+  margin:0;
+  padding:0;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -webkit-align-items: center;
+  background: #e3e3e3;
+  width:auto;
+  height: 300px;
+  flex-direction:         column;
+
+
+}
+.idden{
+  display: none;
+}
+.tests{
+
+}

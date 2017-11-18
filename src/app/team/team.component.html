@@ -1,0 +1,91 @@
+<div fxLayout="row wrap"
+     fxLayout.xs="column nowrap"
+     fxLayoutGap.xs="5px"
+     fxLayoutGap="2vh"
+     style="margin: 1vh 2vh 2vh 2vh" xmlns="http://www.w3.org/1999/html">
+
+  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of $Squadre | async" >
+
+   <mat-card  class="mat-elevation-z9 mat-card"  >
+     <mat-card-header fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
+       <mat-card-title ><h2>{{squadra.nome| uppercase}}</h2></mat-card-title>
+       <mat-card-subtitle><h3>creata il </h3></mat-card-subtitle>
+       <div class="contimage">
+       <img img mat-card-sm-image src="{{squadra.logo}}">
+       </div>
+     </mat-card-header>
+
+
+
+     <mat-card-content fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
+
+
+       <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
+         <h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
+         <div>
+           <li *ngFor="let giocatori of squadra.giocatori "><h3>{{giocatori.displayName}}</h3>
+             <button mat-button (click)="rimuovigiocatore(giocatori,squadra)">Rimuovi</button></li>
+           <li><h3>{{userlocal.displayName}} "capitano"</h3></li>
+
+      <!--
+      <li><button mat-button [style.display]="!squadra.user1Name ? '' : 'none'" (click)="searchplayer(1)" >Inserisci Un giocatore</button> <button mat-button (click)="searchplayer(1)" >{{squadra.user1Name}}</button>  </li>
+      <li><button mat-button [style.display]="!squadra.user2Name ? '' : 'none'" (click)="searchplayer(2)" >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user2Name}}</button>  </li>
+         <li><button mat-button  [style.display]="!squadra.user3Name ? '' : 'none'" (click)="searchplayer(3)"  >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user3Name}}</button>  </li>
+         <li><button mat-button  [style.display]="!squadra.user4Name ? '' : 'none'"  (click)="searchplayer(4)" >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user4Name}}</button>  </li>
+      -->
+
+
+         </div>
+
+       </ul>
+
+     </mat-card-content>
+     <mat-card-actions align="center"  >
+       <button fxFlex mat-button (click)="searchplayer(squadra)">Invita Giocatore</button>
+       <button fxFlex mat-button (click)="searchplayer(squadra)">Modifica Roster</button>
+       <button fxFlex mat-button (click)="onAction1">Crea Partita</button>
+
+     </mat-card-actions>
+     <mat-card-footer > </mat-card-footer>
+   </mat-card>
+ </div>
+
+</div>
+
+<mat-tab-group class="demo-tab-group">
+  <mat-tab label="PORTIERE">
+    <div class="demo-tab-content" >
+
+    </div>
+  </mat-tab>
+  <mat-tab label="Tab 2">
+    <ng-template mat-tab-label>
+DIFENSORI    </ng-template>
+    <div class="demo-tab-content">
+
+    </div>
+  </mat-tab>
+  <mat-tab label="CENTROCAMPISTI" >
+    <div class="demo-tab-content">
+
+    No content
+    </div>
+  </mat-tab>
+  <mat-tab label="ATTACCANTI">
+    <div class="demo-tab-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+      Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+      In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+      feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
+      orci enim rutrum enim, vel tempor sapien arcu a tellus.
+      <br />
+      <br />
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue.
+      Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus.
+      In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+      feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor,
+      orci enim rutrum enim, vel tempor sapien arcu a tellus.
+    </div>
+  </mat-tab>
+
+</mat-tab-group>

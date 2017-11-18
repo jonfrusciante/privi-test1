@@ -1,0 +1,44 @@
+<mat-toolbar mat-dialog-title color="primary" >
+  <div class="container-fluid">
+    <div fxLayout="row" fxLayoutAlign="start center" class="content">
+      <div class="blocks" fxFlex = "20%"><button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="example-icon" >more_vert</mat-icon>
+      </button></div>
+      <div class="blocks" fxFlex = "60%"></div>
+      <div *ngIf="auth.user | async as user" class="blocks" fxFlex="10%">
+        <img (click)="redirectProfilo()" class="profileimg" src={{user.photoURL}}>
+      </div>
+      <div fxFlex>
+      <h1 style="color: orangered">V S C </h1>
+    </div>
+    </div>
+  </div>
+
+
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/prenota" routerLinkActive="active">
+    <mat-icon >dialpad</mat-icon>
+    <span>Riserva Un Campo </span>
+  </button>
+  <button mat-menu-item routerLink="/" routerLinkActive="active">
+    <mat-icon routerLink="/">home</mat-icon>
+    <span>home</span>
+  </button>
+  <button mat-menu-item routerLink="/admin" routerLinkActive="active">
+    <mat-icon >notifications_off</mat-icon>
+    <span>admin</span>
+  </button>
+  <button mat-menu-item routerLink="/profilo" routerLinkActive="active">
+    <mat-icon >home</mat-icon>
+    <span>Profilo</span>
+  </button>
+  <button mat-menu-item routerLink="/profilonew" routerLinkActive="active">
+
+    <mat-icon class="mat-18">link</mat-icon>
+    <span>ProfiloNuovo</span>
+  </button>
+</mat-menu>
+
+</mat-toolbar>
+

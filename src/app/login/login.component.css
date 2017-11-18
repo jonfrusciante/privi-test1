@@ -1,0 +1,38 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3em;
+
+}
+.container-row{
+}
+
+.email{
+min-width: 300px;
+  padding-top: 2em;
+  flex-grow: 2;
+}
+.password{
+  min-width: 300px;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+}
+
+.example-right-align {
+  text-align: right;
+
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+.bord{
+  width: auto;
+  padding: 3em;
+}

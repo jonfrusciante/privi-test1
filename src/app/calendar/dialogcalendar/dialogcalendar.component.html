@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Modifica la prenotazione del <br> {{(data.prenotazione | async)?.start |date}} <br> ore {{(data.prenotazione | async)?.title}} </h1>
+<mat-dialog-content>
+  <app-formdialog (addUserEvent)="test($event)"></app-formdialog>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="close()">Annulla</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button mat-button (click)="set(this.prenotazione)" >Salva</button>
+</mat-dialog-actions>

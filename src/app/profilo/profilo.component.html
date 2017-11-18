@@ -1,0 +1,64 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="center center"
+     fxLayoutGap="" class="profilo">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ben Tornato</mat-card-title>
+      <mat-card-subtitle>Subtitle</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+       </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button (click)="onAction1">Action1</button>
+
+    </mat-card-actions>
+    <mat-card-footer>
+      Footer
+    </mat-card-footer>
+  </mat-card>
+</div>
+
+
+<div fxLayout="row wrap"
+     fxLayoutAlign="center center"
+     fxLayoutGap="" class="form">
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Modifica IL PROFILO</mat-card-title>
+      <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      <app-primocanvas
+        (imagegurulink)="file=$event"
+        [canavasProfiledisplay]='true'></app-primocanvas>
+
+    </mat-card-header>
+    <mat-card-content>
+      Text content
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button (click)="onAction1">Action1</button>
+      <button mat-fab (click)="logo.click()" color="warn"  >
+        <mat-icon class="mat-18">file_upload</mat-icon>
+      </button>
+      <input #logo type="file" accept="image/jpeg" (change)="updateProfiloPreview($event)"
+             name="test"  [ngStyle]="{'display': 'none'}">
+
+    </mat-card-actions>
+    <mat-card-footer>
+      Footer
+    </mat-card-footer>
+  </mat-card>
+  <div class="file-upload">
+    <span class="text">upload</span>
+    <input id="custom-input" type="file" (change)="fileChangeListener($event)">
+  </div>
+  <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+  <br>
+  <span class="result rounded" *ngIf="data.image" >
+    <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+</span>
+
+</div>
+

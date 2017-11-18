@@ -1,0 +1,6 @@
+.container-example{
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+}

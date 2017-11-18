@@ -1,0 +1,130 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+  <!-- template will replace this div -->
+</div>
+<!-- User NOT logged in -->
+<ng-template #guest>
+  <div [ngClass]="{hidden: auth.user}" fxLayout="column wrap" fxLayoutAlign="center center"  fxLayoutGap="" style="height: 100%" >
+    <div fxFlexAlign="center">   <mat-progress-spinner  mode="indeterminate" color="primary" [strokeWidth]="10"></mat-progress-spinner>
+    </div>
+  </div>
+</ng-template>
+<!-- User logged in -->
+<ng-template #authenticated>
+  <div *ngIf="auth.user | async as user" class="background" fxLayout="row" fxLayoutAlign="center center">
+    <div class="profilebackgr mat-elevation-z4" fxLayout="column" fxLayoutGap="4vh" fxLayoutAlign="center center">
+      <h3 fxFlexAlign="center" style="  font-family: 'Permanent Marker';color: whitesmoke"> {{'# '+ user.displayName | uppercase}}</h3>
+      <div  fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+          <input id="profiloPhoto"  [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
+          <label for="profiloPhoto"><img  class="profileimg1"  [src]="user.photoURL" ></label>
+          <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
+            <span>{{user.email}} </span>
+            <span >{{user.telefon }} </span>
+            <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
+              <input fxLayout="row" (change)="telef($event,user)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
+              <button *ngIf="!user.telefon" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
+            <span>{{user.indirizzo}} <button *ngIf="user.indirizzo" mat-icon-button="gino" (click)="updateindd()"><mat-icon>send</mat-icon> </button></span>
+            <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
+              <input fxLayout="row" (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
+              <button *ngIf="!user.indirizzo" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
+            <span>contatto facebook</span>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row wrap"
+           fxLayoutAlign="start end"
+           fxLayoutGap="2vh"
+           class ="finalbutton">
+        <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="auth.signOut()">Logout</button>
+        <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="mdificaprofilo(user)">Modifica Profilo</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div  class="" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayoutGap="2vh" style="margin: 1vh">
+    <div  *ngFor="let user of User$ | async " class="profilebackgr mat-elevation-z4" fxLayout="column wrap" fxLayoutGap="4vh" fxLayoutAlign="center center">
+      <h3  fxFlexAlign="center" style="  font-family: 'Permanent Marker';color: whitesmoke"> {{'# '+ checkuser(user.displayName) | uppercase}}</h3>
+      <div  fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+          <input  id="`{{user.displayName + 'photo'  }}`" [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
+          <label for="`{{user.displayName + 'photo'  }}`" ><img  class="profileimg1"  [src]="user.photoURL" ></label>
+          <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
+            <span>{{user.email}} </span>
+            <span >{{user.telefon }}<button *ngIf="user.telefon" mat-icon-button="gino" (click)="user.telefon = '' "><mat-icon>cached</mat-icon> </button>  </span>
+            <div  fxLayout="row" fxLayoutAlign="center center" >
+              <input fxLayout="row" (change)="telef($event,user)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
+             </div>
+            <span>{{user.indirizzo}}   <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
+              <input fxLayout="row" (change)="indirizzo($event,user)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
+            </div> <button *ngIf="user.indirizzo" mat-icon-button="gino" (click)="user.indirizzo = '' "><mat-icon>cached</mat-icon> </button></span>
+
+            <span>contatto facebook</span>
+
+
+          </div>
+
+        </div>
+      </div>
+      <div class="bottoni" fxLayout="row nowrap"
+           fxLayoutAlign="space-around start"
+           fxLayoutGap="2vw"  >
+        <button mat-raised-button (click)="onClick" color="warning" class="mat-elevation-z9">Contatta</button>
+        <button  mat-raised-button (click)="updateUser()" color="primary" class="mat-elevation-z9 ">Conferma modifiche</button>
+
+        <button mat-raised-button (click)="openDialog(users)" color="accent" class="mat-elevation-z9">Elimina</button>
+      </div>
+    </div>
+  </div>
+
+  <!--  <div class="containernuovo" style="height: 100vh; margin:2vh ">
+     <div fxLayout="row wrap"
+          fxLayoutAlign="start start"
+          fxLayoutGap="2vh" style="max-height:15vh ; overflow: hidden" >
+       <div fxFlex="33%"  fxLayoutAlign="center start" fxFlexAlign="start">
+         <button mat-button style="background-color: #c5ae56 " class="mat-elevation-z4" (click)="onClick" color="primary">Action</button>
+       </div>
+       <div *ngIf=" auth.user | async as user" fxFlex="33%" >
+         <div fxLayout="column wrap" fxLayoutAlign="end center">
+           <mat-card fxFlexAlign="center" class="mat-card mat-elevation-z9 elemdestr" style="height: 75vh;width: 50vh;background-color: #86c57d"  >
+             <mat-card-header >
+               <mat-card-title> <img  style="margin-top: 2vh" class="profileimg" matCardAvatar src={{user.photoURL}} >
+                 <h1 fxFlexAlign="center">{{ user.displayName }}</h1>  </mat-card-title>
+               <mat-grid-list cols="3" rowHeight="fit" [style.height]="'100em'" [gutterSize]="'1px'">
+                 <mat-grid-tile [colspan]="1" [rowspan]="1">
+                   <mat-grid-tile-header>
+                     <mat-icon mat-grid-avatar>3d_rotation</mat-icon>
+                     Header text
+                   </mat-grid-tile-header>
+                   Gestisci le tue prenotazioni
+                 </mat-grid-tile>
+                 <mat-grid-tile [colspan]="1" [rowspan]="1">
+                   <mat-grid-tile-header>
+                     <mat-icon mat-grid-avatar>3d_rotation</mat-icon>
+                     Header text
+                   </mat-grid-tile-header>
+                   Tile body
+                 </mat-grid-tile>
+                 <mat-grid-tile [colspan]="1" [rowspan]="1">
+                   <mat-grid-tile-header>
+                     <mat-icon mat-grid-avatar>3d_rotation</mat-icon>
+                     Header text
+                   </mat-grid-tile-header>
+                   Gestisci le tue prenotazioni
+                 </mat-grid-tile>
+               </mat-grid-list>
+               <mat-card-subtitle fxFlexAlign="center"><h4>@{{user.email}}</h4></mat-card-subtitle>
+             </mat-card-header>
+
+           </mat-card>
+
+         </div>
+       </div>
+       <div fxFlex fxFlexAlign="start">
+         <p>tes</p>
+       </div>
+     </div>
+
+   </div>
+ -->
+ </ng-template>

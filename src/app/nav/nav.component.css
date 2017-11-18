@@ -1,0 +1,18 @@
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.example-icon {
+  padding: 0 14px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.profileimg{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  cursor: pointer;
+}

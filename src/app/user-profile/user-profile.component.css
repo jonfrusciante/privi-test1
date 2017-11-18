@@ -1,0 +1,53 @@
+.a{
+  background-color: red;
+  min-height: 120px;
+}
+.b{
+  background:  url("../../assets/calcio.jpg") no-repeat center center fixed;
+}
+.profileimg1{
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  cursor: pointer;
+}
+.profilebackgr{
+  padding: 2vh 1vh 2vh 2vh;
+  background: #86C57D;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 1vh 1vh 2vh 2vh;
+}
+.background{
+background:  url("../../assets/calcio.jpg")  ;
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.outer {
+  width: 200px;
+  height: 400px;
+  background-color: #333333;
+}
+.elemdestr{
+  font-family: 'Permanent Marker', cursive;
+  font-size: 20px;
+  color: white;
+}
+.hidden{
+display: none!important;
+}
+.finalbutton{
+  width:100%;
+
+}
+.bottoni{
+  width: 100%;
+  margin-top: 4vh;
+  margin-bottom: 6vh;
+}

@@ -1,0 +1,33 @@
+mat-card img{
+  object-fit: cover; /*this makes de image in src fit to the size of specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 100%;
+min-height: 0;
+  // object-fit: contain;
+  border-radius: 50%;
+
+
+}
+.contimage{
+  height: 20vw;
+  margin-bottom: 1vh;
+  box-sizing: border-box;
+padding: 2vh;
+  height: 30vw;
+  width: 30vw;
+}
+.hidden{
+  display: none;
+}
+.none{
+
+}
+.demo-tab-content{
+ min-height: 0;background-color: #536DFE;
+}
+.foto{
+  border: 1px;
+  background: white;
+}
+.demo-tab-group{
+}

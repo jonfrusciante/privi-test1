@@ -1,0 +1,70 @@
+<div class="containerr">
+  <h1>Scegli una data e scopri le diponibilita</h1>
+  <mat-form-field>
+    <input    matInput [matDatepicker]="picker" (dateInput)="onInput($event) ; toggleState()"  placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+
+  <button mat-raised-button [disabled]="!picker._selected" (click)="getDisponibilita()"  >controlla disponibilita</button>
+</div>
+<div class="containerrr">
+  <div [style.visibility]="picker._selected ? 'visible' : 'hidden'" class="testing" >
+    <mat-card class="mat-card" style="text-align: center"  >
+      <mat-card-header>
+        <h1 class="mat-card-header">   Disponiblita campo 1 giorno {{data_grabbed }} </h1>
+      </mat-card-header>
+      <mat-card-content  >
+        <div style="margin : 2vw 0 2vw 0" fxLayout="row wrap"
+             fxLayoutAlign="center stretch"
+             fxLayoutGap="3vh">
+          <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
+          <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions >
+        <button mat-button   #aaa (click)="setdata( item.ora )" *ngFor="let item of items | async" >
+          <a *ngIf="item.disponibile" #titleInput>{{item.ora}}</a>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+
+  </div>
+</div>
+
+<!--
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.ora}} disponibile:{{item.disponibile}}
+    </li>
+  </ul>
+  -->
+
+
+<!--
+<div class="containerr">
+  <h1  *ngFor="let messages of message">{{ messages }}</h1>
+
+  <mat-form-field>
+  <input    matInput [matDatepicker]="picker1" (dateInput)="onInput($event)"  placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+  <div  [ngClass]="calculate()" >
+    <button  class="margin-top" mat-raised-button color="primary" (click)="gethour()" >Controlla disponibilita</button>
+  </div>
+  </div>
+<div class="containerr">
+  <div class="testing" >
+    <button mat-raised-button  color="primary" (click)="gettime(titleInput.innerHTML)" *ngFor="let time of aviable_date"><a  #titleInput> {{ time }}</a></button>
+   </div>
+  </div>
+<div class="container " [ngClass]="calculate()">
+  <button mat-raised-button color="primary" (click)="prenota_test()">prenota</button>
+</div>
+
+-->
+

@@ -1,0 +1,23 @@
+
+<div  style="text-align: center">
+  <div class="row" style="margin: auto">
+<h3>Seleziona la data di inizio e di fine range </h3>
+  </div>
+<div style="text-align: center">
+<mat-form-field>
+  <input    matInput [matDatepicker]="startpiker" (dateInput)="onInputStart($event)"  placeholder="Data Inizio">
+  <mat-datepicker-toggle matSuffix [for]="startpiker"></mat-datepicker-toggle>
+  <mat-datepicker #startpiker></mat-datepicker>
+</mat-form-field>
+</div>
+  <div style="text-align: center">
+<mat-form-field >
+  <input    matInput [matDatepicker]="picker" (dateInput)="onInputEnd($event)"  placeholder="Data fine">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+  </div>
+  <div style="text-align: center;margin-bottom: 3em">
+  <button mat-raised-button="test" (click)="addRange()">aggiungi il range</button>
+</div>
+</div>
