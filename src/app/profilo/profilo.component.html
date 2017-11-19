@@ -52,7 +52,7 @@
     </mat-card-footer>
   </mat-card>
   <div class="file-upload">
-    <span class="text"><button mat-fab (click)="file.click() ; visibility= true" color="warn"  >
+    <span class="text"><button mat-fab (click)="visibility= true ; file.click() ; " color="warn"  >
         <mat-icon class="mat-18">file_upload</mat-icon>
       </button></span>
     <input #file accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
