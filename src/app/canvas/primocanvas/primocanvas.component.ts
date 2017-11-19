@@ -127,7 +127,7 @@ addimageinlogo(image) {
   testcerchio(){
     const ctx = this.context;
     ctx.beginPath();
-    ctx.arc(200, 60, 50, 0, 2 * Math.PI, false);
+    ctx.arc(215, 60, 50, 0, 2 * Math.PI, false);
     ctx.fillStyle = 'green';
     ctx.fill();
     ctx.lineWidth = 5;
