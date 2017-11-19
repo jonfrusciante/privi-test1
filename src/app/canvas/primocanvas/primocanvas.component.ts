@@ -124,7 +124,7 @@ addimageinlogo(image) {
  //   const url = this.save(ctx.canvas);
   //  this.savefile(url);
   }
-  testcerchio(){
+  testcerchio() {
     const ctx = this.context;
     ctx.beginPath();
     ctx.arc(105, 60, 60, 0, 2 * Math.PI, false);
