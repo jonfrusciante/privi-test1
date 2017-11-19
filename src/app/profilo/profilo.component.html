@@ -55,7 +55,7 @@
     <span class="text"><button mat-fab (click)="file.click() " color="warn"  >
         <mat-icon class="mat-18">file_upload</mat-icon>
       </button></span>
-    <input id="file" accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
+    <input id="file" #file accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
   </div>
   <img-cropper #cropper [image]="data" [settings]="cropperSettings" ></img-cropper>
   <br>
