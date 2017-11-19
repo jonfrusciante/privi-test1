@@ -55,7 +55,7 @@
         <input  #filee accept="image/*"  type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
       </div>
 
-      <button mat-raised-button (click)="canavas.salvalogoprofilo()" color="primary">Inserisci foto nel tuo profilo</button>
+      <button mat-raised-button (click)="canavas.salvalogoprofilo()" color="primary" *ngIf="data" >Inserisci foto nel tuo profilo</button>
     </mat-card-actions>
     <mat-card-footer>
       Footer
