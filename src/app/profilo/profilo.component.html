@@ -53,7 +53,7 @@
   </mat-card>
   <div class="file-upload">
     <span class="text">upload</span>
-    <input id="custom-input" type="image" (change)="fileChangeListener($event)">
+    <input accept="image/*" id="custom-input" type="file"  (change)="fileChangeListener($event)">
   </div>
   <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
   <br>
