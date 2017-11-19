@@ -24,6 +24,7 @@ export class ProfiloComponent implements OnInit {
     this.cropperSettings.height = 150;
     this.data = {};
     this.cropperSettings.rounded = true;
+    this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
 
   }
   confermafoto(image) {
