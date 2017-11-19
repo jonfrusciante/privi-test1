@@ -100,7 +100,7 @@ addimageinlogo(image) {
     console.log('caricata');
     console.log(this.image1);
     const ctx = this.context;
-    this.roundedImage(134, 10, 147, 110, 15);
+    this.roundedImage(134, 10, 137, 110, 50);
     ctx.clip();
     ctx.drawImage(this.image1, 134, 10, 147, 129);
     ctx.save();
