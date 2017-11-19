@@ -29,6 +29,8 @@
     <mat-card-header>
       <mat-card-title>Modifica IL PROFILO</mat-card-title>
       <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      <img  [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+
       <app-primocanvas
         (imagegurulink)="file=$event"
         [canavasProfiledisplay]='true'></app-primocanvas>
@@ -58,7 +60,6 @@
   <br>
   <span class="result rounded" *ngIf="data.image" >
     <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-    <img  [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight" style="background: url("../assets/mockupmagliette.png")">
 
 </span>
 
