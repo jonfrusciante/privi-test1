@@ -26,7 +26,7 @@ export class PrimocanvasComponent implements AfterViewInit {
     }else if (this.canavasLogodisplay) {
       const canvasBandiera = this.bandiereCanvas.nativeElement ;     this.canvasBandiera = canvasBandiera;    this.contextbandiera = canvasBandiera.getContext('2d');
     }
-    this.image.src = '../../assets/mockupmagliette200x300.png';
+    this.image.src = '../../assets/mockupmagliettenew.png';
     this.image.addEventListener('load' , () => {
       this.tick();
     });
@@ -103,7 +103,7 @@ addimageinlogo(image) {
     this.testcerchio();
   //  this.roundedImage(138, 9, 137, 110, 10);
     ctx.clip();
-    ctx.drawImage(this.image1, 71, 2, 65, 60);
+    ctx.drawImage(this.image1, 71, 60, 130, 120);
     ctx.save();
   });
   this.image1.src = image ;
@@ -127,7 +127,7 @@ addimageinlogo(image) {
   testcerchio(){
     const ctx = this.context;
     ctx.beginPath();
-    ctx.arc(105, 30, 30, 0, 2 * Math.PI, false);
+    ctx.arc(105, 60, 60, 0, 2 * Math.PI, false);
     ctx.fillStyle = 'green';
     ctx.fill();
     ctx.lineWidth = 5;
