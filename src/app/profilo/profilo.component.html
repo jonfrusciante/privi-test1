@@ -58,7 +58,7 @@
   <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
   <br>
   <span class="result rounded" *ngIf="data.image" >
-    <img [src]="data.image" >
+    <img [src]="data.image" style="border-radius: 50%">
     <br>
     <button mat-icon-button (click)="confermafoto(data.image)">
         <mat-icon class="mat-24">save</mat-icon>
