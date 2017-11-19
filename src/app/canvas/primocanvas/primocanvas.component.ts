@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild, Sanitizer} from '@angular/core';
 import {UserService} from '../../user-profile/user.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-primocanvas',
   templateUrl: './primocanvas.component.html',
@@ -19,14 +19,14 @@ export class PrimocanvasComponent implements AfterViewInit {
   fileImage: string;
   public image =  new Image();
   public image1 =  new Image();
-  constructor(private usrServ: UserService) {}
+  constructor(private usrServ: UserService , private sanitizer: DomSanitizer) {}
 
   ngAfterViewInit() {
     if (this.canavasProfiledisplay) { const canvas = this.myCanvas.nativeElement ;     this.context = canvas.getContext('2d');
     }else if (this.canavasLogodisplay) {
       const canvasBandiera = this.bandiereCanvas.nativeElement ;     this.canvasBandiera = canvasBandiera;    this.contextbandiera = canvasBandiera.getContext('2d');
     }
-    this.image.src = '../../assets/mockupmagliette.png';
+    this.image.src = this.sanitizer.bypassSecurityTrustUrl('../../assets/mockupmagliette.png').toString();
     this.image.addEventListener('load' , () => {
       this.tick();
     });
