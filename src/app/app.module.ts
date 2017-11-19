@@ -49,6 +49,7 @@ import { CreaComponent } from './team/crea/crea.component';
 import { HometeamComponent } from './team/hometeam/hometeam.component';
 import { PrimocanvasComponent } from './canvas/primocanvas/primocanvas.component';
 import { ProfiloComponent } from './profilo/profilo.component';
+import {SquadreModule} from './squadre/squadre.module';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,7 @@ import { ProfiloComponent } from './profilo/profilo.component';
     AngularFireModule.initializeApp(environment.firebase),
     CalendarModule.forRoot() ,
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'ginocloud'}) ,
-    AngularFirestoreModule,
+    AngularFirestoreModule, SquadreModule ,
     CoreModule , ReactiveFormsModule , HttpModule, FlexLayoutModule , FileUploadModule , MatProgressSpinnerModule ,
     BrowserAnimationsModule, FormsModule , HttpClientModule , MatNativeDateModule ,    MatAutocompleteModule,
     MatFormFieldModule  , MatSliderModule, MatTabsModule , MatCardModule ,  MatSelectModule , ImageCropperModule
