@@ -36,16 +36,24 @@
 
     </mat-card-header>
     <mat-card-content>
-      Text content
+        <span class="result rounded" *ngIf="data.image && visibility" >
+    <img [src]="data.image" style="border-radius: 50%">
+    <br>
+    <button mat-icon-button (click)="confermafoto(data.image) ; visibility = false">
+        <mat-icon class="mat-24">save</mat-icon>
+    </button>
+</span>
+
+      <img-cropper #cropper [image]="data" [settings]="cropperSettings" *ngIf="visibility" ></img-cropper>
+
     </mat-card-content>
     <mat-card-actions align="start">
-      <button mat-button (click)="onAction1">Action1</button>
-      <button mat-fab (click)="logo.click()" color="warn"  >
-        <mat-icon class="mat-18">file_upload</mat-icon>
-      </button>
-      <input #logo type="file" accept="image/jpeg" (change)="updateProfiloPreview($event)"
-             name="test"  [ngStyle]="{'display': 'none'}">
-
+      <div class="file-upload">
+    <span class="text"><button mat-fab (click)="filee.click();visibility=true " color="warn"  >
+        Modifica Foto Profilo <mat-icon class="mat-18">file_upload</mat-icon>
+      </button></span>
+        <input id="file" #filee accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
+      </div>
     </mat-card-actions>
     <mat-card-footer>
       Footer
@@ -57,15 +65,8 @@
       </button></span>
     <input id="file" #filee accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
   </div>
-  <img-cropper #cropper [image]="data" [settings]="cropperSettings" *ngIf="visibility" ></img-cropper>
+
   <br>
-  <span class="result rounded" *ngIf="data.image && visibility" >
-    <img [src]="data.image" style="border-radius: 50%">
-    <br>
-    <button mat-icon-button (click)="confermafoto(data.image) ; visibility = false">
-        <mat-icon class="mat-24">save</mat-icon>
-    </button>
-</span>
 
 </div>
 
