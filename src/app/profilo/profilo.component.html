@@ -60,7 +60,7 @@
   <span class="result rounded" *ngIf="data.image" >
     <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
     <br>
-    <button mat-icon-button (click)="confermafoto(data)">
+    <button mat-icon-button (click)="confermafoto(data.image)">
         <mat-icon class="mat-24">save</mat-icon>
     </button>
 </span>
