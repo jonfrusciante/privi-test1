@@ -38,7 +38,7 @@ export class ProfiloComponent implements OnInit {
     myReader.onloadend = function (loadEvent: any) {
       image.src = loadEvent.target.result;
       that.cropper.setImage(image);
-      console.log(image);
+
     };
 
     myReader.readAsDataURL(file);

@@ -95,9 +95,6 @@ inseriscitesto(testo: string) {
   this.savefile(file);
 
 }
-cirlcle(){
-
-}
 addimageinlogo(image) {
   this.image1.addEventListener('load' , () => {
     console.log('caricata');
