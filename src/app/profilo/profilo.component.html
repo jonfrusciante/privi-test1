@@ -53,13 +53,14 @@
   </mat-card>
   <div class="file-upload">
     <span class="text">upload</span>
-    <input id="custom-input" type="file" (change)="fileChangeListener($event)">
+    <input id="custom-input" type="image" (change)="fileChangeListener($event)">
   </div>
   <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
   <br>
   <span class="result rounded" *ngIf="data.image" >
     <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-    <button mat-icon-button (click)="confermafoto(data.image)">
+    <br>
+    <button mat-icon-button (click)="confermafoto(data)">
         <mat-icon class="mat-24">save</mat-icon>
     </button>
 </span>

@@ -27,7 +27,7 @@ export class ProfiloComponent implements OnInit {
 
   }
   confermafoto(image){
-    this.canavas.addimageinlogo(image);
+    this.canavas.addimageinlogo(image.src);
   }
   fileChangeListener($event) {
     const image: any = new Image();
@@ -37,6 +37,7 @@ export class ProfiloComponent implements OnInit {
     myReader.onloadend = function (loadEvent: any) {
       image.src = loadEvent.target.result;
       that.cropper.setImage(image);
+      that.canavas.addimageinlogo(image.src);
     };
 
     myReader.readAsDataURL(file);
