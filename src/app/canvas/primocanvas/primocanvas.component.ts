@@ -128,6 +128,11 @@ addimageinlogo(image) {
     const ctx = this.context;
     ctx.beginPath();
     ctx.arc(75, 10, 20, 0, 2 * Math.PI, false);
+    ctx.fillStyle = 'green';
+    ctx.fill();
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = '#003300';
+    ctx.stroke();
     ctx.closePath();
 
   }
