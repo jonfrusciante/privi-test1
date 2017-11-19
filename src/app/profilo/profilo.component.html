@@ -52,17 +52,17 @@
     </mat-card-footer>
   </mat-card>
   <div class="file-upload">
-    <span class="text"><button mat-fab (click)="filee.click() " color="warn"  >
+    <span class="text"><button mat-fab (click)="filee.click();visibility=true " color="warn"  >
         <mat-icon class="mat-18">file_upload</mat-icon>
       </button></span>
     <input id="file" #filee accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
   </div>
-  <img-cropper #cropper [image]="data" [settings]="cropperSettings" ></img-cropper>
+  <img-cropper #cropper [image]="data" [settings]="cropperSettings" *ngIf="visibility" ></img-cropper>
   <br>
   <span class="result rounded" *ngIf="data.image" >
     <img [src]="data.image" style="border-radius: 50%">
     <br>
-    <button mat-icon-button (click)="confermafoto(data.image)">
+    <button mat-icon-button (click)="confermafoto(data.image) ; visibility = false">
         <mat-icon class="mat-24">save</mat-icon>
     </button>
 </span>
