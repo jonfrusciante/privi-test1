@@ -12,7 +12,7 @@ export class PrimocanvasComponent implements AfterViewInit {
   @ViewChild('bandiere') bandiereCanvas;
   @Input() canavasLogodisplay = false;
   @Input() canavasProfiledisplay = false;
-@Output() imagegurulink = new EventEmitter<string>()
+@Output() imagegurulink = new EventEmitter<string>();
   contextbandiera: CanvasRenderingContext2D;
   canvasBandiera:  HTMLCanvasElement;
   context: CanvasRenderingContext2D;
@@ -34,7 +34,7 @@ export class PrimocanvasComponent implements AfterViewInit {
 // fine ng
 
   getfileimage(): string{
-    return this.fileImage || "" ;
+    return this.fileImage || '' ;
   }
   juve() {
     const ctx = this.contextbandiera;
@@ -103,14 +103,14 @@ addimageinlogo(image) {
     console.log('caricata');
     console.log(this.image1);
     const ctx = this.context;
-    this.roundedImage(134,10,147,129,10);
+    this.roundedImage(134, 10, 147, 129, 10);
     ctx.clip();
     ctx.drawImage(this.image1, 134, 10, 147, 129);
     ctx.restore();
   });
   this.image1.src = image ;
 }
-  roundedImage(x,y,width,height,radius){
+  roundedImage(x, y, width, height, radius){
     const ctx = this.context;
     ctx.beginPath();
     ctx.moveTo(x + radius, y);
