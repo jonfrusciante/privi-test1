@@ -26,10 +26,10 @@ export class PrimocanvasComponent implements AfterViewInit {
     }else if (this.canavasLogodisplay) {
       const canvasBandiera = this.bandiereCanvas.nativeElement ;     this.canvasBandiera = canvasBandiera;    this.contextbandiera = canvasBandiera.getContext('2d');
     }
-    this.image.src = '../../assets/mockupmagliette.png';
+    // this.image.src = '../../assets/mockupmagliette.png';
     this.image.addEventListener('load' , () => {
 
-      // this.tick();
+      this.tick();
     });
   }
 // fine ng
