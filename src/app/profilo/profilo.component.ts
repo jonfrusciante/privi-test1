@@ -26,7 +26,7 @@ export class ProfiloComponent implements OnInit {
     this.cropperSettings.rounded = true;
 
   }
-  confermafoto(image){
+  confermafoto(image) {
     this.canavas.addimageinlogo(image.src);
   }
   fileChangeListener($event) {
