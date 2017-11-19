@@ -27,7 +27,7 @@ export class ProfiloComponent implements OnInit {
 
   }
   confermafoto(image) {
-    this.canavas.addimageinlogo(image.src);
+    this.canavas.addimageinlogo(image);
   }
   fileChangeListener($event) {
     const image: any = new Image();
