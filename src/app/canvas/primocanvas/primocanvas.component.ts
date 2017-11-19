@@ -103,7 +103,7 @@ addimageinlogo(image) {
     this.testcerchio();
   //  this.roundedImage(138, 9, 137, 110, 10);
     ctx.clip();
-    ctx.drawImage(this.image1, 134, 10, 147, 129);
+    ctx.drawImage(this.image1, 134, 10, 127, 115);
     ctx.save();
   });
   this.image1.src = image ;
