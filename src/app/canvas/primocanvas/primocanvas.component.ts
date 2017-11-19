@@ -100,7 +100,8 @@ addimageinlogo(image) {
     console.log('caricata');
     console.log(this.image1);
     const ctx = this.context;
-    this.roundedImage(138, 9, 137, 110, 10);
+    this.testcerchio();
+  //  this.roundedImage(138, 9, 137, 110, 10);
     ctx.clip();
     ctx.drawImage(this.image1, 134, 10, 147, 129);
     ctx.save();
@@ -122,6 +123,13 @@ addimageinlogo(image) {
     ctx.closePath();
  //   const url = this.save(ctx.canvas);
   //  this.savefile(url);
+  }
+  testcerchio(){
+    const ctx = this.context;
+    ctx.beginPath();
+    ctx.arc(75, 10, 20, 0, 2 * Math.PI, false);
+    ctx.closePath();
+
   }
    save(contesto: HTMLCanvasElement): string {
   const canvas = contesto;
