@@ -17,6 +17,7 @@ export class ProfiloComponent implements OnInit {
   data: any;
   cropperSettings: CropperSettings;
   file: any;
+  visibility=false;
   constructor() {
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.noFileInput = true;
