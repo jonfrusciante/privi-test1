@@ -49,8 +49,9 @@
     </mat-card-content>
     <mat-card-actions align="start">
       <div class="file-upload">
+        <p>Upload File</p>
     <span class="text"><button mat-fab (click)="filee.click();visibility=true " color="warn"  >
-        Modifica Foto Profilo <mat-icon class="mat-18">file_upload</mat-icon>
+       <mat-icon class="mat-18">file_upload</mat-icon>
       </button></span>
         <input id="file" #filee accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
       </div>
