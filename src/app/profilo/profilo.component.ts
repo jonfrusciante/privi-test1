@@ -20,10 +20,14 @@ export class ProfiloComponent implements OnInit {
   constructor() {
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.noFileInput = true;
-    this.cropperSettings.width = 100;
-    this.cropperSettings.height = 100;
+    this.cropperSettings.width = 150;
+    this.cropperSettings.height = 150;
     this.data = {};
+    this.cropperSettings.rounded = true;
 
+  }
+  confermafoto(image){
+    this.canavas.addimageinlogo(image);
   }
   fileChangeListener($event) {
     const image: any = new Image();
@@ -33,7 +37,6 @@ export class ProfiloComponent implements OnInit {
     myReader.onloadend = function (loadEvent: any) {
       image.src = loadEvent.target.result;
       that.cropper.setImage(image);
-      that.canavas.addimageinlogo(image.src);
     };
 
     myReader.readAsDataURL(file);

@@ -29,7 +29,6 @@
     <mat-card-header>
       <mat-card-title>Modifica IL PROFILO</mat-card-title>
       <mat-card-subtitle>Subtitle</mat-card-subtitle>
-      <img  [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
 
       <app-primocanvas
         (imagegurulink)="file=$event"
@@ -60,7 +59,9 @@
   <br>
   <span class="result rounded" *ngIf="data.image" >
     <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-
+    <button mat-icon-button (click)="confermafoto(data.image)">
+        <mat-icon class="mat-24">save</mat-icon>
+    </button>
 </span>
 
 </div>
