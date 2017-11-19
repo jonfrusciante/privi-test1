@@ -29,7 +29,7 @@
     <mat-card-header>
       <mat-card-title>Modifica IL PROFILO</mat-card-title>
       <mat-card-subtitle>Subtitle</mat-card-subtitle>
-
+      <img [src]="file"  alt="">
       <app-primocanvas
         (imagegurulink)="file=$event"
         [canavasProfiledisplay]='true'></app-primocanvas>
@@ -53,7 +53,7 @@
     <span class="text"><button mat-fab (click)="filee.click();visibility=true " color="warn"  >
        <mat-icon class="mat-18">file_upload</mat-icon>
       </button></span>
-        <input id="file" #filee accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
+        <input  #filee accept="image/*"  type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
       </div>
     </mat-card-actions>
     <mat-card-footer>

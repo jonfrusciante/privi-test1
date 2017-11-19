@@ -108,7 +108,7 @@ addimageinlogo(image) {
   });
   this.image1.src = image ;
 }
-  roundedImage(x, y, width, height, radius){
+  roundedImage(x, y, width, height, radius) {
     const ctx = this.context;
     ctx.beginPath();
     ctx.moveTo(x + radius, y);
@@ -135,6 +135,10 @@ addimageinlogo(image) {
     ctx.stroke();
     ctx.closePath();
 
+  }
+  salvalogoprofilo() {
+    const ctx= this.context;
+    this.savefile( ctx.canvas.toDataURL('image/jpeg') );
   }
    save(contesto: HTMLCanvasElement): string {
   const canvas = contesto;
