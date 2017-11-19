@@ -30,9 +30,7 @@
       <mat-card-title>Modifica IL PROFILO</mat-card-title>
       <mat-card-subtitle>Subtitle</mat-card-subtitle>
       <img [src]="file"  alt="">
-      <app-primocanvas
-        (imagegurulink)="file=$event"
-        [canavasProfiledisplay]='true'></app-primocanvas>
+      <app-primocanvas (imagegurulink)="file=$event"></app-primocanvas>
 
     </mat-card-header>
     <mat-card-content>
