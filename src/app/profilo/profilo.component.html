@@ -55,7 +55,7 @@
     <span class="text"><button mat-fab (click)="file.click() ; visibility= true" color="warn"  >
         <mat-icon class="mat-18">file_upload</mat-icon>
       </button></span>
-    <input id="file" accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
+    <input #file accept="image/*" id="custom-input" type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
   </div>
   <img-cropper #cropper [image]="data" [settings]="cropperSettings" *ngIf="visibility"></img-cropper>
   <br>
