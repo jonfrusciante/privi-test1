@@ -47,13 +47,18 @@
 
       </mat-card-content>
       <mat-card-actions align="center"  >
-        <button fxFlex mat-raised-button (click)="invitaPlayer(squadra)" color="accent">Invita Giocatore</button>
+        <button fxFlex mat-raised-button (click)="mostrauteni()" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
         <button fxFlex mat-raised-button (click)="onAction1 " color="primary" >Crea Partita</button>
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
 
       </mat-card-actions>
-      <mat-card-footer > </mat-card-footer>
+      <mat-card-footer >
+      <div *ngIf="utenti$">
+        <div *ngFor="let utenti of utenti$ |async">
+          <h2>{{utenti?.displayName}}</h2>
+        </div>
+      </div></mat-card-footer>
     </mat-card>
   </div>
 

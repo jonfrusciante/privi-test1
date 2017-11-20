@@ -18,6 +18,9 @@ export class SquadreService {
         this.squadra$ = this.afs.collection('users').doc(value.uid).collection('squadre').valueChanges();
       });
   }
+  getallfriends(): Observable<User[]> {
+    return this.afs.collection('users').valueChanges();
+  }
   getsquadra(): Observable<Squadre> {
     return this.squadra$;
 }

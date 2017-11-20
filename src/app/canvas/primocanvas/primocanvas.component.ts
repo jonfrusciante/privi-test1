@@ -12,7 +12,7 @@ export class PrimocanvasComponent implements AfterViewInit {
   @ViewChild('bandiere') bandiereCanvas;
   @Input() canavasLogodisplay = false;
   @Input() canavasProfiledisplay = false;
-@Output() imagegurulink = new EventEmitter<string>();
+  @Output() imagegurulink = new EventEmitter<string>();
   contextbandiera: CanvasRenderingContext2D;
   canvasBandiera:  HTMLCanvasElement;
   context: CanvasRenderingContext2D;
