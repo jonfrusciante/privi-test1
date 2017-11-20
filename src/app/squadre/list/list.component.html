@@ -53,9 +53,9 @@
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
-          <div *ngIf="utenti$" fxLayout="row nowrap "
-               fxLayoutAlign="start center"
-               fxLayoutGap="4vw">
+          <div *ngIf="utenti$" fxLayout="row wrap "
+               fxLayoutAlign="center center"
+               style="margin: 2px">
             <div  *ngFor="let utentis of utenti$ |async" >
               <img matCardImageMedium src="{{utentis.photoURL}}">
               <h2>{{utentis.displayName}}</h2>
