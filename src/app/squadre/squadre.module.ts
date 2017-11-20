@@ -8,6 +8,7 @@ import {
   MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule,
   MatInputModule, MatMenuModule
 } from '@angular/material';
+import {ListComponent} from './list/list.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import {
     MatAutocompleteModule ,
     MatCardModule ,
   ],
-  declarations: [SquadreComponent, CreaComponent, ],
+  declarations: [SquadreComponent, CreaComponent, ListComponent],
   providers: [SquadreService]
 })
 export class SquadreModule { }
