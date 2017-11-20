@@ -31,7 +31,7 @@
           <div>
             <li *ngFor="let giocatori of squadra.giocatori "><h3>{{giocatori?.displayName}}</h3>
               <button mat-button (click)="rimuovigiocatore(giocatori,squadra)">Rimuovi</button></li>
-            <li><h3>{{}} "capitano"</h3></li>
+            <li><h3> "capitano"</h3></li>
 
             <!--
             <li><button mat-button [style.display]="!squadra.user1Name ? '' : 'none'" (click)="searchplayer(1)" >Inserisci Un giocatore</button> <button mat-button (click)="searchplayer(1)" >{{squadra.user1Name}}</button>  </li>
