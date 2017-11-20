@@ -16,4 +16,12 @@ export class ListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getsquadre() {
+    this.squdare$ = this.squadre.getsquadra();
+  }
+  rimuovisquadra(uid) {
+    console.log(uid);
+    this.squadre.delsquad(uid);
+
+  }
 }
