@@ -2,15 +2,7 @@
 <div fxLayout="row wrap"
      fxLayoutAlign="center center"
      fxLayoutGap="5vw">
-@
-  <button mat-button [matMenuTriggerFor]="menuRef">
-    Trigger
-  </button>
-
-  <mat-menu #menuRef="matMenu">
-    <button mat-menu-item  routerLink = "/squadre/lista" routerLinkActive="active">lista squadre</button>
-    <button routerLink = "/squadre/crea" routerLinkActive="active">Crea Una squadra</button>
-
-  </mat-menu>
+  <button  routerLink = "/squadre/lista" routerLinkActive="active">lista squadre</button>
+  <button routerLink = "/squadre/crea" routerLinkActive="active">Crea Una squadra</button>
 </div>
 <router-outlet></router-outlet>
