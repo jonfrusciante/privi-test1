@@ -9,11 +9,11 @@ const routes: Routes = [
   component: SquadreComponent,
     children: [
       {
-        path: 'squadre/crea',
+        path: 'crea',
         component: CreaComponent,
       },
       {
-        path: 'squadre/lista',
+        path: 'lista',
         component: ListComponent
       }
     ]
