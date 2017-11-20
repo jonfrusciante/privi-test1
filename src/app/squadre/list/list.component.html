@@ -45,13 +45,12 @@
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-content *ngIf="utenti$"  >
-        <div  *ngFor="let utentis of utenti$ |async" fxLayout="row wrap"
-              fxLayoutAlign="center center"
-              fxLayoutGap="4vw" >
+        <div  *ngFor="let utentis of utenti$ |async">
           <img matCardImageMedium src="{{utentis.photoURL}}">
           <h2>{{utentis.displayName}}</h2>
           <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
-      </div></mat-card-content>
+      </div>
+      </mat-card-content>
       <mat-card-footer ></mat-card-footer>
     </mat-card>
 
