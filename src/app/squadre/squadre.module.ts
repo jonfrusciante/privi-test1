@@ -9,6 +9,7 @@ import {
   MatInputModule, MatMenuModule
 } from '@angular/material';
 import {ListComponent} from './list/list.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import {ListComponent} from './list/list.component';
     MatIconModule ,
     MatAutocompleteModule ,
     MatCardModule ,
+    FlexLayoutModule ,
   ],
   declarations: [SquadreComponent, CreaComponent, ListComponent],
   providers: [SquadreService]
