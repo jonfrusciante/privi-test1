@@ -19,6 +19,6 @@ getsquadre() {
     this.squdare$ = this.squadre.getsquadra();
 }
   rimuovisquadra(id){
-    this.squadre.delsquad(id)
+    this.squadre.delsquad(id);
   }
 }
