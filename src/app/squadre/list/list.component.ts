@@ -31,18 +31,5 @@ export class ListComponent implements OnInit {
   }
   rimuovigiocatore(giocatori, squadra) {
     console.log(squadra, giocatori);
-
-
-    this.squadre.squadraCollection$.doc(scuadra.Uid).snapshotChanges().subscribe(
-      result => {
-        const _squadra = squadra;
-        const user = result.payload.data() as User;
-        const filtered =  _squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
-        console.log(filtered);
-        _squadra.giocatori = filtered;
-        console.log(_squadra);
-        // this.ElimSquadre(squadra);
-      }
-    );
   }
 }
