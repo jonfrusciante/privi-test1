@@ -9,7 +9,7 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 export class SquadreService {
    user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
-  squadraCollection$: AngularFirestoreCollection<Squadre>;
+   squadraCollection$: AngularFirestoreCollection<Squadre>;
   constructor(private user: AuthService, private afs: AngularFirestore) {
     this.user$ = this.user.user;
     this.user$.subscribe(
