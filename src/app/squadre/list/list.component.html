@@ -8,7 +8,7 @@
      fxLayout.xs="column nowrap"
      fxLayoutGap.xs="5px"
      fxLayoutGap="2vh"
-     style="margin: 1vh 2vh 2vh 2vh" xmlns="http://www.w3.org/1999/html">
+     style="margin: 1vh 2vh 2vh 2vh" >
 
   <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ | async" >
 
@@ -53,11 +53,16 @@
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
-        <div *ngIf="utenti$" fxLayout="column nowrap"
+        <div fxLayout="row nowrap "
              fxLayoutAlign="start center"
-             fxLayoutGap="4vw">>
-          <div *ngFor="let utentis of utenti$ |async">
-            <h2>{{utentis?.displayName}}</h2>
+             fxLayoutGap="4vw">
+          <div *ngIf="utenti$" >
+            <div  *ngFor="let utentis of utenti$ |async" >
+              <img matCardImageMedium src="{{utentis.photoURL}}">
+              <h2>{{utentis.displayName}}</h2>
+
+              <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
+            </div>
           </div>
         </div>
       </mat-card-footer>
