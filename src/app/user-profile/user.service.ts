@@ -53,7 +53,8 @@ return this.User$ ;
     this.user.photoURL = url;
     this.cercauser().update(this.user);
   }
-  constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {  this.auth.user.subscribe( next => this.user =  next);
+  constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {
+    this.auth.user.subscribe( next => this.user =  next);
 
   }
   getData() {

@@ -18,7 +18,7 @@ interface User {
 @Injectable()
 export class AuthService {
   user: Observable<User>;
-  User: User;
+//  User: User;
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -26,7 +26,7 @@ export class AuthService {
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
-          this.User = user
+      //    this.User = user
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return Observable.of(null);
@@ -71,7 +71,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
-        this.router.navigate(['profilo']);
+       // this.router.navigate(['profilo']);
       });
   }
   private updateUserData(user) {
