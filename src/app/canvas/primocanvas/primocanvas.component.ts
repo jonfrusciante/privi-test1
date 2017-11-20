@@ -74,7 +74,7 @@ export class PrimocanvasComponent implements AfterViewInit {
   tick() {
       console.log(this.image);
       const ctx = this.context;
-       ctx.fillStyle = 'rgb(200,0,0)'; // sets the color to fill in the rectangle with
+     //  ctx.fillStyle = 'rgb(200,0,0)'; // sets the color to fill in the rectangle with
       ctx.drawImage(this.image , 0 , 0  );
        ctx.save();
 
