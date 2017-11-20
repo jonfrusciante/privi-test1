@@ -4,15 +4,10 @@
     <button mat-raised-button (click)="rimuovisquadra(squad.Uid)" color="primary">rimuovi</button>
   </div>
 </div>
-<div fxLayout="row wrap"
-     fxLayout.xs="column nowrap"
-     fxLayoutGap.xs="5px"
-     fxLayoutGap="2vh"
-     style="margin: 1vh 2vh 2vh 2vh" xmlns="http://www.w3.org/1999/html">
 
-  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ | async" >
 
-    <mat-card  class="mat-elevation-z9 mat-card"  >
+
+    <mat-card  class="mat-elevation-z9 mat-card" *ngFor="let squadra of squdare$ | async"  >
       <mat-card-header fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
         <mat-card-title ><h2>{{squadra.nome| uppercase}}</h2></mat-card-title>
         <mat-card-subtitle><h3>creata il </h3></mat-card-subtitle>
@@ -59,6 +54,4 @@
       </div></mat-card-content>
       <mat-card-footer ></mat-card-footer>
     </mat-card>
-  </div>
 
-</div>
