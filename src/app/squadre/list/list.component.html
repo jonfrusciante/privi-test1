@@ -4,16 +4,15 @@
     <button mat-raised-button (click)="rimuovisquadra(squad.Uid)" color="primary">rimuovi</button>
   </div>
 </div>
-<div fxLayout="row nowrap"
-     fxLayoutAlign="start start"
-     fxLayoutGap="10px" style="width: 100%">
-  <h1>test</h1>
-  <h2>rererer</h2>
-  <h3>erere</h3>
-</div>
+<div fxLayout="row wrap"
+     fxLayout.xs="column nowrap"
+     fxLayoutGap.xs="5px"
+     fxLayoutGap="2vh"
+     style="margin: 1vh 2vh 2vh 2vh" xmlns="http://www.w3.org/1999/html">
 
+  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ | async" >
 
-    <mat-card  class="mat-elevation-z9 mat-card" *ngFor="let squadra of squdare$ | async"  >
+    <mat-card  class="mat-elevation-z9 mat-card"  >
       <mat-card-header fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
         <mat-card-title ><h2>{{squadra.nome| uppercase}}</h2></mat-card-title>
         <mat-card-subtitle><h3>creata il </h3></mat-card-subtitle>
@@ -25,12 +24,14 @@
 
 
       <mat-card-content fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
+
+
         <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
           <h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
           <div>
-            <li *ngFor="let giocatori of squadra?.giocatori "><h3>{{giocatori?.displayName}}</h3>
+            <li *ngFor="let giocatori of squadra?.giocatori "><h3>{{giocatori.displayName}}</h3>
               <button mat-button (click)="rimuovigiocatore(giocatori,squadra)">Rimuovi</button></li>
-            <li><h3> "capitano"</h3></li>
+            <li><h3>{{squadra.capitan_uid}} "capitano_id"</h3></li>
 
             <!--
             <li><button mat-button [style.display]="!squadra.user1Name ? '' : 'none'" (click)="searchplayer(1)" >Inserisci Un giocatore</button> <button mat-button (click)="searchplayer(1)" >{{squadra.user1Name}}</button>  </li>
@@ -43,6 +44,7 @@
           </div>
 
         </ul>
+
       </mat-card-content>
       <mat-card-actions align="center"  >
         <button fxFlex mat-raised-button (click)="mostrauteni()" color="accent">Invita Giocatore</button>
@@ -60,4 +62,6 @@
         </div>
       </mat-card-footer>
     </mat-card>
+  </div>
 
+</div>
