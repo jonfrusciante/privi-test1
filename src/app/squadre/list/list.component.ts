@@ -14,6 +14,17 @@ export class ListComponent implements OnInit {
   constructor(private squadre: SquadreService) { }
 
   ngOnInit() {
+    this.getsquadre();
   }
+  getsquadre() {
+    this.squdare$ = this.squadre.getsquadra();
+  }
+  rimuovisquadra(uid) {
+    console.log(uid);
+    this.squadre.delsquad(uid);
 
+  }
+  invitaPlayer(id){
+
+  }
 }
