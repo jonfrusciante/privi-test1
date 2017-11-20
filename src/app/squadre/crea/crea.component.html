@@ -1,5 +1,5 @@
 <div>
-  <div *ngFor="let squad of squdare$">
+  <div *ngFor="let squad of squdare$ | async">
     <h1>{{squad.nome}}</h1>
   </div>
 </div>
