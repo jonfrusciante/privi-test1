@@ -25,11 +25,12 @@ export class ListComponent implements OnInit {
     this.squadre.delsquad(uid);
 
   }
-  invitaPlayer(id){
+  invitaPlayer(id) {
     console.log(id);
 
   }
   rimuovigiocatore(giocatori, squadra) {
     console.log(squadra, giocatori);
+
   }
 }
