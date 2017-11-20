@@ -55,9 +55,8 @@
       <mat-card-footer >
           <div *ngIf="utenti$" fxLayout="row wrap "
                fxLayoutAlign="space-around start" fxLayoutGap="4vw">
-            <div  *ngFor="let utentis of utenti$ |async" >
+            <div  *ngFor="let utentis of utenti$ |async" fxFlexAlign="center">
               <h4>{{utentis.displayName}}</h4>
-
               <img matCardImageMedium src="{{utentis.photoURL}}">
 
               <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
