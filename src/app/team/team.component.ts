@@ -124,16 +124,16 @@ export class TeamComponent implements OnInit {
     this.openDialog(this.Users$ , squadra);
   }
   private addplayer(scuadra: Squadre , user: User ) {
-    this.scudrucce = scuadra;
+      this.scudrucce = scuadra;
 
 
-    const include = this.scudrucce.giocatori.filter(vendor => (vendor.uid === user.uid));
-  //  this.scudrucce.giocatori.includes(user);
-   // console.log(include)
-    if (include.length > 0) {
-      console.log("include");
-      this.modificasquadra(this.scudrucce , user);
-    }else {
+      const include = this.scudrucce.giocatori.filter(vendor => (vendor.uid === user.uid));
+      //  this.scudrucce.giocatori.includes(user);
+      // console.log(include)
+      if (include.length > 0) {
+        console.log("include");
+        this.modificasquadra(this.scudrucce , user);
+      }else {
       console.log("non include");
 
         this.scudrucce.giocatori.push(user);

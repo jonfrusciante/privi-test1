@@ -29,7 +29,7 @@ export class ListComponent implements OnInit {
   mostrauteni() {
      this.utenti$ = this.squadre.getallfriends();
   }
-  aggiungiPlayer(id){
-    console.log(id);
+  aggiungiPlayer(userid,squadraid){
+    console.log(userid,squadraid);
   }
 }
