@@ -1,6 +1,6 @@
 <div>
   <div *ngFor="let squad of squdare$ | async">
-    <h1>{{squad.nome}}</h1>@
-    <button mat-raised-button (click)="rimuovisquadra(squad.id)" color="primary">rimuovi</button>
+    <h1>{{squad.nome}}</h1>
+    <button mat-raised-button (click)="rimuovisquadra(squad.uid)" color="primary">rimuovi</button>
   </div>
 </div>
