@@ -26,17 +26,21 @@ export class ListComponent implements OnInit {
 
   }
   invitaPlayer(id){
+    console.log(id);
 
   }
-  rimuovigiocatore(giocatori, scuadra: Squadre) {
+  rimuovigiocatore(giocatori, squadra) {
+    console.log(squadra, giocatori);
+
+
     this.squadre.squadraCollection$.doc(scuadra.Uid).snapshotChanges().subscribe(
       result => {
-        const squadra = scuadra;
+        const _squadra = squadra;
         const user = result.payload.data() as User;
-        const filtered =  squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
+        const filtered =  _squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
         console.log(filtered);
-        squadra.giocatori = filtered;
-        console.log(squadra)
+        _squadra.giocatori = filtered;
+        console.log(_squadra);
         // this.ElimSquadre(squadra);
       }
     );
