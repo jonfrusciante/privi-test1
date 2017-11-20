@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {SquadreService} from '../../squadre.service';
-import {Observable} from 'rxjs/Observable';
-import {Squadre} from '../../model/squadre';
 
 @Component({
   selector: 'app-crea',
@@ -9,17 +6,11 @@ import {Squadre} from '../../model/squadre';
   styleUrls: ['./crea.component.css']
 })
 export class CreaComponent implements OnInit {
-squdare$: Observable<Squadre[]>;
-  constructor(private squadre: SquadreService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.getsquadre();
+
   }
-getsquadre() {
-    this.squdare$ = this.squadre.getsquadra();
-}
-  rimuovisquadra(id){
-    console.log(id);
-   // this.squadre.delsquad(id);
-  }
+
+
 }

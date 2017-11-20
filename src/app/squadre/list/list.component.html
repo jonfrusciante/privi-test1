@@ -1,3 +1,6 @@
-<p>
-  list works!
-</p>
+<div>
+  <div *ngFor="let squad of squdare$ | async">
+    <h1>{{squad.nome}}</h1>
+    <button mat-raised-button (click)="rimuovisquadra(squad.Uid)" color="primary">rimuovi</button>
+  </div>
+</div>

@@ -22,7 +22,6 @@ export class SquadreService {
     return this.squadra$;
 }
   delsquad(id) {
-    console.log(id);
     this.squadraCollection$.doc(id).delete();
   }
 }
