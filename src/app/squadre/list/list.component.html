@@ -29,7 +29,7 @@
         <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
           <h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
           <div>
-            <li *ngFor="let giocatori of squadra.giocatori "><h3>{{giocatori.displayName}}</h3>
+            <li *ngFor="let giocatori of squadra.giocatori "><h3>{{giocatori?.displayName}}</h3>
               <button mat-button (click)="  rimuovigiocatore(giocatori , squadra)"  >Rimuovi</button></li>
             <li><h3> "capitano"</h3></li>
 
