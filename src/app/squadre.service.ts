@@ -14,7 +14,7 @@ export class SquadreService {
     this.user$ = this.user.user;
     this.user$.subscribe(
       value => {
-        this.squadra$ = this.afs.doc('users').collection(value.uid).doc('squadre').valueChanges();
+        this.squadra$ = this.afs.collection('users').doc(value.uid).collection('squadre').valueChanges();
       });
   }
 getsquadra():Observable<Squadre> {
