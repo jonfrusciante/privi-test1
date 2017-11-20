@@ -10,7 +10,7 @@
      fxLayoutGap="2vh"
      style="margin: 1vh 2vh 2vh 2vh" xmlns="http://www.w3.org/1999/html">
 
-  <  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ | async" >
+  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ | async" >
 
     <mat-card  class="mat-elevation-z9 mat-card"  >
       <mat-card-header fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
@@ -22,10 +22,18 @@
       </mat-card-header>
 
 
+      <mat-card-content><div *ngIf="utenti$" fxLayout="row wrap"
+                             fxLayoutAlign="center center"
+                             fxLayoutGap="4vw">>
+        <div  *ngFor="let utentis of utenti$ |async">
+          <img matCardImageMedium src="{{utentis.photoURL}}">
+          <h2>{{utentis.displayName}}</h2>
 
+          <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
+        </div>
+      </div>
+      </mat-card-content>
       <mat-card-content fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
-
-
         <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
           <h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
           <div>
@@ -44,30 +52,14 @@
           </div>
 
         </ul>
-
       </mat-card-content>
-      <mat-card-content *ngIf="utenti$" fxLayout="row wrap"
-                        fxLayoutAlign="center center"
-                        fxLayoutGap="4vw">
-
-        <div  *ngFor="let utentis of utenti$ |async">
-          <img matCardImageMedium src="{{utentis.photoURL}}">
-          <h2>{{utentis.displayName}}</h2>
-
-          <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
-        </div>
-
-      </mat-card-content>
-
       <mat-card-actions align="center"  >
         <button fxFlex mat-raised-button (click)="mostrauteni()" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
         <button fxFlex mat-raised-button (click)="onAction1 " color="primary" >Crea Partita</button>
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
-
       </mat-card-actions>
-      <mat-card-footer >
-   </mat-card-footer>
+      <mat-card-footer ></mat-card-footer>
     </mat-card>
   </div>
 
