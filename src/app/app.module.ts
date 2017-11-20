@@ -39,7 +39,7 @@ import { UserClassComponent } from './user-profile/user-class.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import * as  Cloudinary from 'cloudinary-core';
 import { CloudinaryModule } from '@cloudinary/angular-4.x';
-import {UserService} from "./user-profile/user.service";
+import {UserService} from './user-profile/user.service';
 import { ModalComponent } from './login/modal/modal.component';
 import { ModaltestComponent } from './login/modaltest.component';
 import { Modaltest1Component } from './login/modaltest1.component';
@@ -80,7 +80,6 @@ import {SquadreModule} from './squadre/squadre.module';
 
   ],
   imports: [BrowserModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     CalendarModule.forRoot() ,
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'ginocloud'}) ,
@@ -88,7 +87,7 @@ import {SquadreModule} from './squadre/squadre.module';
     CoreModule , ReactiveFormsModule , HttpModule, FlexLayoutModule , FileUploadModule , MatProgressSpinnerModule ,
     BrowserAnimationsModule, FormsModule , HttpClientModule , MatNativeDateModule ,    MatAutocompleteModule,
     MatFormFieldModule  , MatSliderModule, MatTabsModule , MatCardModule ,  MatSelectModule , ImageCropperModule
-    , MatInputModule, MatSlideToggleModule , MatButtonModule, MatCheckboxModule , MatDatepickerModule , MatMenuModule , MatIconModule , MatToolbarModule, MatGridListModule, CarouselModule],
+    , MatInputModule, MatSlideToggleModule , MatButtonModule, MatCheckboxModule , MatDatepickerModule , MatMenuModule , MatIconModule , MatToolbarModule, MatGridListModule, CarouselModule,AppRoutingModule],
   providers: [UserService ,
     {
       provide: DateAdapter, useClass : NativeComponent
