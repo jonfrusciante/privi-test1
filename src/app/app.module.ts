@@ -83,11 +83,11 @@ import {SquadreModule} from './squadre/squadre.module';
     AngularFireModule.initializeApp(environment.firebase),
     CalendarModule.forRoot() ,
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'ginocloud'}) ,
-    AngularFirestoreModule,
+    AngularFirestoreModule, SquadreModule ,
     CoreModule , ReactiveFormsModule , HttpModule, FlexLayoutModule , FileUploadModule , MatProgressSpinnerModule ,
     BrowserAnimationsModule, FormsModule , HttpClientModule , MatNativeDateModule ,    MatAutocompleteModule,
     MatFormFieldModule  , MatSliderModule, MatTabsModule , MatCardModule ,  MatSelectModule , ImageCropperModule
-    , MatInputModule, MatSlideToggleModule , MatButtonModule, MatCheckboxModule , MatDatepickerModule , MatMenuModule , MatIconModule , MatToolbarModule, MatGridListModule, CarouselModule, SquadreModule , AppRoutingModule],
+    , MatInputModule, MatSlideToggleModule , MatButtonModule, MatCheckboxModule , MatDatepickerModule , MatMenuModule , MatIconModule , MatToolbarModule, MatGridListModule, CarouselModule,  AppRoutingModule],
   providers: [UserService ,
     {
       provide: DateAdapter, useClass : NativeComponent
