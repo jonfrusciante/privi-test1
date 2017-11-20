@@ -54,16 +54,19 @@
 
       </mat-card-actions>
       <mat-card-footer >
-      <div *ngIf="utenti$" >
-        <div  *ngFor="let utentis of utenti$ |async" fxLayout="row "
-              fxLayoutAlign="start center"
-              fxLayoutGap="4vw">
-          <img matCardImageMedium src="{{utentis.photoURL}}">
-          <h2>{{utentis.displayName}}</h2>
+        <div fxLayout="row nowrap "
+             fxLayoutAlign="start center"
+             fxLayoutGap="4vw">
+          <div *ngIf="utenti$" >
+            <div  *ngFor="let utentis of utenti$ |async" >
+              <img matCardImageMedium src="{{utentis.photoURL}}">
+              <h2>{{utentis.displayName}}</h2>
 
-          <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
+              <button mat-raised-button (click)="aggiungiPlayer(utentis.id)" color="primary">Aggiungi</button>
+            </div>
+          </div>
         </div>
-      </div></mat-card-footer>
+      </mat-card-footer>
     </mat-card>
   </div>
 
