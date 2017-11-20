@@ -54,8 +54,7 @@
       </mat-card-actions>
       <mat-card-footer >
           <div *ngIf="utenti$" fxLayout="row wrap "
-               fxLayoutAlign="center center"
-               style="margin: 2px">
+               fxLayoutAlign="space-around start" fxLayoutGap="4vw">
             <div  *ngFor="let utentis of utenti$ |async" >
               <img matCardImageMedium src="{{utentis.photoURL}}">
               <h2>{{utentis.displayName}}</h2>
