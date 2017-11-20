@@ -54,9 +54,11 @@
 
       </mat-card-actions>
       <mat-card-footer >
-      <div *ngIf="utenti$">
-        <div *ngFor="let utenti of utenti$ |async">
-          <h2>{{utenti?.displayName}}</h2>
+      <div *ngIf="utenti$" fxLayout="column nowrap"
+           fxLayoutAlign="start center"
+           fxLayoutGap="4vw">>
+        <div *ngFor="let utentis of utenti$ |async">
+          <h2>{{utentis?.displayName}}</h2>
         </div>
       </div></mat-card-footer>
     </mat-card>
