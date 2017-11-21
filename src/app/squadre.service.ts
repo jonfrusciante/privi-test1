@@ -14,9 +14,10 @@ export class SquadreService {
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
   constructor(private user: AuthService, private afs: AngularFirestore) {
+    const userino: User = this.user.theuser;
     this.UserCollection = this.afs.collection<User>('users');
-    this.squadraCollection$ = this.afs.collection('users').doc(this.user.theuser.uid).collection('squadre');
-    this.squadra$ = this.afs.collection('users').doc(this.user.theuser.uid).collection('squadre').valueChanges();
+    this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
+    this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
 }
   getallfriends(): Observable<User[]> {
     return this.afs.collection('users').valueChanges();
