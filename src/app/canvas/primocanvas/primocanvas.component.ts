@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild, Sanitizer} from '@angular/core';
 import {UserService} from '../../user-profile/user.service';
-import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-primocanvas',
   templateUrl: './primocanvas.component.html',
@@ -19,17 +18,22 @@ export class PrimocanvasComponent implements AfterViewInit {
   fileImage: string;
   public image =  new Image();
   public image1 =  new Image();
-  constructor(private usrServ: UserService , private sanitizer: DomSanitizer) {}
+  constructor(private usrServ: UserService ) {}
 
   ngAfterViewInit() {
     if (this.canavasProfiledisplay) { const canvas = this.myCanvas.nativeElement ;     this.context = canvas.getContext('2d');
     }else if (this.canavasLogodisplay) {
       const canvasBandiera = this.bandiereCanvas.nativeElement ;     this.canvasBandiera = canvasBandiera;    this.contextbandiera = canvasBandiera.getContext('2d');
     }
-    this.image.src = '../../assets/mockupmagliettenews.png';
     this.image.addEventListener('load' , () => {
-      this.tick();
+      console.log(this.image);
+      this.context.drawImage(this.image , 0 , 0  );
+
+      // ctx.fillStyle = 'rgb(200,0,0)'; // sets the color to fill in the rectangle with
+
     });
+    this.image.src = '../../assets/mockupmagliettenews.png';
+
   }
 // fine ng
 
@@ -74,7 +78,7 @@ export class PrimocanvasComponent implements AfterViewInit {
   tick() {
       console.log(this.image);
       const ctx = this.context;
-     //  ctx.fillStyle = 'rgb(200,0,0)'; // sets the color to fill in the rectangle with
+     // ctx.fillStyle = 'rgb(200,0,0)'; // sets the color to fill in the rectangle with
       ctx.drawImage(this.image , 0 , 0  );
        ctx.save();
 
@@ -137,7 +141,7 @@ addimageinlogo(image) {
 
   }
   salvalogoprofilo() {
-    const ctx= this.context;
+    const ctx = this.context;
     this.savefile( ctx.canvas.toDataURL('image/jpeg') );
   }
    save(contesto: HTMLCanvasElement): string {
