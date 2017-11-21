@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AuthService} from './core/auth.service';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import {User} from './user-profile/user';
 import {Squadre} from './model/squadre';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
@@ -60,9 +61,10 @@ export class SquadreService {
   }
 //rimuovi player from squadra
   rimuovigiocatore(giocatori: User, scuadra: Squadre) {
-    this.squadraCollection$.doc(scuadra.Uid).collection('player').doc(giocatori.uid).snapshotChanges().subscribe(
+    const _squadra = scuadra;
+
+    this.squadraCollection$.doc(scuadra.capitan_uid).snapshotChanges().map (
       result => {
-        const _squadra = scuadra;
         const user = result.payload.data() as User;
         const filtered = _squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
         console.log(filtered);
