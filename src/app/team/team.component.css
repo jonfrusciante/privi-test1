@@ -9,12 +9,13 @@ min-height: 0;
 
 }
 .contimage{
-  height: 20vw;
   margin-bottom: 1vh;
   box-sizing: border-box;
 padding: 2vh;
   height: 30vw;
   width: 30vw;
+  border: 1px solid;
+  border-radius: 50%;
 }
 .hidden{
   display: none;
