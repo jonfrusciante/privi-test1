@@ -71,9 +71,9 @@ import {SquadreModule} from './squadre/squadre.module';
     ModaltestComponent,
     Modaltest1Component,
     DayviewerComponent,
-    PrimocanvasComponent,
     TeamComponent,
     CreaComponent,
+    PrimocanvasComponent,
     HometeamComponent,
     ProfiloComponent,
 
