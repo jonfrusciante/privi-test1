@@ -23,6 +23,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatAutocompleteModule ,
     MatCardModule ,
     FlexLayoutModule ,
+
+
   ],
   declarations: [SquadreComponent, CreaComponent, ListComponent],
   providers: [SquadreService]
