@@ -5,9 +5,9 @@ import {PrimocanvasComponent} from './primocanvas/primocanvas.component';
 @NgModule({
   imports: [
     CommonModule,
-    PrimocanvasComponent
   ],
-  declarations: []
+  declarations: [    PrimocanvasComponent
+  ]
 })
 export class AppcanvasModule {
 
