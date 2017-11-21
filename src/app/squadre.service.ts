@@ -69,9 +69,9 @@ export class SquadreService {
         const squadre = result.payload.data() as Squadre;
         const filtered = squadre.giocatori.filter(function(el) { return el.uid !== giocatori.uid ; });
         console.log(filtered);
-        _squadra.giocatori = filtered;
-        this.UserCollection.doc(_squadra.capitan_uid).collection('squadre').doc(_squadra.Uid).update(_squadra);
-        this.squadraCollection$.doc(_squadra.Uid).update(_squadra);      }
+        squadre.giocatori = filtered;
+        this.UserCollection.doc(_squadra.capitan_uid).collection('squadre').doc(_squadra.Uid).update(squadre);
+        this.squadraCollection$.doc(_squadra.Uid).update(squadre);      }
     );
   }
 }
