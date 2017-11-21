@@ -21,12 +21,12 @@
 </div>
 -->
 <div fxLayout="column "
-     fxLayoutAlign="start start"
+     fxLayoutAlign="end center"
      fxLayoutGap="2vw">
-    <h4 fxFlex="30">{{player.displayName}}</h4>
+    <h1 fxFlex="15">{{player.displayName}}</h1>
     <h6 fxFlex="10">{{player.email}}</h6>
     <img fxFlex="50" mat-card-lg-image src="{{player.photoURL}}">
-    <div>
+    <div fxFlexFill>
       <button mat-raised-button (click)="onAction(player)">Rimuovi Giocatore</button>
       <button mat-raised-button (click)="onAction(player)">Contatta Giocatore</button>
     </div>
