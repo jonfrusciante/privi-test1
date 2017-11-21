@@ -47,7 +47,7 @@
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
-          <div  *ngIf="utenti$ && selectedsqadra === squadra  " fxLayout="row wrap "
+          <div  *ngIf="utenti$ && selectedsqadra === squadra  " fxLayout="row wrap "class="mat-elevation-z9"
                fxLayoutAlign="center start" fxLayoutGap="1vw">
             <div  *ngFor="let utentis of utenti$ |async" >
               <h4>{{utentis.displayName}}</h4>
