@@ -34,6 +34,6 @@ export class ListComponent implements OnInit {
     console.log(user, squadra);
   }
   rimuovigiocatore(us: User, sq: Squadre){
-    this.squadre.rimuovigiocatore(us, sq);
+    this.squadre.rimuovigiocatore(us, sq).subscribe();
   }
 }

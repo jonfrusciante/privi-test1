@@ -63,7 +63,7 @@ export class SquadreService {
   rimuovigiocatore(giocatori: User, scuadra: Squadre) {
     const _squadra = scuadra;
 
-    this.squadraCollection$.doc(scuadra.capitan_uid).snapshotChanges().map (
+   return this.squadraCollection$.doc(scuadra.capitan_uid).snapshotChanges().map (
       result => {
         const user = result.payload.data() as User;
         const filtered = _squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
