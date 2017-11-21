@@ -21,6 +21,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    FlexLayoutModule,
     AppcanvasModule
 
   ],
