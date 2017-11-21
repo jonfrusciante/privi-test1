@@ -18,25 +18,26 @@
 
       <mat-card-content fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
 
-       <app-player></app-player>
-        <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
-          <h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
-          <div>
-            <li *ngFor="let giocatori of squadra?.giocatori "><h3>{{giocatori.displayName}}</h3>
-              <button mat-button (click)="rimuovigiocatore(giocatori,squadra)">Rimuovi</button></li>
-            <li><h3>{{squadra.capitan_uid}} "capitano_id"</h3></li>
+       <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori"></app-player>
+        <!--
 
-            <!--
-            <li><button mat-button [style.display]="!squadra.user1Name ? '' : 'none'" (click)="searchplayer(1)" >Inserisci Un giocatore</button> <button mat-button (click)="searchplayer(1)" >{{squadra.user1Name}}</button>  </li>
-            <li><button mat-button [style.display]="!squadra.user2Name ? '' : 'none'" (click)="searchplayer(2)" >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user2Name}}</button>  </li>
-               <li><button mat-button  [style.display]="!squadra.user3Name ? '' : 'none'" (click)="searchplayer(3)"  >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user3Name}}</button>  </li>
-               <li><button mat-button  [style.display]="!squadra.user4Name ? '' : 'none'"  (click)="searchplayer(4)" >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user4Name}}</button>  </li>
-            -->
+<ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
+<h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
+<div>
+<li *ngFor="let giocatori of squadra?.giocatori "><h3>{{giocatori.displayName}}</h3>
+  <button mat-button (click)="rimuovigiocatore(giocatori,squadra)">Rimuovi</button></li>
+<li><h3>{{squadra.capitan_uid}} "capitano_id"</h3></li>
+
+<li><button mat-button [style.display]="!squadra.user1Name ? '' : 'none'" (click)="searchplayer(1)" >Inserisci Un giocatore</button> <button mat-button (click)="searchplayer(1)" >{{squadra.user1Name}}</button>  </li>
+<li><button mat-button [style.display]="!squadra.user2Name ? '' : 'none'" (click)="searchplayer(2)" >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user2Name}}</button>  </li>
+   <li><button mat-button  [style.display]="!squadra.user3Name ? '' : 'none'" (click)="searchplayer(3)"  >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user3Name}}</button>  </li>
+   <li><button mat-button  [style.display]="!squadra.user4Name ? '' : 'none'"  (click)="searchplayer(4)" >Inserisci Un giocatore</button> <button mat-button  >{{squadra.user4Name}}</button>  </li>
 
 
           </div>
 
         </ul>
+-->
 
       </mat-card-content>
       <mat-card-actions align="center"  >

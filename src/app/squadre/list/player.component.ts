@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../../user-profile/user';
 
 @Component({
   selector: 'app-player',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-
+@Input() player: User;
   constructor() { }
 
   ngOnInit() {
   }
+  onAction(event){
 
+  }
 }
