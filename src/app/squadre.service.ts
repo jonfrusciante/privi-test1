@@ -9,19 +9,15 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 @Injectable()
 export class SquadreService {
   private UserCollection: AngularFirestoreCollection<User>;
+   miouser: User;
    user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
   constructor(private user: AuthService, private afs: AngularFirestore) {
     this.UserCollection = this.afs.collection<User>('users');
-
-    this.user$ = this.user.user;
-    this.user$.subscribe(
-      value => {
-        this.squadraCollection$ = this.afs.collection('users').doc(value.uid).collection('squadre');
-        this.squadra$ = this.afs.collection('users').doc(value.uid).collection('squadre').valueChanges();
-      });
-  }
+    this.squadraCollection$ = this.afs.collection('users').doc(this.user.theuser.uid).collection('squadre');
+    this.squadra$ = this.afs.collection('users').doc(this.user.theuser.uid).collection('squadre').valueChanges();
+}
   getallfriends(): Observable<User[]> {
     return this.afs.collection('users').valueChanges();
   }
@@ -54,7 +50,7 @@ export class SquadreService {
     // this.modificasquadra(this.scudrucce , user);
 
   }
-//rimuovi player from squadra
+// rimuovi player from squadra
   rimuovigiocatore(giocatori: User, scuadra: Squadre) {
     const _squadra = scuadra;
 

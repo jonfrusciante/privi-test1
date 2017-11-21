@@ -16,7 +16,8 @@ export class ListComponent implements OnInit {
   constructor(private squadre: SquadreService) { }
 
   ngOnInit() {
-    this.getsquadre();
+    this.squdare$ = this.squadre.squadra$;
+   // this.getsquadre();
   }
 
   getsquadre() {
