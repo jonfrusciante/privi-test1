@@ -51,3 +51,6 @@ display: none!important;
   margin-top: 4vh;
   margin-bottom: 6vh;
 }
+span{
+  cursor: pointer;
+}
