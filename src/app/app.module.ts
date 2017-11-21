@@ -72,10 +72,10 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
     ModaltestComponent,
     Modaltest1Component,
     DayviewerComponent,
-    ProfiloComponent,
     TeamComponent,
     CreaComponent,
     HometeamComponent,
+    ProfiloComponent,
 
 
 
