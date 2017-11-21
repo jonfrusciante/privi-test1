@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import {ListComponent} from './list/list.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {PrimocanvasComponent} from '../canvas/primocanvas/primocanvas.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatCardModule ,
     FlexLayoutModule ,
   ],
-  declarations: [SquadreComponent, CreaComponent, ListComponent],
+  declarations: [SquadreComponent, CreaComponent, ListComponent, PrimocanvasComponent],
   providers: [SquadreService]
 })
 export class SquadreModule { }
