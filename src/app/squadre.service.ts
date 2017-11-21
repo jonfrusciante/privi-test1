@@ -4,13 +4,13 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {User} from './user-profile/user';
 import {Squadre} from './model/squadre';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 
 @Injectable()
 export class SquadreService {
   private UserCollection: AngularFirestoreCollection<User>;
 
-  user$: Observable<User>;
+   user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
   constructor(private user: AuthService, private afs: AngularFirestore) {
@@ -32,19 +32,15 @@ export class SquadreService {
   delsquad(id) {
     this.squadraCollection$.doc(id).delete();
   }
-  //aggiungi giocatore a una squadra metodo
-  addplayer(user: User , squadra: Squadre){
+  // aggiungi giocatore a una squadra metodo
+  addplayer(user: User , squadra: Squadre) {
     const _squadra = squadra;
-    console.log(_squadra);
 
     const include = _squadra.giocatori.filter(vendor => (vendor.uid === user.uid));
     if (include.length > 0) {
-      console.log("include");
      // this.modificasquadra(this.scudrucce , user);
-      alert('ilgiocatore è gia presente nella tua squadra')
+      alert('ilgiocatore è gia presente nella tua squadra');
     }else {
-      console.log("non include");
-
       _squadra.giocatori.push(user);
       // console.log(this.scudrucce);
       this.squadraCollection$.doc(_squadra.Uid).update(_squadra);
@@ -65,10 +61,8 @@ export class SquadreService {
 
    return this.squadraCollection$.doc(_squadra.Uid).snapshotChanges().map (
       result => {
-        console.log(result.payload.data());
         const squadre = result.payload.data() as Squadre;
         const filtered = squadre.giocatori.filter(function(el) { return el.uid !== giocatori.uid ; });
-        console.log(filtered);
         squadre.giocatori = filtered;
         this.UserCollection.doc(_squadra.capitan_uid).collection('squadre').doc(_squadra.Uid).update(squadre);
         this.squadraCollection$.doc(_squadra.Uid).update(squadre);      }
