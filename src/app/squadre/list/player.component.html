@@ -1,14 +1,14 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header fxFlexAlign="end">
     <img matCardAvatar src="{{player.photoURL}}">
     <mat-card-title>{{player.displayName}}</mat-card-title>
     <mat-card-subtitle>{{player.email}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <img matCardImage src="{{player.photoURL}}">
+    <img matCardImageSmall src="{{player.photoURL}}">
 
   </mat-card-content>
-  <mat-card-actions align="start">
+  <mat-card-actions fxFlexAlign="center">
     <button mat-button (click)="onAction(player.uid)">Rimuovi Giocatore</button>
     <button mat-button (click)="onAction(player.uid)">Contatta Giocatore</button>
     <button mat-button (click)="onAction(player.telefon)">Contatta Giocatore</button>

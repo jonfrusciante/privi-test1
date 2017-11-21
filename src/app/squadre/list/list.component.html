@@ -1,22 +1,22 @@
 <div fxLayout="row wrap"
-     fxLayout.xs="column nowrap"
+     fxLayout.xs="column wrap"
      fxLayoutGap.xs="5px"
      fxLayoutGap="2vh"
      style="margin: 1vh 2vh 2vh 2vh" >
 
-  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$  | async ; let i = index" >
+  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$  | async " >
 
     <mat-card  class="mat-elevation-z9 mat-card"  >
       <mat-card-header fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
         <mat-card-title ><h2>{{squadra.nome| uppercase}}</h2></mat-card-title>
         <div class="contimage">
-          <img  mat-card-md-image src="{{squadra.logo}}">
+          <img  mat-card-lg-image src="{{squadra.logo}}">
         </div>
       </mat-card-header>
 
 
 
-      <mat-card-content fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
+      <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
 
        <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori"></app-player>
         <!--
