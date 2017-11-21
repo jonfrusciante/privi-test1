@@ -15,7 +15,7 @@
       <h3 fxFlexAlign="center" style="  font-family: 'Permanent Marker';color: whitesmoke"> {{'# '+ user.displayName | uppercase}}</h3>
       <div  fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
         <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
-          <input id="profiloPhoto"  [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
+          <input id="profiloPhoto" #pino  [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
           <label for="profiloPhoto"><img  class="profileimg1"  [src]="user.photoURL" ></label>
           <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
             <span>{{user.email}} </span>
@@ -36,7 +36,7 @@
            fxLayoutGap="2vh"
            class ="finalbutton">
         <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="auth.signOut()">Logout</button>
-        <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="mdificaprofilo(user)">Modifica Profilo</button>
+        <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="pino.click()">Modifica Profilo</button>
 
       </div>
     </div>
