@@ -25,13 +25,13 @@
      fxLayoutGap="2vw">
   <div fxLayout="column wrap"
        fxLayoutAlign="center start"
-       fxLayoutGap="2vh">
+       fxLayoutGap="2vh" fxFlex="33">
     <h1 fxFlex="30">{{player.displayName}}</h1>
     <h3 fxFlex="10">{{player.email}}</h3>
     <img fxFlex="50" mat-card-lg-image src="{{player.photoURL}}">
     <div fxLayout="row wrap"
          fxLayoutAlign="center center"
-         fxLayoutGap="3vw">
+         fxLayoutGap="3vw" fxFlex>
       <button mat-raised-button (click)="onAction(player)">Rimuovi Giocatore</button>
       <button mat-raised-button (click)="onAction(player)">Contatta Giocatore</button>
     </div>
