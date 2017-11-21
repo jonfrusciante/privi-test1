@@ -6,7 +6,7 @@ import {PrimocanvasComponent} from './primocanvas/primocanvas.component';
   imports: [
     CommonModule,
   ],
-  declarations: [    PrimocanvasComponent
+  declarations: [PrimocanvasComponent
   ]
 })
 export class AppcanvasModule {
