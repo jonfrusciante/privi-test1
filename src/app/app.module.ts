@@ -47,8 +47,8 @@ import { DayviewerComponent } from './prenota/dayviewer.component';
 import { TeamComponent } from './team/team.component';
 import { CreaComponent } from './team/crea/crea.component';
 import { HometeamComponent } from './team/hometeam/hometeam.component';
-import { PrimocanvasComponent } from './canvas/primocanvas/primocanvas.component';
-// import { ProfiloComponent } from './profilo/profilo.component';
+// import { PrimocanvasComponent } from './canvas/primocanvas/primocanvas.component';
+import { ProfiloComponent } from './profilo/profilo.component';
 import {SquadreModule} from './squadre/squadre.module';
 import {AppcanvasModule} from './canvas/appcanvas.module';
 
@@ -74,9 +74,9 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
     DayviewerComponent,
     TeamComponent,
     CreaComponent,
-    PrimocanvasComponent,
+    // PrimocanvasComponent,
     HometeamComponent,
-   // ProfiloComponent,
+    ProfiloComponent,
 
 
 
