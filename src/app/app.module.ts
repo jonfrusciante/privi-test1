@@ -51,6 +51,7 @@ import { HometeamComponent } from './team/hometeam/hometeam.component';
 import { ProfiloComponent } from './profilo/profilo.component';
 import {SquadreModule} from './squadre/squadre.module';
 import {AppcanvasModule} from './canvas/appcanvas.module';
+import {PrimocanvasComponent} from './canvas/primocanvas/primocanvas.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,7 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
     DayviewerComponent,
     TeamComponent,
     CreaComponent,
-    // PrimocanvasComponent,
+     PrimocanvasComponent,
     HometeamComponent,
     ProfiloComponent,
 
