@@ -1,4 +1,7 @@
-<mat-card fxFlex="33" fxLayoutAlign="center center">
+<div fxLayout="column wrap"
+     fxLayoutAlign="center start"
+     fxLayoutGap="3px">
+<mat-card fxFlex="33">
   <mat-card-header >
     <img matCardAvatar src="{{player.photoURL}}">
     <mat-card-title>{{player.displayName}}</mat-card-title>
@@ -9,11 +12,11 @@
 
   </mat-card-content>
   <mat-card-actions >
-    <button mat-button (click)="onAction(player)">Rimuovi Giocatore</button>
-    <button mat-button (click)="onAction(player)">Contatta Giocatore</button>
-    <button mat-button (click)="onAction(player)">Contatta Giocatore</button>
+    <button mat-raised-button (click)="onAction(player)">Rimuovi Giocatore</button>
+    <button mat-raised-button (click)="onAction(player)">Contatta Giocatore</button>
 
   </mat-card-actions>
   <mat-card-footer>
   </mat-card-footer>
 </mat-card>
+</div>
