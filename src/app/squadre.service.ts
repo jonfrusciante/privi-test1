@@ -31,6 +31,7 @@ export class SquadreService {
   delsquad(id) {
     this.squadraCollection$.doc(id).delete();
   }
+  //aggiungi giocatore a una squadra metodo
   addplayer(user: User , squadra: Squadre){
     const _squadra = squadra;
     console.log(_squadra);
@@ -56,5 +57,18 @@ export class SquadreService {
     // console.log(this.scudrucce);
     // this.modificasquadra(this.scudrucce , user);
 
+  }
+//rimuovi player from squadra
+  rimuovigiocatore(giocatori: User, scuadra: Squadre) {
+    this.squadraCollection$.doc(scuadra.Uid).collection('player').doc(giocatori.uid).snapshotChanges().subscribe(
+      result => {
+        const _squadra = scuadra;
+        const user = result.payload.data() as User;
+        const filtered = _squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
+        console.log(filtered);
+        _squadra.giocatori = filtered;
+        this.UserCollection.doc(_squadra.capitan_uid).collection('squadre').doc(_squadra.Uid).update(_squadra);
+        this.squadraCollection$.doc(_squadra.Uid).update(_squadra);      }
+    );
   }
 }
