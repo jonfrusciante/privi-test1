@@ -83,7 +83,7 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
     AngularFireModule.initializeApp(environment.firebase),
     CalendarModule.forRoot() ,
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'ginocloud'}) ,
-    AngularFirestoreModule, AppcanvasModule , SquadreModule ,
+    AngularFirestoreModule,  SquadreModule , AppcanvasModule ,
     CoreModule , ReactiveFormsModule , HttpModule, FlexLayoutModule , FileUploadModule , MatProgressSpinnerModule ,
     BrowserAnimationsModule, FormsModule , HttpClientModule , MatNativeDateModule ,    MatAutocompleteModule,
     MatFormFieldModule  , MatSliderModule, MatTabsModule , MatCardModule ,  MatSelectModule , ImageCropperModule
