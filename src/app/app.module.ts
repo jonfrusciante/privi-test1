@@ -51,6 +51,7 @@ import { HometeamComponent } from './team/hometeam/hometeam.component';
 import { ProfiloComponent } from './profilo/profilo.component';
 import {SquadreModule} from './squadre/squadre.module';
 import {AppcanvasModule} from './canvas/appcanvas.module';
+import {MaterialModule} from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -85,11 +86,22 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
     AngularFireModule.initializeApp(environment.firebase),
     CalendarModule.forRoot() ,
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'ginocloud'}) ,
-    AngularFirestoreModule,  SquadreModule ,
-    CoreModule , ReactiveFormsModule , HttpModule, FlexLayoutModule , FileUploadModule , MatProgressSpinnerModule ,
-    BrowserAnimationsModule, FormsModule , HttpClientModule , MatNativeDateModule ,    MatAutocompleteModule,
-    MatFormFieldModule  , MatSliderModule, MatTabsModule , MatCardModule ,  MatSelectModule , ImageCropperModule
-    , MatInputModule, MatSlideToggleModule , MatButtonModule, MatCheckboxModule , MatDatepickerModule , MatMenuModule , MatIconModule , MatToolbarModule, MatGridListModule, CarouselModule, AppcanvasModule ,  AppRoutingModule],
+    AngularFirestoreModule,
+    SquadreModule ,
+    CoreModule ,
+    ReactiveFormsModule ,
+    HttpModule,
+    FlexLayoutModule ,
+    FileUploadModule ,
+    BrowserAnimationsModule,
+    FormsModule ,
+    HttpClientModule ,
+    MaterialModule ,
+    ImageCropperModule ,
+    CarouselModule,
+    AppcanvasModule ,
+    AppRoutingModule
+  ],
   providers: [UserService ,
     {
       provide: DateAdapter, useClass : NativeComponent
