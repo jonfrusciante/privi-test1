@@ -29,8 +29,8 @@ export class ListComponent implements OnInit {
   mostrauteni() {
      this.utenti$ = this.squadre.getallfriends();
   }
-  aggiungiPlayer(userid, squadraid){
-    this.squadre.addplayer(userid, squadraid)
-    console.log(userid, squadraid);
+  aggiungiPlayer(user: User, squadra: Squadre) {
+    this.squadre.addplayer(user, squadra);
+    console.log(user, squadra);
   }
 }

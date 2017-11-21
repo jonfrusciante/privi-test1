@@ -7,10 +7,14 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 
 @Injectable()
 export class SquadreService {
-   user$: Observable<User>;
+  private UserCollection: AngularFirestoreCollection<User>;
+
+  user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
   constructor(private user: AuthService, private afs: AngularFirestore) {
+    this.UserCollection = this.afs.collection<User>('users');
+
     this.user$ = this.user.user;
     this.user$.subscribe(
       value => {
@@ -26,5 +30,31 @@ export class SquadreService {
 }
   delsquad(id) {
     this.squadraCollection$.doc(id).delete();
+  }
+  addplayer(user: User , squadra: Squadre){
+    const _squadra = squadra;
+    console.log(_squadra);
+
+    const include = _squadra.giocatori.filter(vendor => (vendor.uid === user.uid));
+    if (include.length > 0) {
+      console.log("include");
+     // this.modificasquadra(this.scudrucce , user);
+      alert('ilgiocatore è gia presente nella tua squadra')
+    }else {
+      console.log("non include");
+
+      _squadra.giocatori.push(user);
+      // console.log(this.scudrucce);
+      this.squadraCollection$.doc(_squadra.Uid).update(_squadra);
+      this.UserCollection.doc(_squadra.capitan_uid).collection('squadre').doc(_squadra.Uid).update(_squadra);
+
+    }
+
+    // this.scudrucce.giocatori = [];
+    // console.log(this.scudrucce);
+    // this.scudrucce.giocatori.push(user);
+    // console.log(this.scudrucce);
+    // this.modificasquadra(this.scudrucce , user);
+
   }
 }

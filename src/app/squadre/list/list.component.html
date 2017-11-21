@@ -57,7 +57,7 @@
             <div  *ngFor="let utentis of utenti$ |async" >
               <h4>{{utentis.displayName}}</h4>
               <img matCardImageMedium src="{{utentis.photoURL}}">
-              <button mat-raised-button (click)="aggiungiPlayer(utentis.uid,squadra.Uid)" color="primary">Aggiungi</button>
+              <button mat-raised-button (click)="aggiungiPlayer(utentis,squadra)" color="primary">Aggiungi</button>
             </div>
           </div>
       </mat-card-footer>
