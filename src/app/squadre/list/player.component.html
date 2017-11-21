@@ -1,4 +1,4 @@
-<div fxLayout="row wrap"
+<!--<div fxLayout="row wrap"
      fxLayoutAlign="center center"
      fxLayoutGap="3px" fxFlex="50">
 <mat-card >
@@ -18,4 +18,22 @@
   <mat-card-footer>
   </mat-card-footer>
 </mat-card>
+</div>
+-->
+<div fxLayout="row wrap"
+     fxLayoutAlign="start start"
+     fxLayoutGap="2vw">
+  <div fxLayout="column wrap"
+       fxLayoutAlign="center start"
+       fxLayoutGap="2vh">
+    <h1 fxFlex="30">{{player.displayName}}</h1>
+    <h3 fxFlex="10">{{player.email}}</h3>
+    <img fxFlex="50" mat-card-lg-image src="{{player.photoURL}}">
+    <div fxLayout="row wrap"
+         fxLayoutAlign="center center"
+         fxLayoutGap="3vw">
+      <button mat-raised-button (click)="onAction(player)">Rimuovi Giocatore</button>
+      <button mat-raised-button (click)="onAction(player)">Contatta Giocatore</button>
+    </div>
+  </div>
 </div>
