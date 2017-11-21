@@ -75,7 +75,6 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
     TeamComponent,
     CreaComponent,
     HometeamComponent,
-    PrimocanvasComponent,
     ProfiloComponent,
 
 
