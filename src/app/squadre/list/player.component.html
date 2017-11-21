@@ -22,9 +22,10 @@
 -->
 <div fxLayout="column "
      fxLayoutAlign="end center"
-     fxLayoutGap="2vw">
-  <h1 >{{player.displayName}}<br><span style="font-size: small">{{player.email}}</span>
-    </h1>
+     fxLayoutGap="2vw"
+class="cont-player">
+  <h1 >{{player.displayName}}</h1>
+        <h5>{{player.email}}</h5>
     <img  mat-card-lg-image src="{{player.photoURL}}">
     <div fxFlexFill>
       <button mat-raised-button (click)="onAction(player)">Rimuovi Giocatore</button>
