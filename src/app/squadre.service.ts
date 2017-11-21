@@ -65,7 +65,9 @@ export class SquadreService {
 
    return this.squadraCollection$.doc(_squadra.Uid).snapshotChanges().map (
       result => {
+        console.log(result.payload.data());
         const user = result.payload.data() as User;
+
         const filtered = _squadra.giocatori.filter(function(el) { return el.uid !== user.uid ; });
         console.log(filtered);
         _squadra.giocatori = filtered;
