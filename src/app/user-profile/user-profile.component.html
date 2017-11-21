@@ -19,7 +19,7 @@
           <label for="profiloPhoto"><img  class="profileimg1"  [src]="user.photoURL" ></label>
           <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
             <span>{{user.email}} </span>
-            <span (click)="updateUser()">{{user.telefon }} </span>
+            <mat-basic-chip (click)="updateUser()">{{user.telefon }} </mat-basic-chip>
             <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
               <input fxLayout="row" (change)="telef($event,user)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
               <button *ngIf="!user.telefon" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
