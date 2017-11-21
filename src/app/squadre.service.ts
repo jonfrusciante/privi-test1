@@ -9,7 +9,6 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 @Injectable()
 export class SquadreService {
   private UserCollection: AngularFirestoreCollection<User>;
-
    user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
