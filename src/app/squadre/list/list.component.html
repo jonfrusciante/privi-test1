@@ -4,7 +4,7 @@
      fxLayoutGap="2vh"
      style="margin: 1vh 2vh 2vh 2vh" >
 
-  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ | async" >
+  <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of squdare$ ; let i = index | async" >
 
     <mat-card  class="mat-elevation-z9 mat-card"  >
       <mat-card-header fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
@@ -40,13 +40,13 @@
 
       </mat-card-content>
       <mat-card-actions align="center"  >
-        <button fxFlex mat-raised-button (click)="mostrauteni()" color="accent">Invita Giocatore</button>
+        <button fxFlex mat-raised-button (click)="mostrauteni(squadra)" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
         <button fxFlex mat-raised-button (click)="onAction1 " color="primary" >Crea Partita</button>
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
-          <div *ngIf="utenti$" fxLayout="row wrap "
+          <div  *ngIf="utenti$ && selectedsqadra === squadra  " fxLayout="row wrap "
                fxLayoutAlign="center start" fxLayoutGap="1vw">
             <div  *ngFor="let utentis of utenti$ |async" >
               <h4>{{utentis.displayName}}</h4>

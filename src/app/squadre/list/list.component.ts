@@ -11,6 +11,7 @@ import {User} from '../../user-profile/user';
 export class ListComponent implements OnInit {
   squdare$: Observable<Squadre[]>;
   utenti$: Observable<User[]>;
+  selectedsqadra: Squadre;
 
   constructor(private squadre: SquadreService) { }
 
@@ -26,8 +27,9 @@ export class ListComponent implements OnInit {
     this.squadre.delsquad(uid);
 
   }
-  mostrauteni() {
+  mostrauteni(squadra: Squadre) {
      this.utenti$ = this.squadre.getallfriends();
+     this.selectedsqadra = squadra ;
   }
   aggiungiPlayer(user: User, squadra: Squadre) {
     this.squadre.addplayer(user, squadra);
