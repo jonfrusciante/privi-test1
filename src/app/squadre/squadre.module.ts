@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import {ListComponent} from './list/list.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {AppcanvasModule} from '../canvas/appcanvas.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatAutocompleteModule ,
     MatCardModule ,
     FlexLayoutModule ,
+    AppcanvasModule
 
 
   ],
