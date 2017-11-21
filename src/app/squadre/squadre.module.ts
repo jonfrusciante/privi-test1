@@ -11,19 +11,16 @@ import {
 import {ListComponent} from './list/list.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AppcanvasModule} from '../canvas/appcanvas.module';
+import {MaterialModule} from '../material/material.module';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    RoutingRoutingModule, MatFormFieldModule ,
-    MatInputModule ,
-    MatButtonModule ,
-    MatCheckboxModule ,
-    MatMenuModule ,
-    MatIconModule ,
-    MatAutocompleteModule ,
-    MatCardModule ,
-    FlexLayoutModule ,
+    RoutingRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
     AppcanvasModule
 
   ],
