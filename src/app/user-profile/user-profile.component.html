@@ -20,7 +20,7 @@
               <mat-card-title>Modifica immagine</mat-card-title>
               <img matCardImageMedium [src]="file"  alt="">
               <app-primocanvas [ngStyle]="{'display': 'none'}"
-                               (imagegurulink)="file=$event; updat($event , user); visprofchange=false "
+                               (imagegurulink)="file=$event; updat($event); visprofchange=false "
                                [canavasProfiledisplay]='true' ></app-primocanvas>
 
             </mat-card-header>
@@ -52,14 +52,12 @@
               Footer
             </mat-card-footer>
           </mat-card>
-          <input id="profiloPhoto" #pino  [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
-          <label for="profiloPhoto"><img  class="profileimg1"  [src]="user.photoURL" ></label>
           <img class="profileimg1" (click)= "visprofchange = true" [src]= "user.photoURL">
           <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
             <span (click)=" alert('non puoi modificare l email chiedi al responsabile della struttura')">{{user.email}} </span>
             <span (click)=" user.telefon = null">{{user.telefon}} </span>
             <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
-              <input fxLayout="row" (change)="telef($event,user)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
+              <input fxLayout="row" (change)="telef($event)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
               <button *ngIf="!user.telefon" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
             <span (click)= " user.indirizzo = null" >{{user.indirizzo}}</span>
             <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >

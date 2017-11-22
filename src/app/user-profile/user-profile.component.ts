@@ -1,36 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component,  Input, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from '../core/auth.service';
-import { FileUploader } from 'ng2-file-upload';
-import {UserService} from './user.service';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
 import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {MatDialog} from '@angular/material';
 import {Modaltest1Component} from '../login/modaltest1.component';
 import {PrimocanvasComponent} from '../canvas/primocanvas/primocanvas.component';
 import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
-
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-  favoriteColor?: string;
-  telefon?: string;
-  indirizzo?: string;
-}
-interface Risposta {
-  data: Dat;
-}
-interface Dat {
-  link: string;
-}
-interface Result {
-  userId: string;
-  id: string;
-  title: string;
-}
+import {User} from './user';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -54,11 +29,11 @@ export class UserProfileComponent implements OnInit {
   @Input() public userPass: User;
 
   public itemDoc: AngularFirestoreDocument<User>;
-  User$: Observable<User[]>;
 
-  data$: Observable<Risposta>;
-  users: User;
-  public uploader: FileUploader = new FileUploader({url: URL});
+  usersAutenticato: User;
+  constructor(public  dialog: MatDialog, public auth: AuthService,  private afs: AngularFirestore) {
+   this.usersAutenticato = this.auth.theuser;
+  }
   // metodi mod foto
   confermafoto(image) {
     console.log(image);
@@ -79,7 +54,7 @@ export class UserProfileComponent implements OnInit {
   }
   openDialog(user) {
     console.log(user);
-this.dialog.open(Modaltest1Component, {
+   this.dialog.open(Modaltest1Component, {
   data: {
     userPass: user
   }
@@ -87,21 +62,20 @@ this.dialog.open(Modaltest1Component, {
    // this.addUserEvent.emit(user);
   }
   //
-  telef(event, user) {
-    this.users = user;
-  this.users.telefon = event.target.value ;
-  console.log(this.users);
+  telef(event) {
+    this.usersAutenticato.telefon = event.target.value ;
+    this.updateUser();
   }
-  indirizzo(event, user) {
-    this.users = user;
-    this.users.indirizzo = event.target.value ;
+  indirizzo(event) {
+    this.usersAutenticato.indirizzo = event.target.value ;
+    this.updateUser();
   }
-   updat(imagelink:string, user:User) {
-     this.users = user;
-     this.users.photoURL = imagelink;
+   updat(imagelink: string) {
+     this.usersAutenticato.photoURL = imagelink;
      this.updateUser();
 
    }
+   /*
   onFileChange(event, user) {
     this.users = user;
     console.log('onfile');
@@ -118,16 +92,12 @@ this.dialog.open(Modaltest1Component, {
       };
     }
   }
+  */   // onfilechange
   updateUser() {
-  this.itemDoc = this.afs.collection('users').doc(this.users.uid) ;
-  this.itemDoc.update(this.users);
+  this.itemDoc = this.afs.collection('users').doc(this.usersAutenticato.uid) ;
+  this.itemDoc.update(this.usersAutenticato);
   }
 
-  getUser() {
-    this.auth.user.subscribe(n  => {
-      this.users = n;
-    });
-  }
   configcrop() {
   this.cropperSettings = new CropperSettings();
   this.cropperSettings.noFileInput = true;
@@ -137,45 +107,11 @@ this.dialog.open(Modaltest1Component, {
   this.cropperSettings.rounded = true;
   this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
 }
-  constructor(public  dialog: MatDialog, public auth: AuthService, private usrServ: UserService, private afs: AngularFirestore, private user: UserService) {
 
-  }
 
-  private populateUsers() {
-    this.usrServ.getApi().subscribe((event: HttpEvent<any>) => {
-      switch (event.type) {
-        case HttpEventType.Sent:
-          console.log('Request sent!');
-          break;
-        case HttpEventType.ResponseHeader:
-          console.log('Response header received!');
-          break;
-        case HttpEventType.DownloadProgress:
-          const kbLoaded = Math.round(event.loaded / 1024);
-          console.log(`Download in progress! ${kbLoaded}Kb loaded`);
-          break;
-        case HttpEventType.Response:
-          console.log('😺 Done!', event.body);
-          this.users = event.body;
-      }
-    });
-  }
-  checkuser(user) {
-    if (user === null) {
-      return 'Guest';
-    }
-     return user;
-  }
+
   ngOnInit() {
-    this.getUser();
-    this.User$ = this.user.getuser();
     this.configcrop();
-// this.users$ = this.usrServ.getData();
-// this.users$ = this.usrServ.getauttoken(a);
   }
-  modificaprofilo(user){
-
-
-}
 
 }
