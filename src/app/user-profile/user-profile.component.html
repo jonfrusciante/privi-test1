@@ -58,7 +58,7 @@
             <span (click)=" user.telefon = null">{{user.telefon}} </span>
             <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
               <input fxLayout="row" (change)="telef($event)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
-              <button *ngIf="!user.telefon" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
+              <button type="submit" *ngIf="!user.telefon" mat-icon-button="gino" (click)="telef($event)"><mat-icon>send</mat-icon> </button></div>
             <span (click)= " user.indirizzo = null" >{{user.indirizzo}}</span>
             <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
               <input fxLayout="row" (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
