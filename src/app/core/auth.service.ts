@@ -26,6 +26,7 @@ export class AuthService {
       .switchMap(user => {
         if (user) {
           this.theuser = user;
+          console.log(this.theuser)
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return Observable.of(null);
