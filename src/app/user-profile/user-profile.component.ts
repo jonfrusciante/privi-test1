@@ -95,7 +95,8 @@ export class UserProfileComponent implements OnInit {
   */   // onfilechange
   updateUser() {
   this.itemDoc = this.afs.collection('users').doc(this.usersAutenticato.uid) ;
-  this.itemDoc.update(this.usersAutenticato);
+    console.log(this.usersAutenticato);
+  // this.itemDoc.update(this.usersAutenticato);
   }
 
   configcrop() {
