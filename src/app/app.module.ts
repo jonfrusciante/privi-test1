@@ -103,12 +103,12 @@ import { ImgGuruService } from './img-guru.service';
     AppcanvasModule ,
     AppRoutingModule
   ],
-  providers: [UserService ,
+  providers: [UserService , ImgGuruService ,
     {
       provide: DateAdapter, useClass : NativeComponent
     },
     {
-      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS, providers: [ImgGuruService]
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS,
     }
   ],
   entryComponents: [DialogcalendarComponent, Modaltest1Component, HometeamComponent],
