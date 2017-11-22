@@ -61,8 +61,8 @@
               <button type="submit" *ngIf="!user.telefon" mat-icon-button="gino" (click)="telef($event)"><mat-icon>send</mat-icon> </button></div>
             <span (click)= " user.indirizzo = null" >{{user.indirizzo}}</span>
             <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
-              <input fxLayout="row" (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
-              <button *ngIf="!user.indirizzo" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
+              <input fxLayout="row" #ind (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
+              <button *ngIf="!user.indirizzo" mat-icon-button="gino" (click)="indirizzo(ind.value)"><mat-icon>send</mat-icon> </button></div>
             <span >contatto facebook</span>
           </div>
         </div>
