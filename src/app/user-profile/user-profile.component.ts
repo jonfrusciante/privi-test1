@@ -32,7 +32,11 @@ export class UserProfileComponent implements OnInit {
 
   usersAutenticato: User;
   constructor(public  dialog: MatDialog, public auth: AuthService,  private afs: AngularFirestore) {
-   this.usersAutenticato = this.auth.theuser;
+       this.auth.user.subscribe(
+         result => {
+           this.usersAutenticato = result;
+         }
+       );
   }
   // metodi mod foto
   confermafoto(image) {

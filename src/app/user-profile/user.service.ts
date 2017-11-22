@@ -28,6 +28,7 @@ export class UserService {
   private base64textString= '';
   courses$: Observable<Result[]>;
   User$: Observable<User[]>;
+  Use$: Observable<User>;
 
    reader = new FileReader();
 
@@ -37,7 +38,7 @@ export class UserService {
 posts: Result ;
   private UserCollection: AngularFirestoreCollection<User>;
   private UserDoc: AngularFirestoreDocument<UserClass>;
-
+  theuser: User;
   user: UserClass = new UserClass();
   getuser() {
 this.UserCollection = this.afs.collection('users');
@@ -55,7 +56,12 @@ return this.User$ ;
   }
   constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {
     this.auth.user.subscribe( next => this.user =  next);
-
+    this.Use$ = this.auth.user;
+  }
+  getuser(){
+    this.Use$.subscribe(result =>{
+      this.theuser = result;
+    });
   }
   getData() {
     return this.http.get<Result[]>(this.urlpost);
