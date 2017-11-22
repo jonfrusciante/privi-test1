@@ -1,6 +1,5 @@
-import {Component, EventEmitter, OnInit, ViewChild} from '@angular/core';
-import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import {UserService} from '../../user-profile/user.service';
+import {Component,  OnInit, ViewChild} from '@angular/core';
+import {FormGroup, FormControl,  Validators} from '@angular/forms';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {AuthService} from '../../core/auth.service';
 import {User} from '../../user-profile/user';
@@ -38,7 +37,7 @@ export class CreaComponent implements OnInit {
     {value: 'juve', nome: 'JUVENTUS'},
     {value: 'inter', nome: 'INTER'},
   ];
-  constructor(private usrServ: UserService, private afs: AngularFirestore, private user: AuthService) {
+  constructor( private afs: AngularFirestore, private user: AuthService) {
     this.SqudreCollections = this.afs.collection<Squadre>('squadre_create');
     this.UserCollection = this.afs.collection<User>('users');
 

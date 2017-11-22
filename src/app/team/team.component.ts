@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import {UserService} from '../user-profile/user.service';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {AuthService} from '../core/auth.service';
 import {User} from '../user-profile/user';
 import {Observable} from 'rxjs/Observable';
 import {MatDialog , MatDialogRef} from '@angular/material';
 import {HometeamComponent} from './hometeam/hometeam.component';
+import {ImgGuruService} from '../img-guru.service';
 
 interface Squadre {
   Uid?: string;
@@ -59,7 +59,7 @@ export class TeamComponent implements OnInit {
   fileImage= '';
   friends: any ;
   team: Squadre;
-  constructor(public  dialog: MatDialog, private usrServ: UserService, private afs: AngularFirestore, private user: AuthService) {
+  constructor(private imgguru: ImgGuruService , public  dialog: MatDialog, private afs: AngularFirestore, private user: AuthService) {
     this.SqudreCollections = this.afs.collection<Squadre>('squadre_create');
     this.UserCollection = this.afs.collection<User>('users');
     // this.dialog.
@@ -108,7 +108,7 @@ export class TeamComponent implements OnInit {
       const file = $event.target.files[0];
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.usrServ.getauttoken(reader.result.split(',')[1]).subscribe( result => {
+        this.imgguru.getauttoken(reader.result.split(',')[1]).subscribe( result => {
           this.myForm.controls['logo'].setValue(result.data.link);
           this.fileImage = result.data.link ;
         });

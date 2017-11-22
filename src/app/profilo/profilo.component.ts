@@ -1,6 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {PrimocanvasComponent} from '../canvas/primocanvas/primocanvas.component';
-import {UserService} from '../user-profile/user.service';
 import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
 
 @Component({

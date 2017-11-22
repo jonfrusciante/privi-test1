@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, Output, ViewChild, Sanitizer} from '@angular/core';
-import {UserService} from '../../user-profile/user.service';
+import {ImgGuruService} from '../../img-guru.service';
 @Component({
   selector: 'app-primocanvas',
   templateUrl: './primocanvas.component.html',
@@ -18,7 +18,7 @@ export class PrimocanvasComponent implements AfterViewInit {
   fileImage: string;
   public image =  new Image();
   public image1 =  new Image();
-  constructor(private usrServ: UserService ) {}
+  constructor(private imgguru: ImgGuruService) {}
 
   ngAfterViewInit() {
     if (this.canavasProfiledisplay) { const canvas = this.myCanvas.nativeElement ;     this.context = canvas.getContext('2d');
@@ -154,7 +154,7 @@ addimageinlogo(image) {
 
   savefile($event) {
     console.log($event);
-    this.usrServ.getauttoken($event.split(',')[1]).subscribe( result => {
+    this.imgguru.getauttoken($event.split(',')[1]).subscribe( result => {
       this.fileImage = result.data.link ;
       this.imagegurulink.emit(result.data.link);
       console.log(this.fileImage);

@@ -55,14 +55,10 @@ return this.User$ ;
     this.cercauser().update(this.user);
   }
   constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {
-    this.auth.user.subscribe( next => this.user =  next);
-    this.Use$ = this.auth.user;
+    // this.auth.user.subscribe( next => this.user =  next);
+   // this.Use$ = this.auth.user;
   }
-  getuser(){
-    this.Use$.subscribe(result =>{
-      this.theuser = result;
-    });
-  }
+
   getData() {
     return this.http.get<Result[]>(this.urlpost);
   }
@@ -73,12 +69,12 @@ return this.User$ ;
 
    return this.http.request(req);
   }
-  handleFileSelect(evt){
-    let files = evt.target.files;
-    let file = files[0];
+  handleFileSelect(evt) {
+    const files = evt.target.files;
+    const file = files[0];
 
     if (files && file) {
-      let reader = new FileReader();
+      const reader = new FileReader();
 
       reader.onload = this._handleReaderLoaded.bind(this);
 

@@ -52,6 +52,7 @@ import { ProfiloComponent } from './profilo/profilo.component';
 import {SquadreModule} from './squadre/squadre.module';
 import {AppcanvasModule} from './canvas/appcanvas.module';
 import {MaterialModule} from './material/material.module';
+import { ImgGuruService } from './img-guru.service';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,7 @@ import {MaterialModule} from './material/material.module';
       provide: DateAdapter, useClass : NativeComponent
     },
     {
-      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS, providers: [ImgGuruService]
     }
   ],
   entryComponents: [DialogcalendarComponent, Modaltest1Component, HometeamComponent],
