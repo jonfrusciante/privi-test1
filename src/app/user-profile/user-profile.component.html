@@ -18,16 +18,16 @@
           <input id="profiloPhoto" #pino  [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
           <label for="profiloPhoto"><img  class="profileimg1"  [src]="user.photoURL" ></label>
           <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
-            <span>{{user.email}} </span>
+            <span (click)=" alert('non puoi modificare l email chiedi al responsabile della struttura')">{{user.email}} </span>
             <span (click)=" user.telefon = null">{{user.telefon}} </span>
             <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
               <input fxLayout="row" (change)="telef($event,user)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
               <button *ngIf="!user.telefon" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
-            <span>{{user.indirizzo}} <button *ngIf="user.indirizzo" mat-icon-button="gino" (click)="updateindd()"><mat-icon>send</mat-icon> </button></span>
+            <span (click)= " user.indirizzo = null" >{{user.indirizzo}}</span>
             <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
               <input fxLayout="row" (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
               <button *ngIf="!user.indirizzo" mat-icon-button="gino" (click)="updateUser()"><mat-icon>send</mat-icon> </button></div>
-            <span>contatto facebook</span>
+            <span >contatto facebook</span>
           </div>
         </div>
       </div>
@@ -35,8 +35,7 @@
            fxLayoutAlign="start end"
            fxLayoutGap="2vh"
            class ="finalbutton">
-        <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="auth.signOut()">Logout</button>
-        <button fxFlexAlign="end" style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="pino.click()">Modifica Profilo</button>
+        <button fxFlexFill style="background-color: #536DFE; color: white" class="mat-elevation-z5" mat-button (click)="auth.signOut()">Logout</button>
 
       </div>
     </div>
