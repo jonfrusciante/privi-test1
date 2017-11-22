@@ -57,12 +57,12 @@
             <span (click)=" alert('non puoi modificare l email chiedi al responsabile della struttura')">{{user.email}} </span>
             <span (click)=" user.telefon = null">{{user.telefon}} </span>
             <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
-              <input fxLayout="row" #tel (change)="telef($event)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
-
+              <input fxLayout="row"  (change)="telef($event)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
+            </div>
             <span (click)= " user.indirizzo = null" >{{user.indirizzo}}</span>
             <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
-              <input fxLayout="row" #ind (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
-
+              <input fxLayout="row"  (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
+            </div>
             <span >contatto facebook</span>
           </div>
         </div>
