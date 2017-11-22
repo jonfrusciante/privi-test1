@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {AuthService} from '../core/auth.service';
 import { FileUploader } from 'ng2-file-upload';
 import {UserService} from './user.service';
@@ -7,6 +7,8 @@ import {Observable} from 'rxjs/Observable';
 import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {MatDialog} from '@angular/material';
 import {Modaltest1Component} from '../login/modaltest1.component';
+import {PrimocanvasComponent} from '../canvas/primocanvas/primocanvas.component';
+import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 interface User {
@@ -36,6 +38,17 @@ interface Result {
 })
 
 export class UserProfileComponent implements OnInit {
+  // zona mod foto
+  @ViewChild('cropper', undefined)
+  cropper: ImageCropperComponent;
+
+  @ViewChild(PrimocanvasComponent) canavas: PrimocanvasComponent;
+  data: any;
+  cropperSettings: CropperSettings;
+  file: any;
+  visibility= false;
+
+
  // @Output() addUserEvent = new EventEmitter<User>();
   @Input() public userPass: User;
 
@@ -43,9 +56,26 @@ export class UserProfileComponent implements OnInit {
   User$: Observable<User[]>;
 
   data$: Observable<Risposta>;
-
   users: User;
   public uploader: FileUploader = new FileUploader({url: URL});
+  // metodi mod foto
+  confermafoto(image) {
+    console.log(image);
+    this.canavas.addimageinlogo(image);
+  }
+  fileChangeListener($event) {
+    const image: any = new Image();
+    const file: File = $event.target.files[0];
+    const myReader: FileReader = new FileReader();
+    const that = this;
+    myReader.onloadend = function (loadEvent: any) {
+      image.src = loadEvent.target.result;
+      that.cropper.setImage(image);
+
+    };
+
+    myReader.readAsDataURL(file);
+  }
   openDialog(user) {
     console.log(user);
 this.dialog.open(Modaltest1Component, {
@@ -55,7 +85,7 @@ this.dialog.open(Modaltest1Component, {
 });
    // this.addUserEvent.emit(user);
   }
-
+  //
   telef(event, user) {
     this.users = user;
   this.users.telefon = event.target.value ;
@@ -92,7 +122,15 @@ this.dialog.open(Modaltest1Component, {
       this.users = n;
     });
   }
-
+  configcrop() {
+  this.cropperSettings = new CropperSettings();
+  this.cropperSettings.noFileInput = true;
+  this.cropperSettings.width = 150;
+  this.cropperSettings.height = 150;
+  this.data = {};
+  this.cropperSettings.rounded = true;
+  this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
+}
   constructor(public  dialog: MatDialog, public auth: AuthService, private usrServ: UserService, private afs: AngularFirestore, private user: UserService) {
 
   }
@@ -125,6 +163,7 @@ this.dialog.open(Modaltest1Component, {
   ngOnInit() {
     this.getUser();
     this.User$ = this.user.getuser();
+    this.configcrop();
 // this.users$ = this.usrServ.getData();
 // this.users$ = this.usrServ.getauttoken(a);
   }
