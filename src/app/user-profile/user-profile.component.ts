@@ -47,6 +47,7 @@ export class UserProfileComponent implements OnInit {
   cropperSettings: CropperSettings;
   file: any;
   visibility= false;
+  visprofchange= false;
 
 
  // @Output() addUserEvent = new EventEmitter<User>();
@@ -95,7 +96,12 @@ this.dialog.open(Modaltest1Component, {
     this.users = user;
     this.users.indirizzo = event.target.value ;
   }
+   updat(imagelink:string, user:User) {
+     this.users = user;
+     this.users.photoURL = imagelink;
+     this.updateUser();
 
+   }
   onFileChange(event, user) {
     this.users = user;
     console.log('onfile');

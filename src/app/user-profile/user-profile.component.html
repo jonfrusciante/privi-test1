@@ -15,8 +15,46 @@
       <h3 fxFlexAlign="center" style="  font-family: 'Permanent Marker';color: whitesmoke"> {{'# '+ user.displayName | uppercase}}</h3>
       <div  fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
         <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+          <mat-card *ngIf="visprofchange">
+            <mat-card-header>
+              <mat-card-title>Modifica immagine</mat-card-title>
+              <img matCardImageMedium [src]="file"  alt="">
+              <app-primocanvas [ngStyle]="{'display': 'none'}"
+                               (imagegurulink)="file=$event; updat($event , user); visprofchange=false "
+                               [canavasProfiledisplay]='true' ></app-primocanvas>
+
+            </mat-card-header>
+            <mat-card-content>
+        <span class="result rounded" *ngIf="data.image && visibility" >
+    <img [src]="data.image" style="border-radius: 50%">
+    <br>
+    <button mat-icon-button (click)="confermafoto(data.image) ; visibility = false">
+        <mat-icon class="mat-24">save</mat-icon>
+    </button>
+</span>
+
+              <img-cropper #cropper [image]="data" [settings]="cropperSettings" *ngIf="visibility" ></img-cropper>
+
+            </mat-card-content>
+            <mat-card-actions align="start">
+              <div class="file-upload">
+                <p>Upload File</p>
+                <span class="text"><button mat-fab (click)="filee.click();visibility=true " color="warn"  >
+       <mat-icon class="mat-18">file_upload</mat-icon>
+      </button></span>
+
+                <input  #filee accept="image/*"  type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
+              </div>
+
+              <button mat-raised-button (click)="canavas.salvalogoprofilo()" color="primary">Inserisci foto nel tuo profilo</button>
+            </mat-card-actions>
+            <mat-card-footer>
+              Footer
+            </mat-card-footer>
+          </mat-card>
           <input id="profiloPhoto" #pino  [ngStyle]="{'display': 'none'}" type="file"   (change)= " onFileChange($event,user)"  />
           <label for="profiloPhoto"><img  class="profileimg1"  [src]="user.photoURL" ></label>
+          <img class="profileimg1" (click)= "visprofchange = true" [src]= "user.photoURL">
           <div fxLayout="column" fxLayoutAlign="begin start" fxLayoutGap="10px" class="elemdestr">
             <span (click)=" alert('non puoi modificare l email chiedi al responsabile della struttura')">{{user.email}} </span>
             <span (click)=" user.telefon = null">{{user.telefon}} </span>
@@ -39,45 +77,10 @@
 
       </div>
     </div>
+
   </div>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Modifica immagine</mat-card-title>
-      <img matCardImageMedium [src]="file"  alt="">
-      <app-primocanvas [ngStyle]="{'display': 'none'}"
-                       (imagegurulink)="file=$event"
-                       [canavasProfiledisplay]='true' ></app-primocanvas>
 
-    </mat-card-header>
-    <mat-card-content>
-        <span class="result rounded" *ngIf="data.image && visibility" >
-    <img [src]="data.image" style="border-radius: 50%">
-    <br>
-    <button mat-icon-button (click)="confermafoto(data.image) ; visibility = false">
-        <mat-icon class="mat-24">save</mat-icon>
-    </button>
-</span>
-
-      <img-cropper #cropper [image]="data" [settings]="cropperSettings" *ngIf="visibility" ></img-cropper>
-
-    </mat-card-content>
-    <mat-card-actions align="start">
-      <div class="file-upload">
-        <p>Upload File</p>
-        <span class="text"><button mat-fab (click)="filee.click();visibility=true " color="warn"  >
-       <mat-icon class="mat-18">file_upload</mat-icon>
-      </button></span>
-
-        <input  #filee accept="image/*"  type="file"   (change)="fileChangeListener($event)" [ngStyle]="{'display': 'none'}">
-      </div>
-
-      <button mat-raised-button (click)="canavas.salvalogoprofilo()" color="primary">Inserisci foto nel tuo profilo</button>
-    </mat-card-actions>
-    <mat-card-footer>
-      Footer
-    </mat-card-footer>
-  </mat-card>
 
 
   <div  class="" fxLayout="row wrap" fxLayoutAlign="center stretch" fxLayoutGap="2vh" style="margin: 1vh">
