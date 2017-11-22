@@ -63,9 +63,8 @@ export class UserProfileComponent implements OnInit {
   }
   //
   telef(event) {
-    console.log(event.target.value)
     this.usersAutenticato.telefon = event.target.value ;
-    // this.updateUser();
+    this.updateUser();
   }
   indirizzo(event) {
     this.usersAutenticato.indirizzo = event.target.value ;
