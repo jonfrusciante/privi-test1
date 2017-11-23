@@ -17,6 +17,7 @@ import {Prenotazioni} from '../../../admin/prenotazioni';
   styleUrls: ['./nuovapartita.component.css']
 })
 export class NuovapartitaComponent implements OnInit {
+  show= false;
 @Input() squadra: Squadre;
 user: User;
 @Output() addUserEvent = new EventEmitter<User>();
@@ -65,5 +66,20 @@ onInput(event){
   }
   getDisponibilita() {
     this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot').valueChanges();
+  }
+  public giornoprima() {
+    this.date = subDays(this.date , 1);
+    this.data_grabbed = format(this.date, 'DD-MM-YYYY');
+    console.log(this.data_grabbed);
+    this.getDisponibilita();
+  }
+  public giornodopo() {
+    this.date = addDays(this.date , 1);
+    this.data_grabbed = format(this.date, 'DD-MM-YYYY');
+    console.log(this.data_grabbed);
+    this.getDisponibilita();
+  }
+  setdata(event){
+  console.log(event);
   }
 }
