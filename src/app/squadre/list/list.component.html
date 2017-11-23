@@ -23,11 +23,7 @@
             <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
           </mat-expansion-panel>
         </mat-accordion>
-        <mat-expansion-panel [hideToggle]="false">
-          <mat-expansion-panel-header>PLAYER SQUADRA{{squadra.nome}}</mat-expansion-panel-header>
-          <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
-        </mat-expansion-panel>
-        <!--
+       <!--
 
 <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
 <h3 style="font-size: medium">I componenti del Team {{squadra.nome}} sono :</h3>
