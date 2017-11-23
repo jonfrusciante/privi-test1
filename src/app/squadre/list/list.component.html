@@ -47,7 +47,7 @@
       <mat-card-actions align="center"  >
         <button fxFlex mat-raised-button (click)="mostrauteni(squadra)" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
-        <button fxFlex mat-raised-button (click)=" vis= vis? vis : !vis ; selectedsqadra = squadra" color="primary" >Crea Partita</button>
+        <button fxFlex mat-raised-button (click)=" vis= vis? !vis : vis ; selectedsqadra = squadra" color="primary" >Crea Partita</button>
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
