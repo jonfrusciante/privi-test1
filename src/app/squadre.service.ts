@@ -20,7 +20,11 @@ export class SquadreService {
         this.miouser = userino ;
         this.UserCollection = this.afs.collection<User>('users');
         this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
-        this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
+        this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges().subscribe(
+          squadra => {
+            this.squadra$ = Observable.of(squadra);
+          }
+        );
       }
     );
  //   this.UserCollection = this.afs.collection<User>('users');
