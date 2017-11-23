@@ -31,18 +31,18 @@
           <input    matInput [matDatepicker]="picker" (dateInput)="onInput($event) ; toggleState() ; getDisponibilita()"  placeholder="Choose a date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <div *ngIf="items"  >
+          <mat-card *ngIf="items" >
             <div style="margin : 2vw 0 2vw 0" fxLayout="row wrap"
                  fxLayoutAlign="center stretch"
                  fxLayoutGap="3vh">
               <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
               <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
             </div>
-          </div>
             <mat-card>
             <button mat-button   #aaa (click)="setdata( item.ora )" *ngFor="let item of items | async" >
               <a *ngIf="item.disponibile" #titleInput>{{item.ora}}</a>
             </button>
+            </mat-card>(
             </mat-card>
         </mat-form-field>
         <div>
