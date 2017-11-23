@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {User} from './user-profile/user';
 import {Squadre} from './model/squadre';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {observable} from 'rxjs/symbol/observable';
 
 @Injectable()
 export class SquadreService {
@@ -13,6 +14,7 @@ export class SquadreService {
    user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
+   SquadreArray: Squadre[];
   constructor(private user: AuthService, private afs: AngularFirestore) {
    // const userino: User = this.user.theuser;
     this.user.user.subscribe(
@@ -20,9 +22,10 @@ export class SquadreService {
         this.miouser = userino ;
         this.UserCollection = this.afs.collection<User>('users');
         this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
-        this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges().subscribe(
-          squadra => {
-            this.squadra$ = Observable.of(squadra);
+        this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
+        this.squadra$.subscribe(
+          squadre => {
+            this.SquadreArray = squadre;
           }
         );
       }
@@ -34,8 +37,8 @@ export class SquadreService {
   getallfriends(): Observable<User[]> {
     return this.afs.collection('users').valueChanges();
   }
-  getsquadra(): Observable<Squadre> {
-    return this.squadra$;
+  getsquadra(): Observable<Squadre[]> {
+   return observable.of(this.SquadreArray);
 }
   delsquad(id) {
     this.squadraCollection$.doc(id).delete();

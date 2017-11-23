@@ -16,11 +16,11 @@ export class ListComponent implements OnInit {
    vis= false;
   visa= false;
   constructor(public squadre: SquadreService) {
-    this.squdare$ = this.squadre.squadra$;
-    this.squdare$.subscribe();
+    this.squdare$ = this.squadre.getsquadra();
   }
 
   ngOnInit() {
+    // this.squdare$.subscribe();
 
    // this.getsquadre();
   }
