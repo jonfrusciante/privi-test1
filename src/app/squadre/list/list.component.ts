@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
   selectedsqadra: Squadre;
   user: User;
    vis= false;
+  visa=false;
   constructor(private squadre: SquadreService) {
     this.squdare$ = this.squadre.squadra$;
 

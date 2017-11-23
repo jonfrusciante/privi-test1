@@ -45,13 +45,13 @@
 
       </mat-card-content>
       <mat-card-actions align="center"  >
-        <button fxFlex mat-raised-button appStoppropagation (click)="mostrauteni(squadra)" color="accent">Invita Giocatore</button>
+        <button fxFlex mat-raised-button appStoppropagation (click)="mostrauteni(squadra);visa=!visa" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button  (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
         <button fxFlex mat-raised-button appStoppropagation (click)=" vis= !vis; selectedsqadra = squadra" color="primary" >Crea Partita</button>
         <button fxFlex mat-raised-button appStoppropagation (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
-          <div  *ngIf="utenti$ && selectedsqadra === squadra  " fxLayout="row wrap "class="mat-elevation-z9"
+          <div  *ngIf="utenti$ && selectedsqadra === squadra && visa  " fxLayout="row wrap "class="mat-elevation-z9"
                fxLayoutAlign="center start" fxLayoutGap="1vw">
             <div  *ngFor="let utentis of utenti$ |async" >
               <h4>{{utentis.displayName}}</h4>
