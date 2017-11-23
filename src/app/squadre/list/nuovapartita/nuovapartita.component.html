@@ -5,7 +5,7 @@
     <mat-card-title>{{squadra?.nome}}</mat-card-title>
   </mat-card-header>
   <img matCardImage src={{squadra?.logo}}>
-  <mat-card-content>
+  <mat-card-content  *ngIf="!user">
     <h3>Scgli L'avversario</h3>
     <form class="example-form">
       <mat-form-field class="example-full-width">
