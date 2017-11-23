@@ -27,21 +27,22 @@ user: User;
   users: Observable<User[]>;
   constructor(private afs: AngularFirestore, private _formBuilder: FormBuilder) {
 
-    this.userCtrl = new FormControl();
-    this.users = this.afs.collection('users').valueChanges();
-    // this.userCtrl.valueChanges.subscribe( user => this.invia(user));
+   // this.userCtrl = new FormControl();
+
   }
   invia(user) {
     console.log(user);
-    this.addUserEvent.emit(user);
+   // this.addUserEvent.emit(user);
   }
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      userCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.users = this.afs.collection('users').valueChanges();
+    this.userCtrl.valueChanges.subscribe( user => this.invia(user));
   }
 onInput(event){
     console.log(event);
