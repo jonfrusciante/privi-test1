@@ -5,7 +5,12 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
+import {
+  subDays,
+  addDays,
+  format
+} from 'date-fns';
+import {Prenotazioni} from '../../../admin/prenotazioni';
 @Component({
   selector: 'app-nuovapartita',
   templateUrl: './nuovapartita.component.html',
@@ -22,7 +27,10 @@ user: User;
   //
 // dati x datapiker
   stateFlag = true;
-
+  data_grabbed: string;
+  date = new Date();
+  time_gabbed: string;
+  items: Observable<Prenotazioni[]>;
   userCtrl: FormControl;
   users: Observable<User[]>;
   constructor(private afs: AngularFirestore, private _formBuilder: FormBuilder) {
@@ -47,9 +55,15 @@ user: User;
    //  this.firstFormGroup.valueChanges.subscribe(user => this.invia(user));  // valueChanges.subscribe( user => this.invia(user));
   }
 onInput(event){
-    console.log(event);
-}
+  this.date = event.value;
+  // this.giorno = this.date.getMonth() + 1;
+  this.data_grabbed =  format(event.value, 'DD-MM-YYYY');
+  console.log(this.data_grabbed);
+  }
   toggleState() {
     this.stateFlag = !this.stateFlag;
+  }
+  getDisponibilita() {
+    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot').valueChanges();
   }
 }
