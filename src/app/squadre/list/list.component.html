@@ -20,7 +20,7 @@
                        [hideToggle]="false" >
           <mat-expansion-panel [hideToggle]="false" style="margin-top: 4vh">
             <mat-expansion-panel-header>PLAYER SQUADRA{{squadra.nome}}</mat-expansion-panel-header>
-            <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
+            <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" appStoppropagation ></app-player>
           </mat-expansion-panel>
         </mat-accordion>
        <!--
@@ -56,7 +56,7 @@
             <div  *ngFor="let utentis of utenti$ |async" >
               <h4>{{utentis.displayName}}</h4>
               <img matCardImageMedium src="{{utentis.photoURL}}">
-              <button mat-raised-button (click)="aggiungiPlayer(utentis,squadra);selectedsqadra = null " color="primary">Aggiungi</button>
+              <button mat-raised-button appStoppropagation (click)="aggiungiPlayer(utentis,squadra);selectedsqadra = null " color="primary">Aggiungi</button>
             </div>
           </div>
       </mat-card-footer>
