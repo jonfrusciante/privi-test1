@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   squdare$: Observable<Squadre[]>;
   utenti$: Observable<User[]>;
   selectedsqadra: Squadre;
-
+   vis=false;
   constructor(private squadre: SquadreService) { }
 
   ngOnInit() {

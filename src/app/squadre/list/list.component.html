@@ -17,6 +17,7 @@
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
 
        <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
+        <app-nuovapartita *ngIf="vis"></app-nuovapartita>
         <!--
 
 <ul fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
@@ -41,7 +42,7 @@
       <mat-card-actions align="center"  >
         <button fxFlex mat-raised-button (click)="mostrauteni(squadra)" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
-        <button fxFlex mat-raised-button (click)="onAction1 " color="primary" >Crea Partita</button>
+        <button fxFlex mat-raised-button (click)="vis=true " color="primary" >Crea Partita</button>
         <button fxFlex mat-raised-button (click)="rimuovisquadra(squadra.Uid)" color="warning">rimuovi Squadra</button>
       </mat-card-actions>
       <mat-card-footer >
