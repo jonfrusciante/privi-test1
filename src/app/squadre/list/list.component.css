@@ -5,3 +5,8 @@
 .margin-bottom{
   margin-bottom: 2vh;
 }
+app-nuovapartita{
+  width: 100%;
+  text-align: center;
+  margin-top: 6vh;
+}
