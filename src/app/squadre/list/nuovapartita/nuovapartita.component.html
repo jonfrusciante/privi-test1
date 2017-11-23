@@ -27,8 +27,9 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Scegli Una Data</ng-template>
         <mat-form-field>
-
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+          <input    matInput [matDatepicker]="picker" (dateInput)="onInput($event) ; toggleState()"  placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
