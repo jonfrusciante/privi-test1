@@ -53,6 +53,7 @@ import {SquadreModule} from './squadre/squadre.module';
 import {AppcanvasModule} from './canvas/appcanvas.module';
 import {MaterialModule} from './material/material.module';
 import { ImgGuruService } from './img-guru.service';
+import { StoppropagationDirective } from './directive/stoppropagation.directive';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ImgGuruService } from './img-guru.service';
    //  PrimocanvasComponent,
     HometeamComponent,
     ProfiloComponent,
+    StoppropagationDirective,
 
 
 
