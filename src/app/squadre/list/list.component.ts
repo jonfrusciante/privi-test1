@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   visa= false;
   constructor(public squadre: SquadreService) {
     this.squdare$ = this.squadre.squadra$;
-
+    this.squdare$.subscribe();
   }
 
   ngOnInit() {
