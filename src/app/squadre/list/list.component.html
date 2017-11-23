@@ -19,9 +19,7 @@
 
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
         <app-nuovapartita *ngIf="vis && selectedsqadra === squadra" [squadra]="squadra" (addUserEvent)=" user = $event"></app-nuovapartita>
-        <div *ngIf="user && selectedsqadra === squadra">
-          <img matCardImageSmall src="{{user?.photoURL}}" alt="">{{user?.displayName}}
-        </div>
+
        <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
         <!--
 
