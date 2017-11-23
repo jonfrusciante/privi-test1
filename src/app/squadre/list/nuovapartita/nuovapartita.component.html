@@ -5,7 +5,7 @@
     <mat-card-title>{{squadra?.nome}}</mat-card-title>
   </mat-card-header>
   <img matCardImage src={{squadra?.logo}}>
-  <mat-card-content  *ngIf="!user">
+  <mat-card-content  >
     <h3>Scgli L'avversario</h3>
     <form class="example-form">
       <mat-form-field class="example-full-width">
@@ -22,11 +22,12 @@
     </form>
 
   </mat-card-content>
-  <mat-card-content *ngIf="user">
-    <h4> {{user?.displayName}}</h4><br><h5>{{user?.email}}</h5>
-    <img  src={{user?.photoURL}}>
+  <mat-card-content >
+  <h4> {{user?.displayName}}</h4>
 
   </mat-card-content>
+  <img matCardImage src={{user?.photoURL}}>
+
   <mat-card-actions align="start">
     <button mat-button (click)="onAction1">Action1</button>
 
