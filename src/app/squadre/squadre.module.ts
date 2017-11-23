@@ -10,6 +10,7 @@ import {AppcanvasModule} from '../canvas/appcanvas.module';
 import {MaterialModule} from '../material/material.module';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerComponent } from './list/player.component';
+import { NuovapartitaComponent } from './list/nuovapartita/nuovapartita.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { PlayerComponent } from './list/player.component';
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [SquadreComponent, CreaComponent, ListComponent, PlayerComponent],
+  declarations: [SquadreComponent, CreaComponent, ListComponent, PlayerComponent, NuovapartitaComponent],
   providers: [SquadreService]
 })
 export class SquadreModule {
