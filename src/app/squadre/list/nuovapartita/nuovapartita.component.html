@@ -28,6 +28,7 @@
         <ng-template matStepLabel>Scegli Una Data</ng-template>
 
         <mat-form-field>
+          <div *ngIf="event">Data e ora selezionati: {{event}}</div>
           <input    matInput [matDatepicker]="picker" (dateInput)="onInput($event) ; toggleState() ; getDisponibilita(); show=true"  placeholder="Choose a date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>

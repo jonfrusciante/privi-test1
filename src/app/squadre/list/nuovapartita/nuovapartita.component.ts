@@ -17,6 +17,7 @@ import {Prenotazioni} from '../../../admin/prenotazioni';
   styleUrls: ['./nuovapartita.component.css']
 })
 export class NuovapartitaComponent implements OnInit {
+  event: string;
   show= false;
 @Input() squadra: Squadre;
 user: User;
@@ -79,7 +80,8 @@ onInput(event){
     console.log(this.data_grabbed);
     this.getDisponibilita();
   }
-  setdata(event){
+  setdata(event: Prenotazioni){
+  this.event = format(event.start,'DD-MM-YYYY') + ' ' + 'ora: ' + event.ora ;
   console.log(event);
   }
 }
