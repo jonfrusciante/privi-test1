@@ -2,10 +2,51 @@
 
 <mat-card >
   <mat-card-header>
-    <mat-card-title>{{squadra?.nome}}</mat-card-title>
+    <mat-card-title>COSTRUIAMO UNA PARTITA</mat-card-title>
   </mat-card-header>
-  <img matCardImage src={{squadra?.logo}}>
+  <mat-horizontal-stepper [linear]="isLinear">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Scegli L'avversario</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Scegli il cliente" aria-label="Cliente" [matAutocomplete]="auto" [formControl]="firstCtrl" required>
+          <mat-autocomplete #auto="matAutocomplete" >
+            <mat-option  *ngFor="let user of users | async"  [value]="user"  >
+              <span>{{ user.email }}</span>
+              <img style="vertical-align:middle;" aria-hidden src="{{user.photoURL}}" height="25" >
+              <small>Uid: {{user.uid}}</small>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Scegli Una Data</ng-template>
+        <mat-form-field>
+          <input    matInput [matDatepicker]="dat" (dateInput)="onInput($event) ; toggleState()"  placeholder="Choose a date" formControlName="secondCtrl" required>
+          <mat-datepicker-toggle matSuffix [for]="dat"></mat-datepicker-toggle>
+          <mat-datepicker #dat></mat-datepicker>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
   <mat-card-content  >
+
     <h3>Scgli L'avversario</h3>
     <form class="example-form">
       <mat-form-field class="example-full-width">
