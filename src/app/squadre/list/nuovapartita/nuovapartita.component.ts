@@ -29,7 +29,7 @@ user: User;
 
     this.userCtrl = new FormControl();
     this.users = this.afs.collection('users').valueChanges();
-    this.userCtrl.valueChanges.subscribe( user => this.invia(user));
+    // this.userCtrl.valueChanges.subscribe( user => this.invia(user));
   }
   invia(user) {
     console.log(user);

@@ -45,22 +45,6 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
-  <mat-card-content  >
-
-    <h3>Scgli L'avversario</h3>
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Scegli il cliente" aria-label="Cliente" [matAutocomplete]="auto" [formControl]="userCtrl">
-        <mat-autocomplete #auto="matAutocomplete" >
-          <mat-option  *ngFor="let user of users | async"  [value]="user"  >
-            <span>{{ user.email }}</span>
-            <img style="vertical-align:middle;" aria-hidden src="{{user.photoURL}}" height="25" >
-            <small>Uid: {{user.uid}}</small>
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-     </form>
-  </mat-card-content>
   <mat-card-actions align="start">
     <button mat-button (click)="onAction1">Action1</button>
 
