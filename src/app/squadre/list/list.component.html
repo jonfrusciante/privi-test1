@@ -17,7 +17,7 @@
         <app-nuovapartita *ngIf="vis && selectedsqadra === squadra" [squadra]="squadra" (addUserEvent)=" user = $event"></app-nuovapartita>
 
         <mat-accordion displayMode="default" [multi]="false"
-                       [hideToggle]="false">
+                       [hideToggle]="false" style="margin-top: 6vh">
           <mat-expansion-panel [hideToggle]="false">
             <mat-expansion-panel-header>PLAYER SQUADRA{{squadra.nome}}</mat-expansion-panel-header>
             <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
