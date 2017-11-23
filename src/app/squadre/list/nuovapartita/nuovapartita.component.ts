@@ -42,7 +42,7 @@ user: User;
       secondCtrl: ['', Validators.required]
     });
     this.users = this.afs.collection('users').valueChanges();
-    this.userCtrl.registerOnChange(user => this.invia(user));  // valueChanges.subscribe( user => this.invia(user));
+   // this.userCtrl.registerOnChange(user => this.invia(user));  // valueChanges.subscribe( user => this.invia(user));
   }
 onInput(event){
     console.log(event);
