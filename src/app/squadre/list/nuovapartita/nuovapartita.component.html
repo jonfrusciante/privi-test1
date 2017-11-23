@@ -20,11 +20,11 @@
       </mat-form-field>
 
     </form>
-    <div *ngIf="user">
-      <label>avversario</label> {{user?.displayName}}<label>email</label>{{user?.email}}
-      <img matCardImage src={{user?.photoURL}}>
+    <mat-card-content *ngIf="user">
+      <h4> {{user?.displayName}}</h4><br><h5>{{user?.email}}</h5>
+      <img matCardAvatar src={{user?.photoURL}}>
 
-    </div>
+    </mat-card-content>
   </mat-card-content>
 
   <mat-card-actions align="start">
