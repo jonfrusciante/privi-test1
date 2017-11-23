@@ -9,7 +9,7 @@
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Scegli L'avversario</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Scegli il cliente" aria-label="Cliente" [matAutocomplete]="auto" [formControl]="firstCtrl" required>
+          <input matInput placeholder="Scegli il cliente" aria-label="Cliente" [matAutocomplete]="auto" [formControl]="userCtrl" required>
           <mat-autocomplete #auto="matAutocomplete" >
             <mat-option  *ngFor="let user of users | async"  [value]="user"  >
               <span>{{ user.email }}</span>
