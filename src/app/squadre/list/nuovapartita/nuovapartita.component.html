@@ -1,6 +1,6 @@
 <div >
 
-<mat-card fxLayout="column wrap">
+<mat-card >
   <mat-card-header>
     <mat-card-title>{{squadra?.nome}}</mat-card-title>
   </mat-card-header>
@@ -20,12 +20,13 @@
       </mat-form-field>
 
     </form>
-  </mat-card-content>
-  <mat-card-content *ngIf="user">
-   <label>avversario</label> {{user?.displayName}}<label>email</label>{{user?.email}}
-    <img matCardImage src={{user?.photoURL}}>
+    <div *ngIf="user">
+      <label>avversario</label> {{user?.displayName}}<label>email</label>{{user?.email}}
+      <img matCardImage src={{user?.photoURL}}>
 
+    </div>
   </mat-card-content>
+
   <mat-card-actions align="start">
     <button mat-button (click)="onAction1">Action1</button>
 
