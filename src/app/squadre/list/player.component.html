@@ -28,7 +28,7 @@ class="cont-player mat-elevation-z9">
         <h5>{{player.email}}</h5>
     <img  mat-card-lg-image src="{{player.photoURL}}">
     <div fxFlexFill>
-      <button mat-raised-button (click)="onAction(player)">Rimuovi Giocatore</button>
-      <button mat-raised-button (click)="onAction(player)">Contatta Giocatore</button>
+      <button mat-raised-button appStoppropagation (click)="onAction(player)">Rimuovi Giocatore</button>
+      <button mat-raised-button appStoppropagation (click)="onAction(player)">Contatta Giocatore</button>
     </div>
   </div>
