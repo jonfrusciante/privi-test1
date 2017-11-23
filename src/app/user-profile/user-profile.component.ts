@@ -66,17 +66,18 @@ export class UserProfileComponent implements OnInit {
    // this.addUserEvent.emit(user);
   }
   //
-  telef(event) {
-    this.usersAutenticato.telefon = event.target.value ;
-    this.updateUser();
+  telef(event, user: User) {
+
+        user.telefon = event.target.value ;
+    this.updateUser(user);
   }
-  indirizzo(event) {
-    this.usersAutenticato.indirizzo = event.target.value ;
-    this.updateUser();
+  indirizzo(event, user: User) {
+    user.indirizzo = event.target.value ;
+    this.updateUser(user);
   }
-   updat(imagelink: string) {
-     this.usersAutenticato.photoURL = imagelink;
-     this.updateUser();
+   updat(imagelink: string, user: User) {
+    user.photoURL = imagelink;
+     this.updateUser(user);
 
    }
    /*
@@ -97,10 +98,11 @@ export class UserProfileComponent implements OnInit {
     }
   }
   */   // onfilechange
-  updateUser() {
-  this.itemDoc = this.afs.collection('users').doc(this.usersAutenticato.uid) ;
-    console.log(this.usersAutenticato);
-  // this.itemDoc.update(this.usersAutenticato);
+  updateUser(user:User) {
+    console.log(user);
+
+    this.itemDoc = this.afs.collection('users').doc(user.uid) ;
+    this.itemDoc.update(user);
   }
 
   configcrop() {

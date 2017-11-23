@@ -20,7 +20,7 @@
               <mat-card-title>Modifica immagine</mat-card-title>
               <img matCardImageMedium [src]="file"  alt="">
               <app-primocanvas [ngStyle]="{'display': 'none'}"
-                               (imagegurulink)="file=$event; updat($event); visprofchange=false "
+                               (imagegurulink)="file=$event; updat($event , user); visprofchange=false "
                                [canavasProfiledisplay]='true' ></app-primocanvas>
 
             </mat-card-header>
@@ -57,11 +57,11 @@
             <span (click)=" alert('non puoi modificare l email chiedi al responsabile della struttura')">{{user.email}} </span>
             <span (click)=" user.telefon = null">{{user.telefon}} </span>
             <div *ngIf="!user.telefon" fxLayout="row" fxLayoutAlign="center center" >
-              <input fxLayout="row"  (change)="telef($event)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
+              <input fxLayout="row"  (change)="telef($event, user)" class="inp" *ngIf="!user.telefon"  placeholder="n.telefono" />
             </div>
             <span (click)= " user.indirizzo = null" >{{user.indirizzo}}</span>
             <div *ngIf="!user.indirizzo" fxLayout="row" fxLayoutAlign="center center" >
-              <input fxLayout="row"  (change)="indirizzo($event)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
+              <input fxLayout="row"  (change)="indirizzo($event , user)" class="inp" *ngIf="!user.indirizzo"  placeholder="indirizzo" />
             </div>
             <span >contatto facebook</span>
           </div>
