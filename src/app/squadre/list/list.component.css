@@ -8,5 +8,5 @@
 app-nuovapartita{
   width: 100%;
   text-align: center;
-  margin-top: 6vh;
+  margin-top: 5vh !important;
 }
