@@ -36,13 +36,13 @@ user: User;
   }
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      userCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
     this.users = this.afs.collection('users').valueChanges();
-   // this.userCtrl.registerOnChange(user => this.invia(user));  // valueChanges.subscribe( user => this.invia(user));
+    this.firstFormGroup.valueChanges.subscribe(user => this.invia(user));  // valueChanges.subscribe( user => this.invia(user));
   }
 onInput(event){
     console.log(event);
