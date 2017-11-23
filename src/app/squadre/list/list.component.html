@@ -16,10 +16,7 @@
         <div *ngIf="user && selectedsqadra === squadra">
           <img matCardImageSmall src="{{user?.photoURL}}" alt="">{{user?.displayName}}
         </div>
-</mat-card-content>
       </app-nuovapartita>
-
-      <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1vh" >
 
        <app-player *ngFor="let giocatori of squadra?.giocatori " [player]="giocatori" (userSelected)="rimuovigiocatore($event,squadra)" ></app-player>
         <!--
@@ -41,8 +38,9 @@
 
         </ul>
 -->
+</mat-card-content>
 
-      </mat-card-content>
+
       <mat-card-actions align="center"  >
         <button fxFlex mat-raised-button (click)="mostrauteni(squadra)" color="accent">Invita Giocatore</button>
         <button fxFlex mat-raised-button (click)="searchplayer(squadra)" color="primary">Modifica Roster</button>
