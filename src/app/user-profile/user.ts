@@ -6,4 +6,5 @@ export interface User {
   favoriteColor?: string;
   indirizzo?: string;
   telefon?: string;
+
 }

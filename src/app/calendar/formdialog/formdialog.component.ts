@@ -6,12 +6,8 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import {AngularFirestore} from 'angularfire2/firestore';
-interface User {
-  displayName: string;
-  email: string;
-  photoURL: string;
-  uid: string;
-}
+import {User} from '../../user-profile/user';
+
 class Userclass {
   displayName?: string;
   email?: string;
@@ -26,7 +22,6 @@ class Userclass {
 export class FormdialogComponent implements OnInit {
   filteredStates: Observable<any[]>;
  @Output() addUserEvent = new EventEmitter<User>();
-  model = new Userclass();
 
   userCtrl: FormControl;
   users: Observable<User[]>;
