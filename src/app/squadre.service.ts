@@ -38,7 +38,7 @@ export class SquadreService {
     return this.afs.collection('users').valueChanges();
   }
   getsquadra(): Observable<Squadre[]> {
-   return observable.of(this.SquadreArray);
+   return Observable.of(this.SquadreArray);
 }
   delsquad(id) {
     this.squadraCollection$.doc(id).delete();
