@@ -14,10 +14,13 @@ export class ListComponent implements OnInit {
   selectedsqadra: Squadre;
   user: User;
    vis= false;
-  constructor(private squadre: SquadreService) { }
+  constructor(private squadre: SquadreService) {
+    this.squdare$ = this.squadre.squadra$;
+
+  }
 
   ngOnInit() {
-    this.squdare$ = this.squadre.squadra$;
+
    // this.getsquadre();
   }
 
