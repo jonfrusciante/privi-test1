@@ -18,7 +18,9 @@ interface User {
 @Injectable()
 export class AuthService {
   user: Observable<User>;
- // theuser: User;
+  user1: Observable<User>;
+
+  // theuser: User;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router) {
@@ -105,6 +107,11 @@ export class AuthService {
       this.router.navigate(['/']);
     });
   }
-
+getus(){
+    this.user.subscribe( user => {
+      this.user1  = Observable.of(user);
+    }
+      );
+}
 
 }

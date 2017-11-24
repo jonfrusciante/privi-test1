@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 import {User} from './user-profile/user';
 import {Squadre} from './model/squadre';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {observable} from 'rxjs/symbol/observable';
 
 @Injectable()
 export class SquadreService {
