@@ -82,6 +82,10 @@ onInput(event){
   }
   setdata(event: Prenotazioni){
   this.event = format(event.start,'DD-MM-YYYY') + ' ' + 'ora: ' + event.ora ;
-  console.log(event);
+  this.secondFormGroup.setValue(event);
+  console.log(this.secondFormGroup.value);
+  }
+  inviarichesta(user_away,dataeora){
+    console.log (user_away,dataeora);
   }
 }
