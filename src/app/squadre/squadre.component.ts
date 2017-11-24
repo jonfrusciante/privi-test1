@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SquadreService} from '../squadre.service';
 
 @Component({
   selector: 'app-squadre',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./squadre.component.css']
 })
 export class SquadreComponent implements OnInit {
-  constructor() {
-
+  constructor(private squad: SquadreService) {
+    this.squad.getsquadra().subscribe();
   }
 
   ngOnInit() {
