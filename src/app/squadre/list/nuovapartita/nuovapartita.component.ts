@@ -43,7 +43,7 @@ user: User;
 
   }
   invia(user) {
-    this.firstFormGroup.setValue({'firstCtrl' : this.event});
+    this.firstFormGroup.setValue({'firstCtrl' : user});
 
     console.log(user);
    // this.addUserEvent.emit(user);
