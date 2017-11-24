@@ -11,7 +11,7 @@ export class SquadreComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.squad.getsquadra().subscribe();
+    this.squad.getsquadra();
 
   }
 
