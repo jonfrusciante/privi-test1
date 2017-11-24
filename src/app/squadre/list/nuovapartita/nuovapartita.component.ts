@@ -97,9 +97,9 @@ onInput(event){
   console.log(this.secondFormGroup.value);
   }
   inviarichesta(user_away: User , prenotazione: Prenotazioni, userCapitanuid: string) {
-    const pren = new RichiesteOut(user_away, prenotazione);
+    const pren: RichiesteOut = new RichiesteOut(user_away, prenotazione);
     console.log (pren);
 
-   // this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
+    this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
   }
 }
