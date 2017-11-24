@@ -8,7 +8,7 @@ import {SquadreService} from '../squadre.service';
 })
 export class SquadreComponent implements OnInit {
   constructor(private squad: SquadreService) {
-    this.squad.getsquadra().subscribe();
+    this.squad.squadra$.subscribe();
   }
 
   ngOnInit() {

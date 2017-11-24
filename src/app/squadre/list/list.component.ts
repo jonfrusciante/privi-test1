@@ -15,7 +15,6 @@ export class ListComponent implements OnInit {
   user: User;
    vis= false;
   visa= false;
-  SquadreArray: Squadre[];
 
   constructor(public squadre: SquadreService) {
 
@@ -29,7 +28,7 @@ export class ListComponent implements OnInit {
   }
 
   getsquadre() {
-    this.squdare$ = this.squadre.getsquadra();
+    this.squdare$ = this.squadre.squadra$;
   }
   rimuovisquadra(uid) {
     console.log(uid);
