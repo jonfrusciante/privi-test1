@@ -11,14 +11,11 @@ import {
   format
 } from 'date-fns';
 import {Prenotazioni} from '../../../admin/prenotazioni';
-class RichiesteOut {
-  constructor(user: User, Prenotazione: Prenotazioni ) {
-    this.useraway = user;
-    this.prenotazioneSlot = Prenotazione;
-  }
+interface RichiesteOut {
+
   useraway?: User ;
   prenotazioneSlot?: Prenotazioni ;
-  confermato? = false;
+  confermato?: false;
 
 }
 @Component({
@@ -97,8 +94,9 @@ onInput(event){
   console.log(this.secondFormGroup.value);
   }
   inviarichesta(user_away: User , prenotazione: Prenotazioni, userCapitanuid: string) {
-    const pren: RichiesteOut = new RichiesteOut(user_away, prenotazione);
-    console.log (pren);
+    const pren: RichiesteOut = {};
+    pren.useraway = user_away;
+    pren.prenotazioneSlot = prenotazione;
 
     this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
   }
