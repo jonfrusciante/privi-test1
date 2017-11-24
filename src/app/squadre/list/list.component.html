@@ -3,9 +3,6 @@
      fxLayoutGap.xs="5px"
      fxLayoutGap="2vh"
      style="margin: 1vh 2vh 2vh 2vh" >
-<div *ngIf="squdare$ | async">
-  test
-</div>
   <div  fxFlex="32"  fxLayout="column"  *ngFor="let squadra of  squdare$ | async   " >
 
     <mat-card  class="mat-elevation-z9 mat-card margin-bottom"  >
