@@ -12,16 +12,13 @@ import {
 } from 'date-fns';
 import {Prenotazioni} from '../../../admin/prenotazioni';
 class RichiesteOut {
-  constructor(user: string, dataRichiesta: string ){
+  constructor(user: User, Prenotazione: Prenotazioni ) {
     this.useraway = user;
-    this.dataRichiesta = new Date(dataRichiesta);
-    this.oraRichiesta = format(this.dataRichiesta , 'HH-MM');
-    this.confermato = false;
+    this.prenotazioneSlot = Prenotazione;
   }
-  useraway?: string ;
-  dataRichiesta?: Date ;
-  oraRichiesta?: string;
-  confermato?: boolean;
+  useraway?: User ;
+  prenotazioneSlot?: Prenotazioni ;
+  confermato? = false;
 
 }
 @Component({
@@ -95,13 +92,12 @@ onInput(event){
     console.log(this.data_grabbed);
     this.getDisponibilita();
   }
-  setdata(event: Prenotazioni){
-  this.event = format(event.start,'DD-MM-YYYY') + ' ' + 'ora: ' + event.ora ;
-  this.secondFormGroup.setValue({'secondCtrl' : this.event});
+  setdata(event: Prenotazioni) {
+  this.secondFormGroup.setValue({'secondCtrl' : event});
   console.log(this.secondFormGroup.value);
   }
-  inviarichesta(user_away, dataeora,userCapitanuid:string) {
-    const pren = new RichiesteOut(user_away, dataeora);
+  inviarichesta(user_away: User , prenotazione: Prenotazioni, userCapitanuid: string) {
+    const pren = new RichiesteOut(user_away, prenotazione);
     this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
     console.log (pren);
   }
