@@ -4,7 +4,7 @@
   <mat-card-header align="center">
     <mat-card-title >COSTRUIAMO UNA PARTITA</mat-card-title>
   </mat-card-header>
-  <mat-horizontal-stepper [linear]="isLinear">
+  <mat-horizontal-stepper [linear]="!isLinear">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Scegli L'avversario</ng-template>

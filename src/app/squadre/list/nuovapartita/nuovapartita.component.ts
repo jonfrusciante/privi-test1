@@ -43,6 +43,8 @@ user: User;
 
   }
   invia(user) {
+    this.firstFormGroup.setValue({'firstCtrl' : this.event});
+
     console.log(user);
    // this.addUserEvent.emit(user);
   }
@@ -82,7 +84,7 @@ onInput(event){
   }
   setdata(event: Prenotazioni){
   this.event = format(event.start,'DD-MM-YYYY') + ' ' + 'ora: ' + event.ora ;
-  this.secondFormGroup.setValue(event);
+  this.secondFormGroup.setValue({'secondCtrl' : this.event});
   console.log(this.secondFormGroup.value);
   }
   inviarichesta(user_away,dataeora){
