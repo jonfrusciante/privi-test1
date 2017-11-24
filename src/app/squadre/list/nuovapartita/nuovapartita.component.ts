@@ -11,6 +11,19 @@ import {
   format
 } from 'date-fns';
 import {Prenotazioni} from '../../../admin/prenotazioni';
+class RichiesteOut {
+  constructor(user: string, dataRichiesta: string ){
+    this.useraway = user;
+    this.dataRichiesta = new Date(dataRichiesta);
+    this.oraRichiesta = format(this.dataRichiesta , 'HH-MM');
+    this.confermato = false;
+  }
+  useraway?: string ;
+  dataRichiesta?: Date ;
+  oraRichiesta?: string;
+  confermato?: boolean;
+
+}
 @Component({
   selector: 'app-nuovapartita',
   templateUrl: './nuovapartita.component.html',
@@ -87,7 +100,9 @@ onInput(event){
   this.secondFormGroup.setValue({'secondCtrl' : this.event});
   console.log(this.secondFormGroup.value);
   }
-  inviarichesta(user_away,dataeora){
-    console.log (user_away,dataeora);
+  inviarichesta(user_away, dataeora,userCapitanuid:string) {
+    const pren = new RichiesteOut(user_away, dataeora);
+    this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
+    console.log (pren);
   }
 }
