@@ -15,20 +15,15 @@ export class SquadreService {
    squadraCollection$: AngularFirestoreCollection<Squadre>;
    SquadreArray: Squadre[];
   constructor(private user: AuthService, private afs: AngularFirestore) {
-   // const userino: User = this.user.theuser;
-    this.user.user.subscribe(
-      userino => {
-        this.miouser = userino ;
-        this.UserCollection = this.afs.collection<User>('users');
-        this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
-        this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
-        this.squadra$.subscribe(
-          squadre => {
-            this.SquadreArray = squadre;
-          }
-        );
-      }
-    );
+    this.UserCollection = this.afs.collection<User>('users');
+
+    // const userino: User = this.user.theuser;
+    this.user.user.subscribe(  userino => {
+      this.miouser = userino ;
+
+      this.squadraCollection$ = this.afs.collection('users').doc(this.miouser.uid).collection('squadre');
+
+    });
  //   this.UserCollection = this.afs.collection<User>('users');
  //   this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
  //   this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
@@ -37,7 +32,8 @@ export class SquadreService {
     return this.afs.collection('users').valueChanges();
   }
   getsquadra(): Observable<Squadre[]> {
-   return Observable.of(this.SquadreArray);
+    this.squadra$ = this.afs.collection('users').doc(this.miouser.uid).collection('squadre').valueChanges();
+      return this.squadra$;
 }
   delsquad(id) {
     this.squadraCollection$.doc(id).delete();

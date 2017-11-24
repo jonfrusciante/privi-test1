@@ -18,21 +18,14 @@ export class ListComponent implements OnInit {
   SquadreArray: Squadre[];
 
   constructor(public squadre: SquadreService) {
-    this.squadre.getsquadra().subscribe( x => {
-      this.SquadreArray = x ;
-    }
-    );
-    this.squdare$ = this.squadre.getsquadra();
-    this.squdare$.subscribe( x => {
-        this.selectedsqadra = x ;
-      }
-    );
+
+
   }
 
   ngOnInit() {
     // this.squdare$.subscribe();
 
-   // this.getsquadre();
+    this.getsquadre();
   }
 
   getsquadre() {
