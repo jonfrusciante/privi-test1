@@ -98,7 +98,8 @@ onInput(event){
   }
   inviarichesta(user_away: User , prenotazione: Prenotazioni, userCapitanuid: string) {
     const pren = new RichiesteOut(user_away, prenotazione);
-    this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
     console.log (pren);
+
+   // this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
   }
 }
