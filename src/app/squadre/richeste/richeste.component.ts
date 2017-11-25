@@ -46,7 +46,7 @@ getuser() {
 }
   getuserino() {
     this.richestin$.map(
-      a => a.map( b => { console.log(b);
+      a => a.map( b => { console.log(this.afs.collection('users').doc(b.userhomeid).valueChanges() );
       })
     ).subscribe();
   }
