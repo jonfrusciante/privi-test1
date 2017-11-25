@@ -34,13 +34,14 @@ export class RichesteComponent implements OnInit {
   richestin$: Observable<RichiesteIn[]>;
   user: User;
   constructor(private afs: AngularFirestore , private userR: AuthService) {
-   this.userR.user.subscribe(user =>
-   this.user = user
+   this.userR.user.subscribe(user => {
+   this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
+   this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
+   }
    );
   }
 getuser() {
-    this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
-    this.richestin$ = this.afs.collection('users').doc(this.user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
+
 
 
 }
