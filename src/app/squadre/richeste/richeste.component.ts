@@ -40,9 +40,15 @@ getuser() {
     this.user = us;
     this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
     this.richestin$ = this.afs.collection('users').doc(this.user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
+    this.getuserino();
 
   });
 }
+  getuserino() {
+    this.richestin$.map(
+      a => a.map( (b) => console.log(this.afs.doc('users').collection(b.userhomeid).valueChanges())  )
+    ).subscribe();
+  }
   ngOnInit() {
     this.getuser();
   }
