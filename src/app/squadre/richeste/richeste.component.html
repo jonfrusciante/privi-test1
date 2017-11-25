@@ -1,6 +1,6 @@
 <h2 style="text-align: center">Richeste entrata</h2>
 <div fxLayout="row nowrap"
-     fxLayoutAlign="space-between center"
+     fxLayoutAlign="center center"
      fxLayoutGap="4vh"  >
 <div *ngFor="let item of richestout$ |async " >
   <mat-card class="mat-elevation-z9">
@@ -23,7 +23,10 @@
   </mat-card>
 </div>
 </div>
-<h2>RICHESTE Entrata</h2>
+<h2 style="text-align: center">RICHESTE Entrata</h2>
+<div fxLayout="row nowrap"
+     fxLayoutAlign="center center"
+     fxLayoutGap="4vh"  >
 <div *ngFor="let item of richestin$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header >
@@ -48,4 +51,5 @@
     </mat-card-footer>
   </mat-card>
 
+</div>
 </div>
