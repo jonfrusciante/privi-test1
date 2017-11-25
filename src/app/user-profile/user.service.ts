@@ -51,8 +51,8 @@ return this.User$ ;
    return this.UserDoc ;
  }
   cambiafoto(url) {
-    this.user.photoURL = url;
-    this.cercauser().update(this.user);
+    this.theuser.photoURL = url;
+    this.cercauser().update(this.theuser);
   }
   constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {
      this.auth.user.subscribe( next => this.theuser =  next);
