@@ -112,7 +112,7 @@ onInput(event){
     const prenIn: RichiesteIn = {};
     prenIn.userhomeid = userCapitanuid ;
     prenIn.prenotazioneSlot = prenotazione;
-    pren.confermato = false;
+    prenIn.confermato = false;
     const fin: RichiesteOut = {userHomeuid : userCapitanuid , userAwayuid: user_away.uid , prenotazioneSlot: prenotazione };
     this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
     this.afs.collection('users').doc(user_away.uid).collection('richesteIn').add(prenIn);
