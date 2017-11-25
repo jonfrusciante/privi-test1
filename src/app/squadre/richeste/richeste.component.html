@@ -31,9 +31,10 @@
 <div *ngFor="let item of richestin$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header >
-      <mat-card-title ></mat-card-title>
-      <mat-card-title>{{item.userhomeid}}</mat-card-title>
-      {{item.dataUser?.displayName}}
+      <mat-card-title>{{item.dataUser.displayName}}</mat-card-title>
+      <img matCardAvatar src="{{item.dataUser.photoURL}}">
+      <mat-card-title>{{item.dataUser.email}}</mat-card-title>
+      <mat-card-title>{{item.dataUser.telefon}}</mat-card-title>
 
     </mat-card-header>
     <mat-card-content>

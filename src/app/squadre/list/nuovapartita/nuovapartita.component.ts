@@ -11,6 +11,7 @@ import {
   format
 } from 'date-fns';
 import {Prenotazioni} from '../../../admin/prenotazioni';
+import {UserService} from '../../../user-profile/user.service';
 interface RichiesteOut {
   userHomeuid?: string;
   userAwayuid?: string;
@@ -21,6 +22,7 @@ interface RichiesteOut {
 
 }
 interface RichiesteIn {
+  dataUser?: User;
 
   userhomeid?: string  ;
   prenotazioneSlot?: Prenotazioni ;
@@ -52,11 +54,11 @@ user: User;
   userCtrl: FormControl;
   users: Observable<User[]>;
   prengrab: Prenotazioni;
-
-  constructor(private afs: AngularFirestore, private _formBuilder: FormBuilder) {
+  constructor(private afs: AngularFirestore, private _formBuilder: FormBuilder, private mio: UserService) {
     this.userCtrl = new FormControl();
     this.users = this.afs.collection('users').valueChanges();
     this.userCtrl.valueChanges.subscribe( user => this.invia(user));
+
    // this.userCtrl = new FormControl();
   }
   invia(user) {
@@ -110,6 +112,7 @@ onInput(event){
     pren.prenotazioneSlot = prenotazione;
     pren.confermato = false;
     const prenIn: RichiesteIn = {};
+    prenIn.dataUser = this.mio.theuser;
     prenIn.userhomeid = userCapitanuid ;
     prenIn.prenotazioneSlot = prenotazione;
     prenIn.confermato = false;
