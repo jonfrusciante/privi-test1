@@ -50,17 +50,6 @@ getuser() {
     });
   });
 }
-tre() {
-  this.richestin$.map(
-    acs => {
-      return acs.map(
-        ac => {console.log( ac.prenotazioneSlot as Prenotazioni) ;
-        });
-      });
-  }
-
-
-
   ngOnInit() {
     this.getuser();
     this.tre();
