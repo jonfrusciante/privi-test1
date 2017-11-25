@@ -5,7 +5,7 @@
       <mat-card-title>{{item.useraway.email}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <label> {{item.prenotazioneSlot.data}}</label><label>{{item.prenotazioneSlot.ora}}</label>
+      <label> {{item.prenotazioneSlot.start | date }}</label><label>{{item.prenotazioneSlot.ora}}</label>
 
     </mat-card-content>
     <mat-card-actions align="start">
