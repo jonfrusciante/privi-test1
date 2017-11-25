@@ -4,6 +4,7 @@ import {AngularFirestore} from 'angularfire2/firestore';
 import {User} from '../../user-profile/user';
 import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
+import {AuthService} from '../../core/auth.service';
 interface RichiesteOut {
   userHomeuid?: string;
   userAwayuid?: string;
@@ -28,12 +29,18 @@ interface RichiesteIn {
 export class RichesteComponent implements OnInit {
   richest$: Observable<RichiesteOut[]>;
  user: User;
-  constructor(private afs: AngularFirestore , private userR: UserService) {
-    this.user = this.userR.theuser;
+  constructor(private afs: AngularFirestore , private userR: AuthService) {
 }
-
-  ngOnInit() {
+getuser() {
+  this.userR.user.subscribe( us =>{
+    this.user = us ;
     this.richest$ = this.afs.collection('richieste', ref => ref.where('userhomeid' , '==' , this.user.uid )).valueChanges();
+
+  })
+  ;
+}
+  ngOnInit() {
+    this.getuser();
   }
 
 }
