@@ -32,6 +32,7 @@ interface RichiesteIn {
 export class RichesteComponent implements OnInit {
   richestout$: Observable<RichiesteOut[]>;
   richestin$: Observable<RichiesteIn[]>;
+  richestin1$: Observable<RichiesteIn[]>;
   user: User;
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 }
@@ -49,6 +50,8 @@ getuser() {
       a => a.map( b => {  this.afs.collection('users').doc(b.userhomeid).valueChanges().subscribe(
         userr => {
           b.dataUser = userr as User ;
+          this.richestin1$ = Observable.of(b);
+
         });
       })
     ).subscribe();
