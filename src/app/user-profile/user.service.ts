@@ -47,7 +47,7 @@ return this.User$ ;
   }
 
   cercauser() {
-   this.UserDoc = this.afs.collection('users').doc(this.user.uid);
+   this.UserDoc = this.afs.collection('users').doc(this.theuser.uid);
    return this.UserDoc ;
  }
   cambiafoto(url) {
