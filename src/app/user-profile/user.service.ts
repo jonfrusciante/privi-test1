@@ -55,7 +55,7 @@ return this.User$ ;
     this.cercauser().update(this.theuser);
   }
   constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {
-     this.auth.user.subscribe( next => this.theuser =  next);
+     this.auth.user.subscribe( next =>{ this.theuser =  next});
    // this.Use$ = this.auth.user;
   }
 
