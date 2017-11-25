@@ -6,6 +6,7 @@ import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/scan';
 
 
 interface RichiesteOut {
@@ -47,7 +48,7 @@ getuser() {
 }
   getuserino() {
     this.richestin$.map(
-      a => a.map( b => {  this.afs.collection('users').doc(b.userhomeid).valueChanges().subscribe(
+      a => a.push( b => {  this.afs.collection('users').doc(b.userhomeid).valueChanges().subscribe(
         userr => {
           b.dataUser = userr as User ;
 
