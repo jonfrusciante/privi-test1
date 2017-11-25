@@ -40,12 +40,12 @@ getuser() {
     this.user = us;
     this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
     this.afs.collection('users').doc(this.user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).snapshotChanges()
-      .subscribe(a => {return a
+      .subscribe(a => { a
         .map(richeste => {
           console.log("aa");
           const ric = richeste.payload.doc.data() as RichiesteIn;
           const ha: AngularFirestoreDocument<User> = this.afs.collection('users').doc(ric.userhomeid);
-          return ha.valueChanges().subscribe(usa => {
+           ha.valueChanges().subscribe(usa => {
             ric.dataUser = usa;
             this.richestin$ = Observable.of(ric);
           });
