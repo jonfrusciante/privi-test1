@@ -51,12 +51,13 @@ user: User;
   items: Observable<Prenotazioni[]>;
   userCtrl: FormControl;
   users: Observable<User[]>;
+  prengrab: Prenotazioni;
+
   constructor(private afs: AngularFirestore, private _formBuilder: FormBuilder) {
     this.userCtrl = new FormControl();
     this.users = this.afs.collection('users').valueChanges();
     this.userCtrl.valueChanges.subscribe( user => this.invia(user));
    // this.userCtrl = new FormControl();
-
   }
   invia(user) {
     this.firstFormGroup.setValue({'firstCtrl' : user});
@@ -100,7 +101,8 @@ onInput(event){
   }
   setdata(event: Prenotazioni) {
   this.secondFormGroup.setValue({'secondCtrl' : event});
-  console.log(this.secondFormGroup.value);
+  this.prengrab = event;
+  console.log(this.secondFormGroup.value.secondCtrl);
   }
   inviarichesta(user_away: User , prenotazione: Prenotazioni, userCapitanuid: string) {
     const pren: RichiesteOut = {};
