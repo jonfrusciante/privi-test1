@@ -50,7 +50,6 @@ getuser() {
       a => a.map( b => {  this.afs.collection('users').doc(b.userhomeid).valueChanges().subscribe(
         userr => {
           b.dataUser = userr as User ;
-          this.richestin1$ = Observable.of(b);
 
         });
       })
