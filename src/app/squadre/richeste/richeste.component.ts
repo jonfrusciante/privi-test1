@@ -28,16 +28,18 @@ interface RichiesteIn {
   styleUrls: ['./richeste.component.css']
 })
 export class RichesteComponent implements OnInit {
-  richest$: Observable<RichiesteOut[]>;
- user: User;
+  richestout$: Observable<RichiesteOut[]>;
+  richestin$: Observable<RichiesteIn[]>;
+
+  user: User;
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 }
 getuser() {
   this.userR.user.subscribe( us => {
     this.user = us ;
-    this.richest$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut' , ref => ref.where('confermato' , '==' , false )).valueChanges();
-
-  })
+    this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut' , ref => ref.where('confermato' , '==' , false )).valueChanges();
+    this.richestin$ =  this.afs.collection('users').doc(this.user.uid).collection('richesteIn' , ref => ref.where('confermato' , '==' , false )).valueChanges();
+   })
   ;
 }
   ngOnInit() {

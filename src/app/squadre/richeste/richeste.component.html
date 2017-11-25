@@ -1,10 +1,16 @@
+
 <div *ngFor="let item of richest$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
   <mat-card class="mat-elevation-z9">
     <mat-card-header>
+      <mat-card-title>{{item.useraway.displayName}}</mat-card-title>
+
       <img matCardAvatar src="{{item.useraway.photoURL}}">
       <mat-card-title>{{item.useraway.email}}</mat-card-title>
+      <mat-card-title>{{item.useraway.telefon}}</mat-card-title>
+
     </mat-card-header>
     <mat-card-content>
+
       <label> {{item.prenotazioneSlot.start | date }}</label><label>{{item.prenotazioneSlot.ora}}</label>
 
     </mat-card-content>
