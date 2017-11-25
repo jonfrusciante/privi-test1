@@ -12,8 +12,17 @@ import {
 } from 'date-fns';
 import {Prenotazioni} from '../../../admin/prenotazioni';
 interface RichiesteOut {
+  userHomeuid?: string;
+  userAwayuid?: string;
 
   useraway?: User ;
+  prenotazioneSlot?: Prenotazioni ;
+  confermato?: false;
+
+}
+interface RichiesteIn {
+
+  userhomeid?: string  ;
   prenotazioneSlot?: Prenotazioni ;
   confermato?: false;
 
@@ -97,7 +106,13 @@ onInput(event){
     const pren: RichiesteOut = {};
     pren.useraway = user_away;
     pren.prenotazioneSlot = prenotazione;
-
+    const prenIn: RichiesteIn = {};
+    prenIn.userhomeid = userCapitanuid ;
+    prenIn.prenotazioneSlot = prenotazione;
+    const fin: RichiesteOut = {userHomeuid : userCapitanuid , userAwayuid: user_away.uid , prenotazioneSlot: prenotazione };
     this.afs.collection('users').doc(userCapitanuid).collection('richesteOut').add(pren);
+    this.afs.collection('users').doc(userCapitanuid).collection('richesteIn').add(prenIn);
+    this.afs.collection('Richieste').add(fin);
+
   }
 }

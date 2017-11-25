@@ -11,6 +11,7 @@ import {MaterialModule} from '../material/material.module';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerComponent } from './list/player.component';
 import { NuovapartitaComponent } from './list/nuovapartita/nuovapartita.component';
+import { RichesteComponent } from './richeste/richeste.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { NuovapartitaComponent } from './list/nuovapartita/nuovapartita.componen
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [SquadreComponent, CreaComponent, ListComponent, PlayerComponent, NuovapartitaComponent],
+  declarations: [SquadreComponent, CreaComponent, ListComponent, PlayerComponent, NuovapartitaComponent, RichesteComponent],
   providers: [SquadreService]
 })
 export class SquadreModule {

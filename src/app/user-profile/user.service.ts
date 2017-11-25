@@ -39,7 +39,7 @@ posts: Result ;
   private UserCollection: AngularFirestoreCollection<User>;
   private UserDoc: AngularFirestoreDocument<UserClass>;
   theuser: User;
-  user: UserClass = new UserClass();
+  // user: UserClass = new UserClass();
   getuser() {
 this.UserCollection = this.afs.collection('users');
 this.User$ = this.UserCollection.valueChanges();
@@ -55,7 +55,7 @@ return this.User$ ;
     this.cercauser().update(this.user);
   }
   constructor(private afs: AngularFirestore, private auth: AuthService, private http: HttpClient) {
-    // this.auth.user.subscribe( next => this.user =  next);
+     this.auth.user.subscribe( next => this.theuser =  next);
    // this.Use$ = this.auth.user;
   }
 

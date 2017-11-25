@@ -1,0 +1,7 @@
+<div *ngFor="let item of richest$ |async ">
+
+  <mat-grid-list cols="2" rowHeight="fit" [style.height]="'100px'" [gutterSize]="'1px'">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">{{item.userHomeuid}}</mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">Tile 2</mat-grid-tile>
+  </mat-grid-list>
+</div>
