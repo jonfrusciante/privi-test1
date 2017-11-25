@@ -1,8 +1,10 @@
-<div fxLayout="row nowrap"
+<div fxLayout="column wrap"
      fxLayoutAlign="space-between center"
      fxLayoutGap="4vh"  >
 <h2>RICHESTE EFFETTUATA</h2>
-<div *ngFor="let item of richestout$ |async " >
+<div *ngFor="let item of richestout$ |async " fxLayout="row nowrap"
+     fxLayoutAlign="start center"
+     fxLayoutGap="3vh">
   <mat-card class="mat-elevation-z9">
     <mat-card-header>
       <mat-card-title>{{item.useraway.displayName}}</mat-card-title>
