@@ -52,6 +52,5 @@ getuser() {
 }
   ngOnInit() {
     this.getuser();
-    this.tre();
   }
 }
