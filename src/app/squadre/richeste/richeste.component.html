@@ -25,3 +25,30 @@
   </mat-card>
 
 </div>
+<h2>RICHESTE Entrata</h2>
+
+<div *ngFor="let item of richestin$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
+  <mat-card class="mat-elevation-z9"   >
+    <mat-card-header>
+      <mat-card-title ></mat-card-title>
+
+      <img matCardAvatar src="{{item.dataUser.photoURL}}">
+      <mat-card-title>{{item.dataUser.email}}</mat-card-title>
+      <mat-card-title>{{item.dataUser.telefon}}</mat-card-title>
+
+    </mat-card-header>
+    <mat-card-content>
+
+      <label> {{item.prenotazioneSlot.start | date }}</label><label>{{item.prenotazioneSlot.ora}}</label>
+
+    </mat-card-content>
+    <mat-card-actions align="start">
+      <button mat-button (click)="onAction($event)">invia un Messaggio</button>
+      <button mat-button (click)="onAction($event)">Annulla Richesta</button>
+
+    </mat-card-actions>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+
+</div>

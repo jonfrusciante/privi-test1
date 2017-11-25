@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {AngularFirestore} from 'angularfire2/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {User} from '../../user-profile/user';
 import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
@@ -37,17 +37,22 @@ export class RichesteComponent implements OnInit {
 }
 getuser() {
   this.userR.user.subscribe( us => {
-    this.user = us ;
-    this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut' , ref => ref.where('confermato' , '==' , false )).valueChanges();
-    this.richestin$ =  this.afs.collection('users').doc(this.user.uid).collection('richesteIn' , ref => ref.where('confermato' , '==' , false )).snapshotChanges().
-    map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as RichiesteIn;
-        const id = a.payload.doc.id;
-        const userHome = data.userhomeid;
-        return { id, ...data };
-      });
-    });
+    this.user = us;
+    this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
+    this.afs.collection('users').doc(this.user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).snapshotChanges().map(
+      a => {return a.
+      map(richeste => {
+          const ric = richeste.payload.doc.data() as RichiesteIn;
+          const ha: AngularFirestoreDocument<User> = this.afs.collection('users').doc(ric.userhomeid);
+          ha.valueChanges().
+          map(usa => {
+            ric.dataUser = usa;
+            return this.richestin$ = Observable.of(ric);
+          });
+          });
+      }
+    );
+
   });
 }
   ngOnInit() {
