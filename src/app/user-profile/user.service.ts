@@ -58,6 +58,10 @@ return this.User$ ;
      this.auth.user.subscribe( next =>{ this.theuser =  next});
    // this.Use$ = this.auth.user;
   }
+getuserbyuid(uid) {
+  this.UserDoc = this.afs.collection('users').doc(uid);
+  return this.UserDoc.valueChanges();
+}
 
   getData() {
     return this.http.get<Result[]>(this.urlpost);
