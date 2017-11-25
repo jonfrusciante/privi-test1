@@ -1,5 +1,5 @@
 <div *ngFor="let item of richest$ |async " fxLayout="row wrap">
-  <mat-card>
+  <mat-card class="mat-elevation-z9">
     <mat-card-header>
       <img matCardAvatar src="{{item.useraway.photoURL}}">
       <mat-card-title>{{item.useraway.email}}</mat-card-title>
