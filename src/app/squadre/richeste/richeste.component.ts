@@ -32,9 +32,9 @@ export class RichesteComponent implements OnInit {
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 }
 getuser() {
-  this.userR.user.subscribe( us =>{
+  this.userR.user.subscribe( us => {
     this.user = us ;
-    this.richest$ = this.afs.collection('richieste', ref => ref.where('userhomeid' , '==' , this.user.uid )).valueChanges();
+    this.richest$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut' , ref => ref.where('confermato' , '==' , false )).valueChanges();
 
   })
   ;
