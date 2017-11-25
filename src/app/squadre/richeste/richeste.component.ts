@@ -45,7 +45,7 @@ getuser() {
           const ric = richeste.payload.doc.data() as RichiesteIn;
           const ha: AngularFirestoreDocument<User> = this.afs.collection('users').doc(ric.userhomeid);
           ha.valueChanges().
-          map(usa => {
+          subscribe(usa => {
             ric.dataUser = usa;
             return this.richestin$ = Observable.of(ric);
           });
