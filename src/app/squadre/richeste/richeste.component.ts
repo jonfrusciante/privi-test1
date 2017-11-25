@@ -18,7 +18,7 @@ interface RichiesteOut {
 
 }
 interface RichiesteIn {
-
+  dataUser?: User;
   userhomeid?: string  ;
   prenotazioneSlot?: Prenotazioni ;
   confermato?: false;
@@ -32,7 +32,6 @@ interface RichiesteIn {
 export class RichesteComponent implements OnInit {
   richestout$: Observable<RichiesteOut[]>;
   richestin$: Observable<RichiesteIn[]>;
-  userOut:User;
   user: User;
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 }
@@ -40,21 +39,30 @@ getuser() {
   this.userR.user.subscribe( us => {
     this.user = us ;
     this.richestout$ = this.afs.collection('users').doc(this.user.uid).collection('richesteOut' , ref => ref.where('confermato' , '==' , false )).valueChanges();
-    this.richestin$ =  this.afs.collection('users').doc(this.user.uid).collection('richesteIn' , ref => ref.where('confermato' , '==' , false )).snapshotChanges();
-    this.getusear();
-  })
-  ;
+    this.richestin$ =  this.afs.collection('users').doc(this.user.uid).collection('richesteIn' , ref => ref.where('confermato' , '==' , false )).snapshotChanges().
+    map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as RichiesteIn;
+        const id = a.payload.doc.id;
+        const userHome = data.userhomeid;
+        return { id, ...data };
+      });
+    });
+  });
 }
-getusear(){
-    this.richestin$.map(
-      calue => {
-console.log(calue);
-      }
-    ).subscribe();
-}
-  ngOnInit() {
-    this.getuser();
-
+tre() {
+  this.richestin$.map(
+    acs => {
+      return acs.map(
+        ac => {console.log( ac.prenotazioneSlot as Prenotazioni) ;
+        });
+      });
   }
 
+
+
+  ngOnInit() {
+    this.getuser();
+    this.tre();
+  }
 }
