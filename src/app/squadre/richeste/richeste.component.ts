@@ -6,6 +6,7 @@ import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 
 interface RichiesteOut {
@@ -32,19 +33,33 @@ interface RichiesteIn {
 export class RichesteComponent implements OnInit {
   richestout$: Observable<RichiesteOut[]>;
   richestin$: Observable<RichiesteIn[]>;
+  richestinc$: Observable<RichiesteIn[]>;
+
   user: User;
   constructor(private afs: AngularFirestore , private userR: AuthService) {
-   this.userR.user.subscribe(user => {
-   this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
-   this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
-   }
-   );
+    this.userR.user.subscribe(user => {
+        this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
+        this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
+        this.richestinc$ = this.getuser();
+    }
+    );
   }
-getuser() {
+  getuser(): Observable<RichiesteIn[]> {
+     return this.richestin$.map(
+      value => {
+        return value.map(
+          res => {
+              const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
+              return   a.valueChanges().map(
+                us => { return res.dataUser = us ;}
+              );
+          }
+        );
+      }
+    );
 
 
-
-}
+  }
 
   ngOnInit() {
     this.getuser();
