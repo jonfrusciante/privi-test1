@@ -100,7 +100,7 @@ export class PrenotaComponent implements OnInit {
   }
   setdata(event: string, user: User) {
     console.log(user);
-    // this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1/1-1-2017/slot').valueChanges();
+      // this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1/1-1-2017/slot').valueChanges();
     this.time_gabbed = event;
     console.log(this.time_gabbed);
     this.itemDoc  = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot').doc(this.time_gabbed);
@@ -109,7 +109,7 @@ export class PrenotaComponent implements OnInit {
       disponibile: false,
       user: user.uid,
       username: user.displayName ,
-      title: this.time_gabbed + ' reserved by ' + this.a.displayName,
+      title: this.time_gabbed + ' reserved by ' + user.displayName,
       color: {primary: '#0069D9', secondary: '#FAE3E3'} };
       this.itemDoc.update(dd);
     // this.itemDoc.delete();
