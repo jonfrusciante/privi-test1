@@ -42,10 +42,11 @@ export class RichesteComponent implements OnInit {
   getuser(): Observable<RichiesteIn[]> {
      return this.richestin$.map(
       value => {
-        console.log('kkk');
 
         return value.map(
-          res => {
+          console.log('kkk');
+
+        res => {
               const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
               return   a.valueChanges().map(
                 us => { return res.dataUser = us ;}
