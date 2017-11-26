@@ -110,7 +110,6 @@ export class AdminComponent implements OnInit {
 
   constructor( private afs: AngularFirestore , private prenotaservice: PrenotazioniService, public auth: AuthService) {
    this.user = this.auth.user;
-    this.user.subscribe(data => this.a = data);
    // console.log(this.a);
     // console.log(this.user.displayName);
     //  this.items = afs.collection<Prenotazioni>('disponibilita_campo1/1-1-2017/slot').valueChanges();
