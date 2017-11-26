@@ -44,7 +44,6 @@ export class RichesteComponent implements OnInit {
       value => {
 
         return value.map(
-          console.log('kkk');
 
         res => {
               const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
