@@ -39,7 +39,7 @@ export class RichesteComponent implements OnInit {
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 
   }
-  getuser(): Observable<RichiesteIn[]> {
+  getuser(){
 
 
 
