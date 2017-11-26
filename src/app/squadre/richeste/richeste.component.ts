@@ -37,12 +37,7 @@ export class RichesteComponent implements OnInit {
 
   user: User;
   constructor(private afs: AngularFirestore , private userR: AuthService) {
-    this.userR.user.subscribe(user => {
-        this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestinc$ = this.getuser();
-    }
-    );
+
   }
   getuser(): Observable<RichiesteIn[]> {
      return this.richestin$.map(
@@ -62,6 +57,11 @@ export class RichesteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getuser();
+    this.userR.user.subscribe(user => {
+        this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
+        this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
+        this.richestinc$ = this.getuser();
+      }
+    );
   }
 }
