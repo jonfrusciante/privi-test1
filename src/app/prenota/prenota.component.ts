@@ -99,8 +99,8 @@ export class PrenotaComponent implements OnInit {
       this.message.push(data.message);
     });
   }
-  setdata(event: string) {
-    console.log(this.a);
+  setdata(event: string, user) {
+    console.log(user);
     // this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1/1-1-2017/slot').valueChanges();
     this.time_gabbed = event;
     console.log(this.time_gabbed);
