@@ -30,13 +30,8 @@ export class UserProfileComponent implements OnInit {
 
   public itemDoc: AngularFirestoreDocument<User>;
 
-  usersAutenticato: User;
   constructor(public  dialog: MatDialog, public auth: AuthService,  private afs: AngularFirestore) {
-       this.auth.user.subscribe(
-         result => {
-           this.usersAutenticato = result;
-         }
-       );
+
   }
   // metodi mod foto
   confermafoto(image) {
@@ -98,7 +93,7 @@ export class UserProfileComponent implements OnInit {
     }
   }
   */   // onfilechange
-  updateUser(user:User) {
+  updateUser(user: User) {
     console.log(user);
 
     this.itemDoc = this.afs.collection('users').doc(user.uid) ;
