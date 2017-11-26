@@ -62,7 +62,9 @@ export class RichesteComponent implements OnInit {
         this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestinc$ = this.getuser();
-        console.log(this.richestinc$.subscribe())
+        console.log(this.richestinc$.subscribe(
+          r => console.log(r)
+        ))
       }
     );
   }
