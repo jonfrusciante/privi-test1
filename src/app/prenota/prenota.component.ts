@@ -41,7 +41,6 @@ export class PrenotaComponent implements OnInit {
   time_gabbed: string;
   constructor(private http: HttpClient, private afs: AngularFirestore , public auth: AuthService) {
     this.user = this.auth.user;
-    this.user.subscribe(data => this.a = data);
   }
   gettime(event) {
     this.time_gabbed = event;
@@ -99,7 +98,7 @@ export class PrenotaComponent implements OnInit {
       this.message.push(data.message);
     });
   }
-  setdata(event: string, user) {
+  setdata(event: string, user: User) {
     console.log(user);
     // this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1/1-1-2017/slot').valueChanges();
     this.time_gabbed = event;
@@ -108,8 +107,8 @@ export class PrenotaComponent implements OnInit {
     const dd: Prenotazioni = {
       // start: this.time_gabbed,
       disponibile: false,
-      user: this.a.uid,
-      username: this.a.displayName ,
+      user: user.uid,
+      username: user.displayName ,
       title: this.time_gabbed + ' reserved by ' + this.a.displayName,
       color: {primary: '#0069D9', secondary: '#FAE3E3'} };
       this.itemDoc.update(dd);
