@@ -39,8 +39,20 @@ export class RichesteComponent implements OnInit {
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 
   }
-  getuser(){
+  getuser(): Observable<RichiesteIn[]> {
+     return this.richestin$.map(
+      value => {
 
+        return value.map(
+
+        res => {
+              const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
+                return a.valueChanges().subscribe(
+                us =>  {  res.dataUser = us ; console.log(res.dataUser) ;  });
+          }
+        );
+      }
+    );
 
 
   }
@@ -49,18 +61,9 @@ export class RichesteComponent implements OnInit {
     this.userR.user.subscribe(user => {
         this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestinc$ = this.richestin$.map(
-        value => {
-          return value.map(
-            res => {
-              const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
-              return a.valueChanges().subscribe(
-                us =>  {  res.dataUser = us ; console.log(res) ; this.richestinc$ = Observable.of(res);  });
-            }
-          );
-        }
-      )
-    }
+        this.richestinc$ = this.getuser();
+        console.log(this.richestinc$.subscribe());
+      }
     );
   }
 }
