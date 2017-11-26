@@ -24,7 +24,7 @@
         </div>
       </mat-card-content>
 
-      <mat-card-actions *ngIf="user |async as a">
+      <mat-card-actions *ngIf="user | async as a">
         <button mat-button   #aaa (click)="setdata( item.ora , a )"  *ngFor="let item of items | async" >
           <a *ngIf="item.disponibile" #titleInput>{{item.ora}}</a>
         </button>
