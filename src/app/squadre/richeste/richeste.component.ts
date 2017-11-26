@@ -40,19 +40,7 @@ export class RichesteComponent implements OnInit {
 
   }
   getuser(): Observable<RichiesteIn[]> {
-     return this.richestin$.map(
-      value => {
 
-        return value.map(
-
-        res => {
-              const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
-                return a.valueChanges().subscribe(
-                us =>  {  res.dataUser = us ; console.log(res) ;  });
-          }
-        );
-      }
-    );
 
 
   }
@@ -61,8 +49,19 @@ export class RichesteComponent implements OnInit {
     this.userR.user.subscribe(user => {
         this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestinc$ = this.getuser();
-      }
+        this.richestin$ = this.richestin$.map(
+        value => {
+
+          return value.map(
+
+            res => {
+              const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
+              return a.valueChanges().subscribe(
+                us =>  {  res.dataUser = us ; console.log(res) ;  });
+            }
+          );
+        }
+      );      }
     );
   }
 }
