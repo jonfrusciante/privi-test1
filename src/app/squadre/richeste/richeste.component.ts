@@ -49,7 +49,7 @@ export class RichesteComponent implements OnInit {
     this.userR.user.subscribe(user => {
         this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestin$.map(
+        this.richestinc$ = this.richestin$.map(
         value => {
           return value.map(
             res => {
@@ -59,7 +59,7 @@ export class RichesteComponent implements OnInit {
             }
           );
         }
-      ).subscribe();
+      )
     }
     );
   }
