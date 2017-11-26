@@ -113,6 +113,7 @@ export class PrenotaComponent implements OnInit {
       title: this.time_gabbed + ' reserved by ' + user.displayName,
       color: {primary: '#0069D9', secondary: '#FAE3E3'} };
       this.itemDoc.update(dd);
+      this.getDisponibilita();
     // this.itemDoc.delete();
     // this.itemDoc.set(dd);
   }
