@@ -41,6 +41,7 @@ export class PrenotaComponent implements OnInit {
   time_gabbed: string;
   constructor(private http: HttpClient, private afs: AngularFirestore , public auth: AuthService) {
     this.user = this.auth.user;
+
   }
   gettime(event) {
     this.time_gabbed = event;
