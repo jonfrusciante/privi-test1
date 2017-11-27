@@ -73,7 +73,7 @@ export class RichesteComponent implements OnInit {
            return this.afs.collection<User[]>('users').doc(rr.userhomeid).valueChanges().map( f =>  console.log(f) );
            });
          //console.log(a);
-          return Observable.of(ric);  }
+          return a ;  }
       ) ;
     });
 }
