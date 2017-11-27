@@ -70,9 +70,9 @@ export class RichesteComponent implements OnInit {
       return this.afs.collection('users').doc(user.uid).collection<RichiesteIn>('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges().switchMap(
         (ric) => {
          const a = ric.map((rr) => {
-           return this.afs.collection('users').doc(rr.userhomeid).valueChanges().map( (f) => {return f })
+           return this.afs.collection<User[]>('users').doc(rr.userhomeid).valueChanges().map( f =>  console.log(f) );
            });
-         console.log(a);
+         //console.log(a);
           return Observable.of(ric);  }
       ) ;
     });
