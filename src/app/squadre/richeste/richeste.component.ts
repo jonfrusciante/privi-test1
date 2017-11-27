@@ -73,7 +73,8 @@ export class RichesteComponent implements OnInit {
               const data = a.payload.doc.data() as RichiesteIn;
               const id = a.payload.doc.id;
               const dod: AngularFirestoreDocument<User> = this.afs.collection('users').doc(data.userhomeid);
-               dod.valueChanges().map(f  => {return f as User} ).map(x => data.dataUser = x ).subscribe();
+              const ff: Observable<User> =  dod.valueChanges().map(x => data.dataUser = x);
+              ff.forEach( s => s);
               return { id, ...data };
             });
           });
