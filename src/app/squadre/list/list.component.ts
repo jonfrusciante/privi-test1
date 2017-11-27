@@ -23,11 +23,6 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     // this.squdare$.subscribe();
-
-    this.getsquadre();
-  }
-
-  getsquadre() {
     this.squdare$ = this.squadre.squadra$;
   }
   rimuovisquadra(uid) {
@@ -43,7 +38,7 @@ export class ListComponent implements OnInit {
     this.squadre.addplayer(user, squadra);
     console.log(user, squadra);
   }
-  rimuovigiocatore(us: User, sq: Squadre){
+  rimuovigiocatore(us: User, sq: Squadre) {
     this.squadre.rimuovigiocatore(us, sq).subscribe();
   }
 }
