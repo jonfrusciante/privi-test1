@@ -75,7 +75,7 @@ export class RichesteComponent implements OnInit {
              (g) => {
                rr.dataUser = g.payload.data() as User ;
 
-               return ric ;
+               return rr ;
              }
            );
          });
@@ -86,7 +86,7 @@ export class RichesteComponent implements OnInit {
   ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
     this.richestinc$.subscribe(
-      aaa => console.log(aaa.map(r=>console.log(r)))
+      aaa => console.log(aaa.map(r => console.log(r)))
     )
     this.richestout$ = this.getRichesteOut();
   }
