@@ -27,7 +27,7 @@
 <div fxLayout="row nowrap"
      fxLayoutAlign="center center"
      fxLayoutGap="4vh" fxLayout.xs="column nowrap" style="max-width: 100%;margin:0 2vh 0 2vh">
-<div *ngFor="let item of richestinc$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
+<div *ngFor="let item of richestinc$ |async " >
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header *ngIf="  item.ff  | async as fui" >
 
