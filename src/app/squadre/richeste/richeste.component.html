@@ -1,7 +1,7 @@
 <h2 style="text-align: center">Richeste effettuate</h2>
 <div fxLayout="row nowrap"
      fxLayoutAlign="center center"
-     fxLayoutGap="4vh"  >
+     fxLayoutGap="4vh" fxLayout.xs="column nowrap">
 <div *ngFor="let item of richestout$ |async " >
   <mat-card class="mat-elevation-z9">
     <mat-card-header>
@@ -26,7 +26,9 @@
 <h2 style="text-align: center">RICHESTE Entrata</h2>
 <div fxLayout="row nowrap"
      fxLayoutAlign="center center"
-     fxLayoutGap="4vh"  >
+     fxLayoutGap="4vh" fxLayout.xs="column wrap"
+     fxLayoutAlign.xs="center center"
+     fxLayoutGap.xs="2vh">
 <div *ngFor="let item of richestinc$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header *ngIf="  item.ff  | async as fui" >
