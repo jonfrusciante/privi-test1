@@ -15,19 +15,25 @@ export class SquadreService {
    squadraCollection$: AngularFirestoreCollection<Squadre>;
    SquadreArray: Squadre[];
   constructor(private user: AuthService, private afs: AngularFirestore) {
+    this.UserCollection = this.afs.collection<User>('users');
+    this.squadra$ = this.user.user.switchMap(
+      (us) =>{ return this.getUserSquadre(us) });
    // const userino: User = this.user.theuser;
     this.user.user.subscribe(
       userino => {
         this.miouser = userino ;
-        this.UserCollection = this.afs.collection<User>('users');
         this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
-        this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
+       // this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
       }
     );
  //   this.UserCollection = this.afs.collection<User>('users');
  //   this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
  //   this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
 }
+getUserSquadre(user: User): Observable<Squadre[]> {
+   return this.afs.collection('users').doc(user.uid).collection('squadre').valueChanges();
+  }
+
   getallfriends(): Observable<User[]> {
     return this.afs.collection('users').valueChanges();
   }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {User} from '../../user-profile/user';
 import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
@@ -34,8 +34,10 @@ export class RichesteComponent implements OnInit {
   richestout$: Observable<RichiesteOut[]>;
   richestin$: Observable<RichiesteIn[]>;
   richestinc$: Observable<RichiesteIn[]>;
-
+  itemcol: AngularFirestoreCollection<RichiesteIn[]>;
   user: User;
+  user$: Observable<User>;
+
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 
   }
@@ -48,7 +50,7 @@ export class RichesteComponent implements OnInit {
         res => {
               const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
                 return a.valueChanges().subscribe(
-                us =>  {  res.dataUser = us ; console.log(res) ;  });
+                us =>  {  res.dataUser = us ; console.log(res.dataUser) ;  });
           }
         );
       }
@@ -56,15 +58,14 @@ export class RichesteComponent implements OnInit {
 
 
   }
-
+test() {
+}
   ngOnInit() {
     this.userR.user.subscribe(user => {
         this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
         this.richestinc$ = this.getuser();
-        console.log(this.richestinc$.subscribe(
-          r => console.log(r)
-        ))
+
       }
     );
   }
