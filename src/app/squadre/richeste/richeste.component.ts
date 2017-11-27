@@ -65,12 +65,12 @@ export class RichesteComponent implements OnInit {
     });
 }
   getRichesteIn(){
-  return this.userR.user.map(
+  return this.userR.user.switchMap(
     (user) => {
       return this.afs.collection('users').doc(user.uid).collection<RichiesteIn>('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges().switchMap(
         (ric) => {
          const a = ric.map((rr) => {
-           return this.afs.collection('users').doc(rr.userhomeid).snapshotChanges().map(
+           return this.afs.collection('users').doc(rr.userhomeid).snapshotChanges().scan(
              (g) => {
                rr.dataUser = g.payload.data() as User ;
                return rr ;
