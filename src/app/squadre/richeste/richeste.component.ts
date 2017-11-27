@@ -73,7 +73,7 @@ export class RichesteComponent implements OnInit {
            return this.afs.collection('users').doc(rr.userhomeid).snapshotChanges().map(
              (g) => {
                rr.dataUser = g.payload.data() as User ;
-               return rr ;
+               return ric ;
              }
            );
          });
@@ -82,9 +82,7 @@ export class RichesteComponent implements OnInit {
     });
 }
   ngOnInit() {
-    this.richestinc$ = this.getRichesteIn().switchMap(
-      (a) => {return a }
-      );
+    this.richestinc$ = this.getRichesteIn()
     this.richestinc$.subscribe(
       aaa => console.log(aaa)
     )
