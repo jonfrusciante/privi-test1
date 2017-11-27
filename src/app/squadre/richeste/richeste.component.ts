@@ -73,10 +73,9 @@ export class RichesteComponent implements OnInit {
          return ric.map((rr) => {
            return this.afs.collection('users').doc(rr.userhomeid).snapshotChanges().map(
              (g) => {
-               const h = [];
                rr.dataUser = g.payload.data() as User ;
-               h.push(rr);
-               return h ;
+
+               return ric ;
              }
            );
          });
