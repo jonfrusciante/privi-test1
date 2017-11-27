@@ -65,7 +65,7 @@ export class RichesteComponent implements OnInit {
     });
 }
   getRichesteIn(){
-  return this.userR.user.switchMap(
+  return this.userR.user.map(
     (user) => {
       return this.afs.collection('users').doc(user.uid).collection<RichiesteIn>('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges().switchMap(
         (ric) => {
