@@ -75,7 +75,7 @@ export class RichesteComponent implements OnInit {
                rr.dataUser = g.payload.data() as User ;
                return rr ;
              }
-           ).subscribe();
+           ).subscribe( aa => console.log(aa));
          });
           console.log(a);
           return a ; }
