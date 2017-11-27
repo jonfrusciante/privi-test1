@@ -9,23 +9,18 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 @Injectable()
 export class SquadreService {
   private UserCollection: AngularFirestoreCollection<User>;
-   miouser: User;
-   user$: Observable<User>;
    squadra$: Observable<Squadre[]>;
    squadraCollection$: AngularFirestoreCollection<Squadre>;
-   SquadreArray: Squadre[];
   constructor(private user: AuthService, private afs: AngularFirestore) {
     this.UserCollection = this.afs.collection<User>('users');
+
     this.squadra$ = this.user.user.switchMap(
-      (us) =>{ return this.getUserSquadre(us) });
+      (us) => {
+        this.squadraCollection$ = this.afs.collection('users').doc(us.uid).collection('squadre');
+        return this.getUserSquadre(us);
+      });
    // const userino: User = this.user.theuser;
-    this.user.user.subscribe(
-      userino => {
-        this.miouser = userino ;
-        this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
-       // this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
-      }
-    );
+
  //   this.UserCollection = this.afs.collection<User>('users');
  //   this.squadraCollection$ = this.afs.collection('users').doc(userino.uid).collection('squadre');
  //   this.squadra$ = this.afs.collection('users').doc(userino.uid).collection('squadre').valueChanges();
