@@ -67,7 +67,9 @@ export class RichesteComponent implements OnInit {
   getRichesteIn(){
   return this.userR.user.switchMap(
     (user) => {
-      return this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges() ;
+      return this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges().map(
+        (ric) => {console.log(ric);  }
+      ) ;
     });
 }
   ngOnInit() {
