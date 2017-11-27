@@ -58,15 +58,21 @@ export class RichesteComponent implements OnInit {
 
 
   }
-test() {
+  getRichesteOut(): Observable<RichiesteOut[]> {
+  return this.userR.user.switchMap(
+    (user) => {
+      return this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges() ;
+    });
+}
+  getRichesteIn(){
+  return this.userR.user.switchMap(
+    (user) => {
+      return this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges() ;
+    });
 }
   ngOnInit() {
-    this.userR.user.subscribe(user => {
-        this.richestout$ = this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestin$ = this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges();
-        this.richestinc$ = this.getuser();
-
-      }
-    );
+    this.richestin$ = this.getRichesteIn();
+    this.richestout$ = this.getRichesteOut();
   }
+
 }
