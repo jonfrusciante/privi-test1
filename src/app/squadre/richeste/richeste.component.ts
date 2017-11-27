@@ -77,12 +77,14 @@ export class RichesteComponent implements OnInit {
              }
            );
          });
-         ; }
+        }
       ) ;
     });
 }
   ngOnInit() {
-    this.richestinc$ = this.getRichesteIn();
+    this.richestinc$ = this.getRichesteIn().flatMap(
+      (a) => { return a }
+    );
     this.richestout$ = this.getRichesteOut();
   }
 
