@@ -30,6 +30,11 @@
 <div *ngFor="let item of richestinc$ |async " fxLayout="row wrap" xmlns="http://www.w3.org/1999/html">
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header >
+      <div *ngIf="  item.ff  | async as fui">
+       {{fui?.email}}
+      </div>
+      <mat-card-title>{{item.dataUser?.displayName}}</mat-card-title>
+
       <mat-card-title>{{item.dataUser?.displayName}}</mat-card-title>
       <img matCardAvatar src="{{item.dataUser?.photoURL}}">
       <mat-card-title>{{item.dataUser?.email}}</mat-card-title>

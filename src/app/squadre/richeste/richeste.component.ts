@@ -16,7 +16,7 @@ interface RichiesteOut {
   useraway?: User ;
   prenotazioneSlot?: Prenotazioni ;
   confermato?: false;
-
+  ff: Observable<User>;
 }
 interface RichiesteIn {
   dataUser?: User;
