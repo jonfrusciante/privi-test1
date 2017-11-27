@@ -74,7 +74,7 @@ export class RichesteComponent implements OnInit {
               const id = a.payload.doc.id;
               const dod: AngularFirestoreDocument<User> = this.afs.collection('users').doc(data.userhomeid);
               const ff: Observable<User> =  dod.valueChanges();
-              return { ff, ...data };
+              return { ff, id , data };
             });
           });
 
