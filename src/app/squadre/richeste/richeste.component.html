@@ -33,12 +33,12 @@
       <div *ngIf="  item.ff  | async as fui">
        {{fui?.email}}
       </div>
-      <mat-card-title>{{item.dataUser?.displayName}}</mat-card-title>
+      <mat-card-title>{{fui?.displayName}}</mat-card-title>
 
-      <mat-card-title>{{item.dataUser?.displayName}}</mat-card-title>
-      <img matCardAvatar src="{{item.dataUser?.photoURL}}">
-      <mat-card-title>{{item.dataUser?.email}}</mat-card-title>
-      <mat-card-title>{{item.dataUser?.telefon}}</mat-card-title>
+      <mat-card-title>{{fui?.displayName}}</mat-card-title>
+      <img matCardAvatar src="{{fui?.photoURL}}">
+      <mat-card-title>{{fui?.email}}</mat-card-title>
+      <mat-card-title>{{fui?.telefon}}</mat-card-title>
 
     </mat-card-header>
     <mat-card-content>
