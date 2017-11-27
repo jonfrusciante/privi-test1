@@ -64,29 +64,28 @@ export class RichesteComponent implements OnInit {
       return this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges() ;
     });
 }
-  getRichesteIn() {
-  return this.userR.user.switchMap(
-    (user) => {
-      return this.afs.collection('users').doc(user.uid).collection<RichiesteIn>('richesteIn', ref => ref.where('confermato', '==', false)).valueChanges()
-        .map(
-        (ric) => {
-         return ric.map((rr) => {
-           return this.afs.collection('users').doc(rr.userhomeid).snapshotChanges().map(
-             (g) => {
-               rr.dataUser = g.payload.data() as User ;
+  getRichesteIn(): Observable<RichiesteIn[]> {
+     return this.userR.user.switchMap(
+      (user) => {
+        return this.afs.collection('users').doc(user.uid).collection('richesteIn', ref => ref.where('confermato', '==', false)).snapshotChanges()
+          .map(actions => {
+            return actions.map(a => {
+              const data = a.payload.doc.data() as RichiesteIn;
+              const id = a.payload.doc.id;
+              const dod: AngularFirestoreDocument<User> = this.afs.collection('users').doc(data.userhomeid);
+               dod.valueChanges().map(f  => {return f as User} ).map(x => data.dataUser = x ).subscribe();
+              return { id, ...data };
+            });
+          });
 
-               return rr ;
-             }
-           );
-         });
-        }
-      ) ;
-    });
-}
-  ngOnInit() {
+      });
+  }
+
+
+ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
     this.richestinc$.subscribe(
-      aaa => console.log(aaa.map(r => console.log(r)))
+      aaa => console.log(aaa.map(r=>console.log(r)))
     )
     this.richestout$ = this.getRichesteOut();
   }
