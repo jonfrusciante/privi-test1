@@ -82,7 +82,7 @@ export class RichesteComponent implements OnInit {
     });
 }
   ngOnInit() {
-    this.richestinc$ = this.getRichesteIn().switchMap(
+    this.richestinc$ = this.getRichesteIn().mergeMap(
       a =>  a
       );
     this.richestinc$.subscribe(
