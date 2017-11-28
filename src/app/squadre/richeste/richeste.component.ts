@@ -84,10 +84,12 @@ export class RichesteComponent implements OnInit {
 
 ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
-    this.richestinc$.subscribe(
-      aaa => console.log(aaa.map(r=>console.log(r)))
-    )
     this.richestout$ = this.getRichesteOut();
+  }
+  removeRic(id){
+    this.userR.user.subscribe(
+      user =>     this.afs.collection('users').doc(user.uid).collection('richesteIn').doc(id).delete()
+    ).unsubscribe();
   }
 
 }
