@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {AngularFirestore} from 'angularfire2/firestore';
-import {format} from 'date-fns';
+import {format, subDays , addDays} from 'date-fns';
 import {Prenotazioni} from '../admin/prenotazioni';
 import {Observable} from 'rxjs/Observable';
 
@@ -43,6 +43,18 @@ export class DataformComponent implements OnInit {
     console.log(item);
     this.dataform.setValue(item);
 
+  }
+  public giornoprima() {
+    this.date = subDays(this.date , 1);
+    this.data_grabbed = format(this.date, 'DD-MM-YYYY');
+    console.log(this.data_grabbed);
+    this.getDisponibilita();
+  }
+  public giornodopo() {
+    this.date = addDays(this.date , 1);
+    this.data_grabbed = format(this.date, 'DD-MM-YYYY');
+    console.log(this.data_grabbed);
+    this.getDisponibilita();
   }
   ngOnInit() {
   }
