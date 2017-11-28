@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PlayerComponent } from './list/player.component';
 import { NuovapartitaComponent } from './list/nuovapartita/nuovapartita.component';
 import { RichesteComponent } from './richeste/richeste.component';
+import { CreanuovapartitaComponent } from './creanuovapartita/creanuovapartita.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { RichesteComponent } from './richeste/richeste.component';
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [SquadreComponent, CreaComponent, ListComponent, PlayerComponent, NuovapartitaComponent, RichesteComponent],
+  declarations: [SquadreComponent, CreaComponent, ListComponent, PlayerComponent, NuovapartitaComponent, RichesteComponent, CreanuovapartitaComponent],
   providers: [SquadreService]
 })
 export class SquadreModule {
