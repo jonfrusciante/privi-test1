@@ -7,7 +7,7 @@ import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-
+import {format} from 'date-fns';
 
 interface RichiesteOut {
   userHomeuid?: string;
@@ -70,7 +70,7 @@ ricOut() {
           const id = a.payload.doc.id;
           const homeUser = this.afs.collection('users').doc(data.userhome).valueChanges();
           const awayUser = this.afs.collection('users').doc(data.userAway).valueChanges();
-          const pren =  this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(data.prenotazione.data).collection('slot').doc(data.prenotazione.ora).valueChanges();
+          const pren =  this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(format(data.prenotazione.start, 'DD-MM-YYYY' )).collection('slot').doc(data.prenotazione.ora).valueChanges();
           return { homeUser, awayUser , id , pren,  ...data };
         });
       });
