@@ -102,9 +102,8 @@ ngOnInit() {
   }
   removeRic(id) {
     console.log(id);
-    this.userR.user.subscribe(
-      user =>     this.afs.collection('users').doc(user.uid).collection('richesteIn').doc(id).delete()
-    );
+   this.afs.collection('match').doc(id).delete();
+
   }
 
 }

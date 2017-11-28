@@ -57,7 +57,7 @@
 </div>
 </div>
 
-<h2 style="text-align: center">RICHESTE Entrata</h2>
+<h2 style="text-align: center">RICHESTE Effettuata da me</h2>
 <div fxLayout="row nowrap"
      fxLayoutAlign="center center"
      fxLayoutGap="4vh" fxLayout.xs="column nowrap" style="max-width: 100%;margin:0 2vh 0 2vh">
@@ -65,7 +65,7 @@
     <mat-card class="mat-elevation-z9"   >
       <mat-card-header *ngIf="  item.homeUser  | async as homeuser" >
 
-        <mat-card-title>{{homeuser?.displayName}}</mat-card-title>
+        <mat-card-title>User Richedente</mat-card-title>
 
         <mat-card-title>{{homeuser?.displayName}}</mat-card-title>
         <img matCardAvatar src="{{homeuser?.photoURL}}">
@@ -76,7 +76,7 @@
 
       <mat-card-header *ngIf="  item.awayUser  | async as awayUser" >
 
-        <mat-card-title>{{awayUser?.displayName}}</mat-card-title>
+        <mat-card-title>User A cui Ho effettuato richesta</mat-card-title>
 
         <mat-card-title>{{awayUser?.displayName}}</mat-card-title>
         <img matCardAvatar src="{{awayUser?.photoURL}}">
@@ -90,7 +90,7 @@
 
       </mat-card-content>
       <mat-card-actions align="start">
-        <button mat-button (click)="onAction()">Conferma</button>
+        <button mat-button (click)="onAction()">Invia Un Poke</button>
         <button mat-button (click)="removeRic(item.id) ">Annulla Richesta</button>
         <button mat-button (click)="onAction($event)">contatta user</button>
 
