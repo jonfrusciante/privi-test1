@@ -30,6 +30,12 @@ interface RichiesteIn {
   confermato?: false;
 
 }
+interface Match {
+  userhome?: string;
+  userAway?: string;
+  prenotazioneid?: string;
+  confermato?: boolean;
+}
 @Component({
   selector: 'app-nuovapartita',
   templateUrl: './nuovapartita.component.html',
@@ -58,7 +64,15 @@ user: User;
   theuser: User;
   constructor(private afs: AngularFirestore, private _formBuilder: FormBuilder, private mio: AuthService) {
     this.userCtrl = new FormControl();
-    this.users = this.afs.collection('users').valueChanges();
+    this.users = this.afs.collection('users').snapshotChanges().map(
+      action => {
+        return action.map(
+          actions => {
+            const data = actions.payload.doc.data() as User;
+            const id = actions.payload.doc.id;
+            return{id , ...data };
+          });
+      });
     this.userCtrl.valueChanges.subscribe( user => this.invia(user));
     this.mio.user.subscribe(
       user => {
@@ -84,7 +98,7 @@ user: User;
     // this.users = this.afs.collection('users').valueChanges();
    //  this.firstFormGroup.valueChanges.subscribe(user => this.invia(user));  // valueChanges.subscribe( user => this.invia(user));
   }
-onInput(event){
+  onInput(event) {
   this.date = event.value;
   // this.giorno = this.date.getMonth() + 1;
   this.data_grabbed =  format(event.value, 'DD-MM-YYYY');
@@ -94,7 +108,15 @@ onInput(event){
     this.stateFlag = !this.stateFlag;
   }
   getDisponibilita() {
-    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot').valueChanges();
+    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot').snapshotChanges().map(
+      action => {
+        return action.map(
+          actions => {
+            const data = actions.payload.doc.data() as Prenotazioni;
+            const id = actions.payload.doc.id;
+            return{id , ...data };
+          });
+      });
   }
   public giornoprima() {
     this.date = subDays(this.date , 1);
@@ -110,9 +132,17 @@ onInput(event){
   }
   setdata(event: Prenotazioni) {
   this.secondFormGroup.setValue({'secondCtrl' : event});
-  this.prengrab = event;
+  // this.prengrab = event;
   console.log(this.secondFormGroup.value.secondCtrl);
   }
+  inviaRic(homeid , awayid, prenotazioneid ){
+      const match: Match = {confermato: false};
+      match.userhome = homeid;
+      match.userAway = awayid;
+      match.prenotazioneid = prenotazioneid;
+      console.log(match);
+      this.afs.collection('match').add(match);
+}
   inviarichesta(user_away: User , prenotazione: Prenotazioni, userCapitanuid: string) {
     const pren: RichiesteOut = {};
     pren.useraway = user_away;

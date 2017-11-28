@@ -25,6 +25,20 @@ interface RichiesteIn {
   confermato?: false;
 
 }
+interface Match {
+  userhome?: string;
+  userAway?: string;
+  prenotazioneid?: string;
+  confermato?: boolean;
+}
+interface Prenotazione {
+  data?: string;
+  start?: Date ;
+  disponibile?: boolean;
+  ora?: string;
+  user?: string ;
+  title?: string;
+}
 @Component({
   selector: 'app-richeste',
   templateUrl: './richeste.component.html',
@@ -32,7 +46,7 @@ interface RichiesteIn {
 })
 export class RichesteComponent implements OnInit {
   richestout$: Observable<RichiesteOut[]>;
-  richestin$: Observable<RichiesteIn[]>;
+  richestin$: Observable<Match[]>;
   richestinc$: Observable<RichiesteIn[]>;
   itemcol: AngularFirestoreCollection<RichiesteIn[]>;
   user: User;
@@ -41,28 +55,27 @@ export class RichesteComponent implements OnInit {
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 
   }
-  getuser(): Observable<RichiesteIn[]> {
-     return this.richestin$.map(
-      value => {
-
-        return value.map(
-
-        res => {
-              const a: AngularFirestoreDocument<User> =  this.afs.collection('users').doc(res.userhomeid);
-                return a.valueChanges().subscribe(
-                us =>  {  res.dataUser = us ; console.log(res.dataUser) ;  });
-          }
-        );
-      }
-    );
-
-
-  }
   getRichesteOut(): Observable<RichiesteOut[]> {
   return this.userR.user.switchMap(
     (user) => {
       return this.afs.collection('users').doc(user.uid).collection('richesteOut', ref => ref.where('confermato', '==', false)).valueChanges() ;
     });
+}
+ricOut() {
+    return this.userR.user.switchMap(
+    (user) => {
+      return this.afs.collection('match', ref => ref.where('userhome', '==' , user.uid )).snapshotChanges() .map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Match;
+          const id = a.payload.doc.id;
+          const homeUser = this.afs.collection('users').doc(data.userhome).valueChanges();
+          const awayUser = this.afs.collection('users').doc(data.userAway).valueChanges();
+         // const pren: AngularFirestoreDocument<Prenotazione> =  this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot');
+          return { homeUser, awayUser , id , ...data };
+        });
+      });
+   });
+
 }
   getRichesteIn(): Observable<RichiesteIn[]> {
      return this.userR.user.switchMap(
@@ -85,8 +98,9 @@ export class RichesteComponent implements OnInit {
 ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
     this.richestout$ = this.getRichesteOut();
+    this.richestin$ = this.ricOut();
   }
-  removeRic(id){
+  removeRic(id) {
     console.log(id);
     this.userR.user.subscribe(
       user =>     this.afs.collection('users').doc(user.uid).collection('richesteIn').doc(id).delete()

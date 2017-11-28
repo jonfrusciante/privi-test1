@@ -11,7 +11,7 @@
         <mat-form-field>
           <input matInput placeholder="Scegli il cliente" aria-label="Cliente" [matAutocomplete]="auto" [formControl]="userCtrl" required>
           <mat-autocomplete #auto="matAutocomplete" >
-            <mat-option  *ngFor="let user of users | async"  [value]="user"  >
+            <mat-option  *ngFor="let user of users | async"  [value]="user.id"  >
               <span>{{ user.email }}</span>
               <img style="vertical-align:middle;" aria-hidden src="{{user.photoURL}}" height="25" >
               <small>Uid: {{user.uid}}</small>
@@ -56,7 +56,7 @@
     <mat-step>
       <ng-template matStepLabel>Invia La Richiesta</ng-template>
 
-      <button mat-raised-button (click)="inviarichesta(userCtrl.value, secondFormGroup.value.secondCtrl , squadra.capitan_uid )" color="primary">Invia Richiesta</button>
+      <button mat-raised-button (click)="inviaRic(squadra.capitan_uid , userCtrl.value , secondFormGroup.value.secondCtrl  )" color="primary">Invia Richiesta</button>
 
       <div>
         <button mat-button matStepperPrevious>Back</button>
