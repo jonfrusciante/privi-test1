@@ -1,0 +1,21 @@
+<mat-form-field [formGroup]="dataform">
+  <input    matInput [matDatepicker]="picker" (dateInput)="onInput($event) ; toggleState() ; getDisponibilita(); show=true"  placeholder="Choose a date" >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  <mat-card *ngIf="event"><h3 mat-card-title>Data e ora selezionati: {{event}} </h3>
+  </mat-card>
+  <mat-card *ngIf="items && show" >
+    <mat-card-header>
+      <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
+      <h3 mat-card-title >Disponiblita campo 1 giorno {{data_grabbed }}</h3>
+
+      <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button   #aaa (click)="setdata( item ); show=false " *ngFor="let item of items | async" >
+        <a *ngIf="item.disponibile" #titleInput>{{item.ora}}</a>
+      </button>
+    </mat-card-actions>
+    <input matInput style="display:none;" formControlName="prenotazione">
+  </mat-card>
+</mat-form-field>
