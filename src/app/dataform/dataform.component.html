@@ -1,4 +1,4 @@
-<mat-form-field >
+<mat-form-field [formGroup]="dataform">
   <input    matInput [matDatepicker]="picker" (dateInput)="onInput($event) ; toggleState() ; getDisponibilita(); show=true"  placeholder="Choose a date" >
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
