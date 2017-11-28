@@ -2,9 +2,10 @@
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Scegli Una Data</ng-template>
-
+<mat-form-field>
       <app-dataform ></app-dataform>
-      <div>
+</mat-form-field>
+  <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
