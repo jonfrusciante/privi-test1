@@ -17,5 +17,7 @@
   <h1 *ngFor="let prenn of prenotaz">ora{{prenn.ora}} data {{prenn.start | date}} risrevato da {{prenn.username}}</h1>
 
 <app-user-class></app-user-class>
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
 
 <app-dataform [group]="registerForm.controls.data"></app-dataform>
+</form>
