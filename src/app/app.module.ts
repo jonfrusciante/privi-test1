@@ -54,6 +54,7 @@ import {AppcanvasModule} from './canvas/appcanvas.module';
 import {MaterialModule} from './material/material.module';
 import { ImgGuruService } from './img-guru.service';
 import { StoppropagationDirective } from './directive/stoppropagation.directive';
+import { DataformComponent } from './dataform/dataform.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { StoppropagationDirective } from './directive/stoppropagation.directive'
     HometeamComponent,
     ProfiloComponent,
     StoppropagationDirective,
+    DataformComponent,
 
 
 

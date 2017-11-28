@@ -4,6 +4,8 @@ import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} 
 import {Prenotazioni} from '../admin/prenotazioni';
 import {Observable} from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import {FormBuilder, FormGroup} from '@angular/forms';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,6 +17,8 @@ export class HomeComponent implements OnInit {
   public itemCollec: AngularFirestoreCollection<Prenotazioni>;
   public prenotazioni: Observable<Array<Prenotazioni>>;
   // private voidDoc: AngularFirestoreDocument<any>;
+  public registerForm: FormGroup;
+
   title = 'Valguarnera Sports Club ';
   tiles = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -41,7 +45,7 @@ export class HomeComponent implements OnInit {
   prenotaz: Prenotazioni[]= [];
   preno1$: Array<Observable<Prenotazioni>>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private fb: FormBuilder) {
 
     // this.itemCollec('prenotazioni_campo1',ref => ref.where('username','=','pinoscasso'))
   }
@@ -82,7 +86,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this.findrange(new Date('10-01-2017'), new Date(('10-31-2017')));
+this.registerForm = this.fb.group({data: "" });   // this.findrange(new Date('10-01-2017'), new Date(('10-31-2017')));
     // this.itemCollec = this.afs.collection('disponibilita_campo1/19-10-2017/slot', ref => ref.where('disponibile', '==' ,  true )) ;
     // this.itemCollec.valueChanges().subscribe( response => console.log(response));
   }
