@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-creanuovapartita',
@@ -7,15 +7,27 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./creanuovapartita.component.css']
 })
 export class CreanuovapartitaComponent implements OnInit {
-  options: FormGroup;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  stateFlag = true;
+
+
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
 
-  constructor(fb: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder) {
 
+  }
+  toggleState() {
+    this.stateFlag = !this.stateFlag ;
   }
 
   ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
-
 }
