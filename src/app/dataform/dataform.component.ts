@@ -12,8 +12,6 @@ import {Observable} from 'rxjs/Observable';
 })
 
 export class DataformComponent implements OnInit {
-  @Input('group')
-  public dataform: FormGroup;
   items: Observable<Prenotazioni[]>;
   date: Date;
   data_grabbed: string;
@@ -41,7 +39,7 @@ export class DataformComponent implements OnInit {
   }
   setdata(item){
     console.log(item);
-    this.dataform.setValue(item);
+
 
   }
   public giornoprima() {
