@@ -86,7 +86,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-this.registerForm = this.fb.group({data: "" });   // this.findrange(new Date('10-01-2017'), new Date(('10-31-2017')));
+this.registerForm = this.fb.group({data: "" });
+   // this.findrange(new Date('10-01-2017'), new Date(('10-31-2017')));
     // this.itemCollec = this.afs.collection('disponibilita_campo1/19-10-2017/slot', ref => ref.where('disponibile', '==' ,  true )) ;
     // this.itemCollec.valueChanges().subscribe( response => console.log(response));
   }
