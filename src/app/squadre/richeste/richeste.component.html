@@ -46,7 +46,7 @@
     </mat-card-content>
     <mat-card-actions align="start">
       <button mat-button (click)="onAction()">Conferma</button>
-      <button mat-button (click)="removeRic(item.id)">Annulla Richesta</button>
+      <button mat-button (click)="removeRic(item.id) | async">Annulla Richesta</button>
       <button mat-button (click)="onAction($event)">contatta user</button>
 
     </mat-card-actions>
