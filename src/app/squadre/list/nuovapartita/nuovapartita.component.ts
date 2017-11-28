@@ -33,7 +33,7 @@ interface RichiesteIn {
 interface Match {
   userhome?: string;
   userAway?: string;
-  prenotazioneid?: string;
+  prenotazione?: Prenotazioni;
   confermato?: boolean;
 }
 @Component({
@@ -135,11 +135,11 @@ user: User;
   // this.prengrab = event;
   console.log(this.secondFormGroup.value.secondCtrl);
   }
-  inviaRic(homeid , awayid, prenotazioneid ){
+  inviaRic(homeid , awayid, prenotazione:Prenotazioni ){
       const match: Match = {confermato: false};
       match.userhome = homeid;
       match.userAway = awayid;
-      match.prenotazioneid = prenotazioneid;
+      match.prenotazione = prenotazione;
       console.log(match);
       this.afs.collection('match').add(match);
 }

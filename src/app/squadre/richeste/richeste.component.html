@@ -56,3 +56,48 @@
 
 </div>
 </div>
+
+<h2 style="text-align: center">RICHESTE Entrata</h2>
+<div fxLayout="row nowrap"
+     fxLayoutAlign="center center"
+     fxLayoutGap="4vh" fxLayout.xs="column nowrap" style="max-width: 100%;margin:0 2vh 0 2vh">
+  <div *ngFor="let item of richestin$ |async " >
+    <mat-card class="mat-elevation-z9"   >
+      <mat-card-header *ngIf="  item.homeUser  | async as homeuser" >
+
+        <mat-card-title>{{homeuser?.displayName}}</mat-card-title>
+
+        <mat-card-title>{{homeuser?.displayName}}</mat-card-title>
+        <img matCardAvatar src="{{homeuser?.photoURL}}">
+        <mat-card-title>{{homeuser?.email}}</mat-card-title>
+        <mat-card-title>{{homeuser?.telefon}}</mat-card-title>
+
+      </mat-card-header>
+
+      <mat-card-header *ngIf="  item.awayUser  | async as awayUser" >
+
+        <mat-card-title>{{awayUser?.displayName}}</mat-card-title>
+
+        <mat-card-title>{{awayUser?.displayName}}</mat-card-title>
+        <img matCardAvatar src="{{awayUser?.photoURL}}">
+        <mat-card-title>{{awayUser?.email}}</mat-card-title>
+        <mat-card-title>{{awayUser?.telefon}}</mat-card-title>
+
+      </mat-card-header>
+      <mat-card-content *ngIf="  item.pren  | async as prenot" >
+
+        <label> {{prenot?.start | date }}</label><label>{{prenot?.ora}}</label>
+
+      </mat-card-content>
+      <mat-card-actions align="start">
+        <button mat-button (click)="onAction()">Conferma</button>
+        <button mat-button (click)="removeRic(item.id) ">Annulla Richesta</button>
+        <button mat-button (click)="onAction($event)">contatta user</button>
+
+      </mat-card-actions>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+
+  </div>
+</div>

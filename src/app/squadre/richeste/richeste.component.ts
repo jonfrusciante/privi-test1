@@ -28,7 +28,7 @@ interface RichiesteIn {
 interface Match {
   userhome?: string;
   userAway?: string;
-  prenotazioneid?: string;
+  prenotazione: Prenotazioni;
   confermato?: boolean;
 }
 interface Prenotazione {
@@ -70,8 +70,8 @@ ricOut() {
           const id = a.payload.doc.id;
           const homeUser = this.afs.collection('users').doc(data.userhome).valueChanges();
           const awayUser = this.afs.collection('users').doc(data.userAway).valueChanges();
-         // const pren: AngularFirestoreDocument<Prenotazione> =  this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot');
-          return { homeUser, awayUser , id , ...data };
+          const pren =  this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(data.prenotazione.data).collection('slot').doc(data.prenotazione.ora).valueChanges();
+          return { homeUser, awayUser , id , pren,  ...data };
         });
       });
    });
