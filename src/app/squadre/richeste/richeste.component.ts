@@ -86,8 +86,9 @@ ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
     this.richestout$ = this.getRichesteOut();
   }
-  removeRic(id): Observable<any> {
-   return this.userR.user.map(
+  removeRic(id){
+    console.log(id);
+    this.userR.user.subscribe(
       user =>     this.afs.collection('users').doc(user.uid).collection('richesteIn').doc(id).delete()
     );
   }
