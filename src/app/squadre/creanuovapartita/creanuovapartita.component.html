@@ -8,9 +8,9 @@
                formControlName="data"
                [matDatepicker]="datePickerRef"
                placeholder="">
-        <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
       </mat-input-container>
       <mat-datepicker #datePickerRef></mat-datepicker>
+      <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
       <app-dataform ></app-dataform>
       <div>
         <button mat-button matStepperPrevious>Back</button>
