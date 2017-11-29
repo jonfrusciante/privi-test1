@@ -8,7 +8,7 @@
                formControlName="data"
                [matDatepicker]="datePickerRef"
                placeholder="">
-        <button matSuffix [matDatepickerToggle]="datePickerRef"></button>
+        <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
       </mat-input-container>
       <mat-datepicker #datePickerRef></mat-datepicker>
       <app-dataform ></app-dataform>
