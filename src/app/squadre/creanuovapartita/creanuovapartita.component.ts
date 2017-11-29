@@ -50,5 +50,10 @@ export class CreanuovapartitaComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.firstFormGroup.valueChanges.subscribe(n=>console.log(n));
+
+
   }
+
+
 }

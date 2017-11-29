@@ -7,10 +7,13 @@
         <input matInput
                formControlName="data"
                [matDatepicker]="datePickerRef"
-               placeholder="" >
+               placeholder="">
       </mat-input-container>
       <mat-datepicker #datePickerRef [touchUi]="true"></mat-datepicker>
       <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
+      <mat-input-container>
+        <input matInput formControlName="ora">
+      </mat-input-container>
       <app-dataform ></app-dataform>
       <div>
         <button mat-button matStepperPrevious>Back</button>
