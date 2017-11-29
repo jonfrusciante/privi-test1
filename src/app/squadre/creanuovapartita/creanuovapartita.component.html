@@ -3,6 +3,14 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Scegli Una Data</ng-template>
 
+      <mat-input-container>
+        <input matInput
+               formControlName="data"
+               [matDatepicker]="datePickerRef"
+               placeholder="">
+        <button matSuffix [matDatepickerToggle]="datePickerRef"></button>
+      </mat-input-container>
+      <mat-datepicker #datePickerRef></mat-datepicker>
       <app-dataform ></app-dataform>
       <div>
         <button mat-button matStepperPrevious>Back</button>
