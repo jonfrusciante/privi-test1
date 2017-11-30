@@ -18,7 +18,7 @@
       <mat-card *ngIf="items && show" >
         <mat-card-header>
           <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
-          <h3 mat-card-title >Disponiblita campo 1 giorno {{date | data }}</h3>
+          <h3 mat-card-title >Disponiblita campo 1 giorno {{ date | date }}</h3>
 
           <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
         </mat-card-header>
@@ -37,9 +37,9 @@
 
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
+      <ng-template matStepLabel>Scegli i giocatori</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        <input matInput placeholder="Scegli i giocatori" formControlName="secondCtrl" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
