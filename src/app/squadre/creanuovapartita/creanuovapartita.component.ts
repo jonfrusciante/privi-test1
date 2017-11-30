@@ -31,8 +31,8 @@ export class CreanuovapartitaComponent implements OnInit {
   toggleState() {
     this.stateFlag = !this.stateFlag;
   }
-  getDisponibilita() {
-    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(this.data_grabbed).collection('slot').snapshotChanges().map(
+  getDisponibilita(dataId) {
+    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(dataId).collection('slot').snapshotChanges().map(
       action => {
         return action.map(
           actions => {
@@ -46,13 +46,13 @@ export class CreanuovapartitaComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       data: ['', Validators.required],
-      ora: [this.firstFormGroup.get('data'), Validators.required]
+      ora: [ Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-    this.firstFormGroup.valueChanges.subscribe(n=>console.log(n));
-
+    this.firstFormGroup.controls['data'].valueChanges.subscribe(
+      n => this.getDisponibilita(n) );
 
   }
 
