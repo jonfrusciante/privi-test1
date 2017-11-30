@@ -18,7 +18,7 @@
       <mat-card *ngIf="items && show" >
         <mat-card-header>
           <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
-          <h3 mat-card-title >Disponiblita campo 1 giorno {{data_grabbed }}</h3>
+          <h3 mat-card-title >Disponiblita campo 1 giorno {{date | data }}</h3>
 
           <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
         </mat-card-header>
