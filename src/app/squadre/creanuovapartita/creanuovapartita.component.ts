@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Prenotazioni} from '../../admin/prenotazioni';
 import {Observable} from 'rxjs/Observable';
-import {format} from 'date-fns';
+import {format , subDays, addDays} from 'date-fns';
 import {AngularFirestore} from 'angularfire2/firestore';
 @Component({
   selector: 'app-creanuovapartita',
@@ -16,7 +16,7 @@ export class CreanuovapartitaComponent implements OnInit {
   items: Observable<Prenotazioni[]>;
   show= false;
   data_grabbed: string;
-  date = new FormControl(new Date());
+  date: Date;
   serializedDate = new FormControl((new Date()).toISOString());
 
   constructor(private _formBuilder: FormBuilder, private afs: AngularFirestore) {
@@ -52,9 +52,20 @@ export class CreanuovapartitaComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     this.firstFormGroup.controls['data'].valueChanges.subscribe(
-      n => {this.getDisponibilita(n); this.show = !this.show ;} );
+      n => {this.getDisponibilita(n); this.show = !this.show ; this.date = n ;} );
 
   }
-
+  public giornoprima() {
+    this.date = subDays(this.date , 1);
+    this.data_grabbed = format(this.date, 'DD-MM-YYYY');
+    console.log(this.data_grabbed);
+    this.getDisponibilita(this.date);
+  }
+  public giornodopo() {
+    this.date = addDays(this.date , 1);
+    this.data_grabbed = format(this.date, 'DD-MM-YYYY');
+    console.log(this.data_grabbed);
+    this.getDisponibilita(this.date);
+  }
 
 }
