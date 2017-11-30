@@ -81,7 +81,7 @@ export class CreanuovapartitaComponent implements OnInit {
   }
   getuserfrom(id: any[]): Observable<User> {
     console.log(id);
-    const ids = id.join();
+    const ids = id[id.length - 1];
     console.log(ids);
     return this.afs.collection('users').doc(ids).valueChanges();
   }
