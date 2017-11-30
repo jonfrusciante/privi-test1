@@ -74,7 +74,7 @@ export class CreanuovapartitaComponent implements OnInit {
     this.firstFormGroup.controls['data'].setValue(event.start);
 
     // this.prengrab = event;
-    console.log(this.firstFormGroup.controls['ora'].value);
+    console.log(event.start,event.data);
   }
 
 
