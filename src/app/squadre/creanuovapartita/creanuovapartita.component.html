@@ -53,7 +53,24 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+     @
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Riepilogo partita creata:</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div >
+          <label *ngIf="firstFormGroup.valueChanges | async as datina">data selezionata: {{ datina}} </label>
+        </div>
+       </mat-card-content>
+      <mat-card-actions align="start">
+        <button mat-button (click)="onAction1">Action1</button>
+
+      </mat-card-actions>
+      <mat-card-footer>
+        Footer
+      </mat-card-footer>
+    </mat-card>
     <div>
       <button mat-button matStepperPrevious>Back</button>
     </div>
