@@ -53,8 +53,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-     @
-    <mat-card>
+     <mat-card>
       <mat-card-header>
         <mat-card-title>Riepilogo partita creata:</mat-card-title>
       </mat-card-header>
@@ -64,6 +63,24 @@
 
         </div>
        </mat-card-content>
+      <mat-card-actions align="start">
+        <button mat-button (click)="onAction1">Action1</button>
+      </mat-card-actions>
+    </mat-card>
+    <div *ngIf="secondFormGroup.valueChanges | async as userino">
+      <div *ngFor="let us of userino.secondCtrl">
+        <div *ngIf="getuserfrom(us) | async as  usi">{{usi?.displayName}}</div>
+      </div>
+
+    </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Giocatori Selezionati</mat-card-title>
+        <mat-card-subtitle>Il numero minimo è 10!!</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        Text content
+      </mat-card-content>
       <mat-card-actions align="start">
         <button mat-button (click)="onAction1">Action1</button>
 
