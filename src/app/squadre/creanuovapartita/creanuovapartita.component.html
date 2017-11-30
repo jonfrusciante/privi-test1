@@ -1,4 +1,4 @@
-<mat-horizontal-stepper [linear]="true">
+<mat-vertical-stepper [linear]="true">
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Scegli Una Data</ng-template>
@@ -54,4 +54,4 @@
       <button mat-button matStepperPrevious>Back</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+</mat-vertical-stepper>
