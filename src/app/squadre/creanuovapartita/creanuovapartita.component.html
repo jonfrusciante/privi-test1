@@ -44,7 +44,7 @@
           <mat-option *ngFor="let user of Users$ | async" [value]="user.uid">{{user.displayName}}</mat-option>
 
         </mat-select>
-        <div *ngFor=" let users of userstoad" ><span *ngIf="users | async as fibo">{{fibo.displayName}}</span> </div>      </mat-form-field>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
