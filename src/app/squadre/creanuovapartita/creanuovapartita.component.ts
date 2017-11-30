@@ -48,7 +48,7 @@ export class CreanuovapartitaComponent implements OnInit {
     this.Users$ = this.afs.collection('users').valueChanges();
     this.firstFormGroup = this._formBuilder.group({
       data: ['', Validators.required],
-      ora: ['', Validators.required]
+      ora: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
@@ -74,7 +74,6 @@ export class CreanuovapartitaComponent implements OnInit {
 
     this.firstFormGroup.controls['ora'].setValue(event.ora);
     this.firstFormGroup.controls['data'].setValue(format(event.start, 'YYYY-MM-DD') );
-    this.firstFormGroup.setValue(event);
     // this.prengrab = event;
   }
 
