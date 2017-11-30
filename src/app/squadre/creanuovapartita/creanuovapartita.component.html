@@ -60,7 +60,8 @@
       </mat-card-header>
       <mat-card-content>
         <div >
-          <label *ngIf="firstFormGroup.valueChanges | async as datina">data selezionata: {{ datina}} </label>
+          <label *ngIf="firstFormGroup.valueChanges | async as datina">data selezionata: {{ datina.data}} || Ora Selezionata: {{datina.ora}}</label>
+
         </div>
        </mat-card-content>
       <mat-card-actions align="start">
