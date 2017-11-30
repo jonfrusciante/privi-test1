@@ -18,6 +18,7 @@ export class CreanuovapartitaComponent implements OnInit {
   show= false;
   data_grabbed: string;
   date: Date;
+  userstoad=[];
   serializedDate = new FormControl((new Date()).toISOString());
   Users$: Observable<User[]>;
   constructor(private _formBuilder: FormBuilder, private afs: AngularFirestore) {
@@ -55,7 +56,9 @@ export class CreanuovapartitaComponent implements OnInit {
     });
     this.firstFormGroup.controls['data'].valueChanges.subscribe(
       n => {this.getDisponibilita(n); this.show = !this.show ; this.date = n ;} );
-
+    this.secondFormGroup.controls['secondCtrl'].valueChanges.subscribe(
+      userid => { this.userstoad.push(this.getuserfrom(userid)); }
+    )
   }
   public giornoprima() {
     this.date = subDays(this.date , 1);
