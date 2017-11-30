@@ -39,7 +39,11 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Scegli i giocatori</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Scegli i giocatori" formControlName="secondCtrl" required>
+      <mat-select formControlName="secondCtrl" placeholder="Scegli i giocatori" required>
+
+          <mat-option *ngFor="let user of Users$ | async" [value]="user.uid">{{user.displayName}}</mat-option>
+        </mat-select>
+
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>

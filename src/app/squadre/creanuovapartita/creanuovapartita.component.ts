@@ -4,6 +4,7 @@ import {Prenotazioni} from '../../admin/prenotazioni';
 import {Observable} from 'rxjs/Observable';
 import {format , subDays, addDays} from 'date-fns';
 import {AngularFirestore} from 'angularfire2/firestore';
+import {User} from '../../user-profile/user';
 @Component({
   selector: 'app-creanuovapartita',
   templateUrl: './creanuovapartita.component.html',
@@ -18,7 +19,7 @@ export class CreanuovapartitaComponent implements OnInit {
   data_grabbed: string;
   date: Date;
   serializedDate = new FormControl((new Date()).toISOString());
-
+  Users$: Observable<User[]>;
   constructor(private _formBuilder: FormBuilder, private afs: AngularFirestore) {
 
   }
@@ -44,6 +45,7 @@ export class CreanuovapartitaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.Users$ = this.afs.collection('users').valueChanges();
     this.firstFormGroup = this._formBuilder.group({
       data: ['', Validators.required],
       ora: ['', Validators.required]
@@ -72,5 +74,6 @@ export class CreanuovapartitaComponent implements OnInit {
     // this.prengrab = event;
     console.log(this.firstFormGroup.controls['ora'].value);
   }
+
 
 }
