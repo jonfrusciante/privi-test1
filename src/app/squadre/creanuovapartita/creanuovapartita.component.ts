@@ -82,6 +82,7 @@ export class CreanuovapartitaComponent implements OnInit {
   getuserfrom(id: any[]): Observable<User> {
     console.log(id);
     const ids = id.map(a => { return a } );
+    console.log(ids);
     return this.afs.collection('users').doc(ids.toString()).valueChanges();
   }
 
