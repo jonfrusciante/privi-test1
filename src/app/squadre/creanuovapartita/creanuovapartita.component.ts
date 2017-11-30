@@ -32,7 +32,7 @@ export class CreanuovapartitaComponent implements OnInit {
     this.stateFlag = !this.stateFlag;
   }
   getDisponibilita(dataId) {
-    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(dataId).collection('slot').snapshotChanges().map(
+    this.items = this.afs.collection<Prenotazioni>('disponibilita_campo1').doc(format(dataId, 'DD-MM-YYYY')).collection('slot').snapshotChanges().map(
       action => {
         return action.map(
           actions => {
