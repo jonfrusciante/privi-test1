@@ -12,7 +12,7 @@
       <mat-datepicker #datePickerRef [touchUi]="true"></mat-datepicker>
       <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
       <mat-input-container>
-        <input matInput formControlName="ora">
+      <label>{{}} </label>   <input matInput formControlName="ora">
       </mat-input-container>
 
       <mat-card *ngIf="items && show" >
