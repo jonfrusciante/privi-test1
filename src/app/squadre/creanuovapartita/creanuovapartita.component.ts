@@ -70,10 +70,10 @@ export class CreanuovapartitaComponent implements OnInit {
     this.getDisponibilita(this.date);
   }
   setdata(event: Prenotazioni) {
-    console.log(event.start);
+    console.log(format(event.start, 'YYYY-MM-DD'));
 
     this.firstFormGroup.controls['ora'].setValue(event.ora);
-    this.firstFormGroup.controls['data'].setValue(event.start);
+    this.firstFormGroup.controls['data'].setValue(format(event.start, 'YYYY-MM-DD') );
 
     // this.prengrab = event;
   }
