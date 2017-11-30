@@ -42,8 +42,9 @@
       <mat-select formControlName="secondCtrl" placeholder="Scegli i giocatori" multiple required>
 
           <mat-option *ngFor="let user of Users$ | async" [value]="user.uid">{{user.displayName}}</mat-option>
-        </mat-select>
 
+        </mat-select>
+        <span>{{secondCtrl.values()}}</span>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
