@@ -44,7 +44,7 @@
           <mat-option *ngFor="let user of Users$ | async" [value]="user.uid">{{user.displayName}}</mat-option>
 
         </mat-select>
-        <span >{{secondFormGroup.controls['secondCtrl'].value }}</span>
+        <span *ngIf="getuserfrom(secondFormGroup.controls['secondCtrl'].value) | async as fino ">{{fino.displayName}}</span>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
