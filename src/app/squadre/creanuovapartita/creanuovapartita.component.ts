@@ -79,8 +79,10 @@ export class CreanuovapartitaComponent implements OnInit {
     this.firstFormGroup.controls['data'].setValue(format(event.start, 'YYYY-MM-DD') );
     // this.prengrab = event;
   }
-  getuserfrom(id): Observable<User> {
-    return this.afs.collection('users').doc(id).valueChanges();
+  getuserfrom(id: any[]): Observable<User> {
+    console.log(id);
+    const ids = id.map(a => { return a } );
+    return this.afs.collection('users').doc(ids.toString()).valueChanges();
   }
 
 }
