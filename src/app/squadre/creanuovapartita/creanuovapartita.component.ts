@@ -52,7 +52,7 @@ export class CreanuovapartitaComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     this.firstFormGroup.controls['data'].valueChanges.subscribe(
-      n => this.getDisponibilita(n) );
+      n => {this.getDisponibilita(n); this.toggleState();} );
 
   }
 
