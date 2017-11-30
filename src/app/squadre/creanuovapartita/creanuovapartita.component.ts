@@ -14,7 +14,7 @@ export class CreanuovapartitaComponent implements OnInit {
   secondFormGroup: FormGroup;
   stateFlag = true;
   items: Observable<Prenotazioni[]>;
-
+  show= false;
   data_grabbed: string;
   date = new FormControl(new Date());
   serializedDate = new FormControl((new Date()).toISOString());
@@ -52,7 +52,7 @@ export class CreanuovapartitaComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     this.firstFormGroup.controls['data'].valueChanges.subscribe(
-      n => {this.getDisponibilita(n); this.toggleState();} );
+      n => {this.getDisponibilita(n); this.show = !this.show ;} );
 
   }
 
