@@ -46,7 +46,7 @@ export class CreanuovapartitaComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       data: ['', Validators.required],
-      ora: [ Validators.required]
+      ora: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
