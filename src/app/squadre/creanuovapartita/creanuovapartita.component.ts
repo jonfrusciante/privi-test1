@@ -11,6 +11,7 @@ import {User} from '../../user-profile/user';
   styleUrls: ['./creanuovapartita.component.css']
 })
 export class CreanuovapartitaComponent implements OnInit {
+  userArrayObs: Observable<any[]>;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   stateFlag = true;
@@ -58,8 +59,10 @@ export class CreanuovapartitaComponent implements OnInit {
     this.firstFormGroup.controls['data'].valueChanges.subscribe(
       n => {this.getDisponibilita(n); this.show = !this.show ; this.date = n ;} );
     this.secondFormGroup.controls['secondCtrl'].valueChanges.subscribe(
-      userid => { this.userstoad.push(this.getuserfrom(userid)); }
-    )
+      userid => { this.userstoad.push(this.getuserfrom(userid)); });
+    this.secondFormGroup.valueChanges.subscribe(
+      arayu => {this.userArrayObs = this.getuserfrom(arayu.secondCtrl)}
+    );
   }
   public giornoprima() {
     this.date = subDays(this.date , 1);
@@ -80,11 +83,12 @@ export class CreanuovapartitaComponent implements OnInit {
     this.firstFormGroup.controls['data'].setValue(format(event.start, 'YYYY-MM-DD') );
     // this.prengrab = event;
   }
-  getuserfrom(id: any[]): Observable<User> {
-    console.log(id);
-    const ids = id[id.length - 1];
-    console.log(ids);
-    return this.afs.collection('users').doc(ids).valueChanges();
+  getuserfrom(id: any[]): Observable<any[]> {
+    const _User$ = [];
+    for (let obj of id) {
+      _User$.push(this.afs.collection('users').doc(obj).valueChanges());
+    }
+    return Observable.of(_User$);
   }
 
 }

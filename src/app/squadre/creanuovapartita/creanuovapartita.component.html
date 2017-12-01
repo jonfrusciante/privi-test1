@@ -67,9 +67,9 @@
         <button mat-button (click)="onAction1">Action1</button>
       </mat-card-actions>
     </mat-card>
-    <div *ngIf="secondFormGroup.valueChanges | async as userino">
-      <div *ngFor="let us of userino.secondCtrl">
-        <div *ngIf="getuserfrom(us) | async as  usi">{{usi?.displayName}}</div>
+    <div *ngIf="userArrayObs | async as userino">
+      <div *ngFor="let us of userino | async">
+       {{us?.displayName}}
       </div>
 
     </div>
