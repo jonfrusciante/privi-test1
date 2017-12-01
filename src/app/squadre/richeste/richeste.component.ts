@@ -112,7 +112,9 @@ ngOnInit() {
     });
     this.Richestout$.subscribe( n => {
       for (let obj of n) {
-        console.log(obj);
+        for (let obj1 of obj) {
+          console.log(obj1);
+        }
 
       }
     });
