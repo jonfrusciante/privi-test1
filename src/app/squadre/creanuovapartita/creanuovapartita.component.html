@@ -1,96 +1,104 @@
-<mat-vertical-stepper [linear]="true">
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Scegli Una Data</ng-template>
+<mat-card class="mat-elevation-z9">
+  <mat-card-header>
+    <mat-card-title>Modulo Invia Richieste Amichevole</mat-card-title>
+  </mat-card-header>
+  <img matCardImage src="../../../assets/rosario-central-campi-da-calcetto-messina-campi.jpg">
+  <mat-card-content>
+    <mat-vertical-stepper [linear]="true">
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Scegli Una Data</ng-template>
 
-      <mat-input-container>
-        <input matInput
-               formControlName="data"
-               [matDatepicker]="datePickerRef"
-               placeholder="">
-      </mat-input-container>
-      <mat-datepicker #datePickerRef [touchUi]="true"></mat-datepicker>
-      <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
-      <mat-input-container>
-       <input matInput formControlName="ora">
-      </mat-input-container>
+          <mat-input-container>
+            <input matInput
+                   formControlName="data"
+                   [matDatepicker]="datePickerRef"
+                   placeholder="">
+          </mat-input-container>
+          <mat-datepicker #datePickerRef [touchUi]="true"></mat-datepicker>
+          <mat-datepicker-toggle [for]="datePickerRef"></mat-datepicker-toggle>
+          <mat-input-container>
+            <input matInput formControlName="ora">
+          </mat-input-container>
 
-      <mat-card *ngIf="items && show" >
-        <mat-card-header>
-          <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
-          <h3 mat-card-title >Disponiblita campo 1 giorno {{ date | date }}</h3>
+          <mat-card *ngIf="items && show" >
+            <mat-card-header>
+              <mat-icon style="cursor: pointer" (click)="giornoprima()" >arrow_back</mat-icon>
+              <h3 mat-card-title >Disponiblita campo 1 giorno {{ date | date }}</h3>
 
-          <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
-        </mat-card-header>
-        <mat-card-actions>
-          <button mat-button   #aaa (click)="setdata( item ); show=false " *ngFor="let item of items | async" >
-            <a *ngIf="item.disponibile" #titleInput>{{item.ora}}</a>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
+              <mat-icon (click)="giornodopo()" style="cursor: pointer">arrow_forward</mat-icon>
+            </mat-card-header>
+            <mat-card-actions>
+              <button mat-button   #aaa (click)="setdata( item ); show=false " *ngFor="let item of items | async" >
+                <a *ngIf="item.disponibile" #titleInput>{{item.ora}}</a>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
 
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Scegli i giocatori</ng-template>
-      <mat-form-field>
-      <mat-select formControlName="secondCtrl" placeholder="Scegli i giocatori" multiple required>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Scegli i giocatori</ng-template>
+          <mat-form-field>
+            <mat-select formControlName="secondCtrl" placeholder="Scegli i giocatori" multiple required>
 
-          <mat-option *ngFor="let user of Users$ | async" [value]="user.uid">{{user.displayName}}</mat-option>
+              <mat-option *ngFor="let user of Users$ | async" [value]="user.uid">{{user.displayName}}</mat-option>
 
-        </mat-select>
-     </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-     <mat-card>
-      <mat-card-header>
-        <mat-card-title>Riepilogo partita creata:</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div >
-          <label *ngIf="firstFormGroup.valueChanges | async as datina">data selezionata: {{ datina.data}} || Ora Selezionata: {{datina.ora}}</label>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Riepilogo partita creata:</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div >
+              <label *ngIf="firstFormGroup.valueChanges | async as datina">data selezionata: {{ datina.data}} || Ora Selezionata: {{datina.ora}}</label>
 
+            </div>
+          </mat-card-content>
+          <mat-card-actions align="start">
+            <button mat-button (click)="onAction1">Action1</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Giocatori Selezionati</mat-card-title>
+            <mat-card-subtitle>Il numero minimo è 10!!</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content  >
+            <div *ngFor="let noi of userArrayObs ">
+              <div *ngIf="noi | async as usu">
+                {{usu.displayName}}
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions align="center">
+            <button mat-button [disabled]="userArrayObs.length<10" (click)="onAction1">Invia Richeste</button>
+            <span *ngIf="userArrayObs.length<10"> Devi Inserire Minimo 10 Giocatori x inviare la richiesta!!</span>
+
+          </mat-card-actions>
+          <mat-card-footer>
+            Footer
+          </mat-card-footer>
+        </mat-card>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
         </div>
-       </mat-card-content>
-      <mat-card-actions align="start">
-        <button mat-button (click)="onAction1">Action1</button>
-      </mat-card-actions>
-    </mat-card>
-
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Giocatori Selezionati</mat-card-title>
-        <mat-card-subtitle>Il numero minimo è 10!!</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content  >
-<div *ngFor="let noi of userArrayObs ">
-<div *ngIf="noi | async as usu">
-  {{usu.displayName}}
-  </div>
-</div>
-      </mat-card-content>
-      <mat-card-actions align="center">
-        <button mat-button [disabled]="userArrayObs.length<10" (click)="onAction1">Invia Richeste</button>
-        <span *ngIf="userArrayObs.length<10"> Devi Inserire Minimo 10 Giocatori x inviare la richiesta!!</span>
-
-      </mat-card-actions>
-      <mat-card-footer>
-        Footer
-      </mat-card-footer>
-    </mat-card>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
+      </mat-step>
+    </mat-vertical-stepper>
+  </mat-card-content>
+</mat-card>
