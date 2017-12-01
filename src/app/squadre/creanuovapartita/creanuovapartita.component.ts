@@ -93,5 +93,8 @@ export class CreanuovapartitaComponent implements OnInit {
 
     return _User$;
   }
+  inviarichiesta() {
+   console.log(this.firstFormGroup.getRawValue(), this.secondFormGroup.getRawValue());
+  }
 
 }
