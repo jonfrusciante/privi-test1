@@ -73,7 +73,7 @@
         <mat-card-title>Giocatori Selezionati</mat-card-title>
         <mat-card-subtitle>Il numero minimo è 10!!</mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content *ngFor="let userino of userArrayObs | json" >
+      <mat-card-content *ngFor="let userino of userArrayObs | async" >
           <div *ngFor="let us of userino | async">
             {{us?.displayName}}
           </div>
