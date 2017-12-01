@@ -114,7 +114,7 @@ ngOnInit() {
       const filter = n.filter( userid => {
           return Object.keys(userid)
             .some( keys => {
-              return userid[keys] === Boolean ;
+              return userid[keys] !== Boolean ;
             });
           });
       console.log(filter);
