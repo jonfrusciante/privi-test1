@@ -8,7 +8,6 @@ import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import {format} from 'date-fns';
-import {isBoolean} from 'util';
 
 interface RichiesteOut {
   userHomeuid?: string;
@@ -113,11 +112,8 @@ ngOnInit() {
     });
     this.Richestout$.subscribe( n => {
       for (let obj of n) {
-        if (isBoolean( Object.keys(obj))) {
-          const prop = Object.keys(obj);
-          console.log(prop);
-        }
-
+        const prop = Object.keys(typeof obj);
+        console.log(prop);
 
       }
     });
