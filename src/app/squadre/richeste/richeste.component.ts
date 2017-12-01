@@ -111,9 +111,14 @@ ngOnInit() {
       return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
     });
     this.Richestout$.subscribe( n => {
-      for (let obj of n) {
-        const prop = Object.keys(obj);
-        console.log(prop);
+      const filter = n.filter( userid => {
+          return Object.keys(userid)
+            .some( keys => {
+              return userid[keys] === Boolean ;
+            });
+          });
+
+        console.log(filter);
 
       }
     });
