@@ -82,6 +82,7 @@
       </mat-card-content>
       <mat-card-actions align="center">
         <button mat-button [disabled]="userArrayObs.length<10" (click)="onAction1">Invia Richeste</button>
+        <span *ngIf="userArrayObs.length<10"> Devi Inserire Minimo 10 Giocatori x inviare la richiesta!!</span>
 
       </mat-card-actions>
       <mat-card-footer>
