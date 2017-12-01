@@ -131,6 +131,7 @@ ngOnInit() {
     return arrayRicheste.switchMap((n) => {
       const h = [];
       for (const obj of n) {
+        console.log(obj);
         for (const obj1 in obj) {
           if ( typeof obj[obj1] === 'boolean') {
             console.log(obj);
