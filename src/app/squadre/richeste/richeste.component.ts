@@ -125,7 +125,7 @@ ngOnInit() {
    this.afs.collection('match').doc(id).delete();
 
   }
-  getuserfrom(item){
+  getuserfrom(item) {
     console.log(item);
   }
 }
