@@ -135,9 +135,11 @@ ngOnInit() {
         console.log('fiest' , obj);
         for (const obj1 in obj) {
           if ( typeof obj[obj1] === 'boolean') {
-            console.log(obj);
+            obj.user = [];
             obj.user.push(
           this.afs.collection('users').doc(obj1).valueChanges());
+            console.log(obj);
+
           }
         }
       }
