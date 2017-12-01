@@ -39,6 +39,11 @@ interface Prenotazione {
   user?: string ;
   title?: string;
 }
+interface Richieste {
+  dataid?: string;
+  oraid?: string;
+  masteruser?: string;
+}
 @Component({
   selector: 'app-richeste',
   templateUrl: './richeste.component.html',
@@ -51,6 +56,8 @@ export class RichesteComponent implements OnInit {
   itemcol: AngularFirestoreCollection<RichiesteIn[]>;
   user: User;
   user$: Observable<User>;
+  Richestout$: Observable<Richieste[]>;
+
 
   constructor(private afs: AngularFirestore , private userR: AuthService) {
 
@@ -99,11 +106,17 @@ ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
     this.richestout$ = this.getRichesteOut();
     this.richestin$ = this.ricOut();
+    this.Richestout$ = this.userR.user.switchMap(
+    (user) => {
+      return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
+    });
   }
   removeRic(id) {
     console.log(id);
    this.afs.collection('match').doc(id).delete();
 
   }
-
+  getuserfrom(item){
+    console.log(item);
+  }
 }

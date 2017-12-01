@@ -27,16 +27,13 @@
 <div fxLayout="row nowrap"
      fxLayoutAlign="center center"
      fxLayoutGap="4vh" fxLayout.xs="column nowrap" style="max-width: 100%;margin:0 2vh 0 2vh">
-<div *ngFor="let item of richestinc$ |async " >
+<div *ngFor="let item of Richestout$ | async ; getuserfrom(item); " >
   <mat-card class="mat-elevation-z9"   >
-    <mat-card-header *ngIf="  item.ff  | async as fui" >
+    <mat-card-header  >
 
-      <mat-card-title>{{fui?.displayName}}</mat-card-title>
+      <mat-card-title>{{item?.dataid}}</mat-card-title>
 
-      <mat-card-title>{{fui?.displayName}}</mat-card-title>
-      <img matCardAvatar src="{{fui?.photoURL}}">
-      <mat-card-title>{{fui?.email}}</mat-card-title>
-      <mat-card-title>{{fui?.telefon}}</mat-card-title>
+      <mat-card-title>{{item?.oraid}}</mat-card-title>
 
     </mat-card-header>
     <mat-card-content>
@@ -105,4 +102,3 @@
      fxLayoutAlign="center center"
      fxLayoutGap="">
 <app-creanuovapartita></app-creanuovapartita>
-</div>
