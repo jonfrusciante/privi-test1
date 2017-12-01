@@ -106,19 +106,35 @@ ngOnInit() {
     this.richestinc$ = this.getRichesteIn();
     this.richestout$ = this.getRichesteOut();
     this.richestin$ = this.ricOut();
-    this.Richestout$ = this.userR.user.switchMap(
-    (user) => {
+    this.Richestout$ = this.userR.user
+      .switchMap( (user) => {
       return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
     });
-    this.Richestout$.subscribe( n => {
-      for (let obj of n) {
-        const prop = Object.keys(obj);
-        for (let obj1 in obj) {
-          if(typeof obj[obj1] === 'boolean'){console.log(obj1);}
-
+    this.getuserfromarr(this.Richestout$).subscribe( y => console.log(y));
+  /*  this.Richestout$.subscribe( n => {
+      for (const obj of n) {
+        for (const obj1 in obj) {
+          if ( typeof obj[obj1] === 'boolean') {
+            // console.log(obj1);
+            return this.afs.collection('users').doc(obj1).valueChanges();
+          }
         }
-
       }
+    }); */
+
+  }
+  getuserfromarr(arrayRicheste: Observable<Richieste[]>): Observable<any[]> {
+    return arrayRicheste.switchMap((n) => {
+      const h=[];
+      for (const obj of n) {
+        for (const obj1 in obj) {
+          if ( typeof obj[obj1] === 'boolean') {
+            // console.log(obj1);
+            h.push( this.afs.collection('users').doc(obj1).valueChanges());
+          }
+        }
+      }
+      return Observable.of(h);
     });
   }
   removeRic(id) {
