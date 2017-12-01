@@ -111,7 +111,7 @@ ngOnInit() {
       return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
     });
     this.Richestout$.subscribe( n => {
-      for (var obj in n) {
+      for (let obj of n) {
         console.log(obj);
 
       }
