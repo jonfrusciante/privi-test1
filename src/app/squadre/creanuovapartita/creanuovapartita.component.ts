@@ -96,7 +96,7 @@ export class CreanuovapartitaComponent implements OnInit {
   inviarichiesta() {
    console.log(this.firstFormGroup.getRawValue(), this.secondFormGroup.getRawValue());
    const usr =  this.secondFormGroup.controls['secondCtrl'].value;
-   const prenotazione = { dataid: this.firstFormGroup.controls['data'].value , oraid: this.firstFormGroup.controls['ora'].value };
+   const prenotazione = { dataid: format(this.firstFormGroup.controls['data'].value, 'DD-MM-YYYY') , oraid: this.firstFormGroup.controls['ora'].value };
     for (let obj of usr) {
       prenotazione[obj] = false;
     }
