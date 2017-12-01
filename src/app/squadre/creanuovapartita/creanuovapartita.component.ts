@@ -58,8 +58,8 @@ export class CreanuovapartitaComponent implements OnInit {
     this.firstFormGroup.valueChanges.subscribe( ft=>console.log(ft));
     this.firstFormGroup.controls['data'].valueChanges.subscribe(
       n => {this.getDisponibilita(n); this.show = !this.show ; this.date = n ;} );
-    this.secondFormGroup.controls['secondCtrl'].valueChanges.subscribe(
-      userid => { this.userstoad.push(this.getuserfrom(userid)); });
+   // this.secondFormGroup.controls['secondCtrl'].valueChanges.subscribe(
+     // userid => { this.userstoad.push(this.getuserfrom(userid)); });
     this.secondFormGroup.valueChanges.subscribe(
       arayu => {this.userArrayObs = this.getuserfrom(arayu.secondCtrl)}
     );
