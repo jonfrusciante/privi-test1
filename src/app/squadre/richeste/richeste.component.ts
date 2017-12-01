@@ -138,7 +138,7 @@ ngOnInit() {
           }
         }
       }
-      return arrayRicheste;
+      return Observable.of(n);
     });
   }
   removeRic(id) {
