@@ -139,6 +139,8 @@ ngOnInit() {
           }
         }
       }
+      console.log(n);
+
       return Observable.of(n);
     });
   }
