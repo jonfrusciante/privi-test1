@@ -11,7 +11,7 @@ import {User} from '../../user-profile/user';
   styleUrls: ['./creanuovapartita.component.css']
 })
 export class CreanuovapartitaComponent implements OnInit {
-  userArrayObs: any[];
+  userArrayObs= [];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   stateFlag = true;
