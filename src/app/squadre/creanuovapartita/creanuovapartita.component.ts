@@ -61,7 +61,7 @@ export class CreanuovapartitaComponent implements OnInit {
    // this.secondFormGroup.controls['secondCtrl'].valueChanges.subscribe(
      // userid => { this.userstoad.push(this.getuserfrom(userid)); });
     this.secondFormGroup.valueChanges.subscribe(
-      arayu => {this.userArrayObs = this.getuserfrom(arayu.secondCtrl) }
+      arayu => {this.userArrayObs = this.getuserfrom(arayu.secondCtrl); console.log(this.userArrayObs)}
     );
   }
   public giornoprima() {
