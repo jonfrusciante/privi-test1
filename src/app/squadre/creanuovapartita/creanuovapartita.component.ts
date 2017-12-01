@@ -61,7 +61,7 @@ export class CreanuovapartitaComponent implements OnInit {
    // this.secondFormGroup.controls['secondCtrl'].valueChanges.subscribe(
      // userid => { this.userstoad.push(this.getuserfrom(userid)); });
     this.secondFormGroup.valueChanges.subscribe(
-      arayu => {this.userArrayObs = this.getuserfrom(arayu.secondCtrl)}
+      arayu => {this.userArrayObs = this.getuserfrom(arayu.secondCtrl) }
     );
   }
   public giornoprima() {
@@ -84,10 +84,13 @@ export class CreanuovapartitaComponent implements OnInit {
     // this.prengrab = event;
   }
   getuserfrom(id: any[]): any[] {
+    console.log(id);
     const _User$ = [];
     for (let obj of id) {
       _User$.push(this.afs.collection('users').doc(obj).valueChanges());
     }
+    console.log(_User$);
+
     return _User$;
   }
 
