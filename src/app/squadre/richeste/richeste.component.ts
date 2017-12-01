@@ -117,10 +117,7 @@ ngOnInit() {
               return userid[keys] === Boolean ;
             });
           });
-
-        console.log(filter);
-
-      }
+      console.log(filter);
     });
   }
   removeRic(id) {
