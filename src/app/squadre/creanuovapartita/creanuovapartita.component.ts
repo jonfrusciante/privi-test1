@@ -103,6 +103,8 @@ export class CreanuovapartitaComponent implements OnInit {
     for (let obj of usr) {
       prenotazione[obj] = false;
     }
+    this.afs.collection('richieste').add(prenotazione);
+
     console.log(prenotazione);
   }
 
