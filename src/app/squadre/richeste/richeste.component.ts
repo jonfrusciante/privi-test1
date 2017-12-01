@@ -134,7 +134,7 @@ ngOnInit() {
           }
         }
       }
-      return Observable.of(h);
+      return arrayRicheste.combineLatest(Observable.of(h));
     });
   }
   removeRic(id) {
