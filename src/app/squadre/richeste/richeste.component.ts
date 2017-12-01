@@ -111,13 +111,12 @@ ngOnInit() {
       return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
     });
     this.Richestout$.subscribe( n => {
-      const filter = n.filter( userid => {
-          return Object.keys(userid)
-            .some( keys => {
-              return userid[keys] === false || userid[keys] === true;
-            });
-          });
-      console.log(filter);
+      for (let obj of n) {
+        const prop = Object.keys(obj);
+        prop.find(Boolean);
+        console.log(prop);
+
+      }
     });
   }
   removeRic(id) {
@@ -125,7 +124,7 @@ ngOnInit() {
    this.afs.collection('match').doc(id).delete();
 
   }
-  getuserfrom(item) {
+  getuserfrom(item){
     console.log(item);
   }
 }
