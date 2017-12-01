@@ -112,7 +112,7 @@ ngOnInit() {
     });
     this.Richestout$.subscribe( n => {
       for (let obj of n) {
-        const prop = Object.keys(typeof obj);
+        const prop = Object.keys(!obj.dataid || !obj.oraid || !obj.masteruser);
         console.log(prop);
 
       }
