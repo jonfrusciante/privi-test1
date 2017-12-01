@@ -7,6 +7,10 @@ import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/concat';
+import 'rxjs/add/operator/combineLatest';
+
+
 import {format} from 'date-fns';
 
 interface RichiesteOut {
@@ -134,7 +138,7 @@ ngOnInit() {
           }
         }
       }
-      return arrayRicheste.combineLatest(Observable.of(h));
+      return arrayRicheste.concat(Observable.of(h));
     });
   }
   removeRic(id) {
