@@ -127,9 +127,13 @@ ngOnInit() {
     }); */
 
   }
-  getuserfromarr(arrayRicheste: any[]): any[]  {
+  getuserfromarr(arrayRicheste): any[]  {
      const x = arrayRicheste;
-     console.log(x);
+    for (const obj in x) {
+      if( obj ) {
+        console.log( obj );
+      }
+    }
     return x;
 
   }
