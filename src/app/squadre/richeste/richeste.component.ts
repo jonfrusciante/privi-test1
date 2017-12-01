@@ -115,7 +115,6 @@ ngOnInit() {
       .switchMap( (user) => {
       return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
     });
-    this.getuserfromarr(this.Richestout$).subscribe( y => console.log(y));
   /*  this.Richestout$.subscribe( n => {
       for (const obj of n) {
         for (const obj1 in obj) {
@@ -128,23 +127,19 @@ ngOnInit() {
     }); */
 
   }
-  getuserfromarr(arrayRicheste: Observable<Richieste[]>): Observable<any[]> {
-    return arrayRicheste.switchMap((n) => {
-      const h = [];
+  getuserfromarr(arrayRicheste: any[]): any[]  {
+     const x = arrayRicheste.map((n) => {
       for (const obj of n) {
         console.log('fiest' , obj);
         for (const obj1 in obj) {
           if ( typeof obj[obj1] === 'boolean') {
-            obj.user = [];
-            obj.user.push(
-          this.afs.collection('users').doc(obj1).valueChanges());
-            console.log(obj);
-
-          }
+            console.log(obj);          }
         }
       }
-      return Observable.of(h);
+      console.log(x);
     });
+    return x;
+
   }
   removeRic(id) {
     console.log(id);
