@@ -11,7 +11,7 @@ import {User} from '../../user-profile/user';
   styleUrls: ['./creanuovapartita.component.css']
 })
 export class CreanuovapartitaComponent implements OnInit {
-  userArrayObs: Observable<any[]>;
+  userArrayObs: any[];
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   stateFlag = true;
@@ -83,12 +83,12 @@ export class CreanuovapartitaComponent implements OnInit {
     this.firstFormGroup.controls['data'].setValue(format(event.start, 'YYYY-MM-DD') );
     // this.prengrab = event;
   }
-  getuserfrom(id: any[]): Observable<any[]> {
+  getuserfrom(id: any[]): any[] {
     const _User$ = [];
     for (let obj of id) {
       _User$.push(this.afs.collection('users').doc(obj).valueChanges());
     }
-    return Observable.of(_User$);
+    return _User$;
   }
 
 }
