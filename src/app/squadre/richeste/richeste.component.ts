@@ -110,6 +110,7 @@ ngOnInit() {
     (user) => {
       return this.afs.collection('richieste', ref => ref.where('masteruser', '==' , user.uid)).valueChanges();
     });
+    this.Richestout$.subscribe( n => console.log(n));
   }
   removeRic(id) {
     console.log(id);
