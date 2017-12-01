@@ -47,7 +47,6 @@ interface Richieste {
   dataid?: string;
   oraid?: string;
   masteruser?: string;
-  userObservable: any[];
 }
 @Component({
   selector: 'app-richeste',
@@ -130,18 +129,16 @@ ngOnInit() {
   }
   getuserfromarr(arrayRicheste: Observable<Richieste[]>): Observable<any[]> {
     return arrayRicheste.switchMap((n) => {
-      const h=[];
+      const h = [];
       for (const obj of n) {
-        console.log(obj);
         for (const obj1 in obj) {
           if ( typeof obj[obj1] === 'boolean') {
-           // obj.userObservable.push( this.afs.collection('users').doc(obj1).valueChanges());
+            console.log(obj);
+            h.push( this.afs.collection('users').doc(obj1).valueChanges());
           }
         }
       }
-      console.log(n);
-
-      return Observable.of(n);
+      return Observable.of(h);
     });
   }
   removeRic(id) {
