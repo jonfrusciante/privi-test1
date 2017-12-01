@@ -135,7 +135,7 @@ ngOnInit() {
         console.log(obj);
         for (const obj1 in obj) {
           if ( typeof obj[obj1] === 'boolean') {
-            obj.userObservable.push( this.afs.collection('users').doc(obj1).valueChanges());
+           // obj.userObservable.push( this.afs.collection('users').doc(obj1).valueChanges());
           }
         }
       }
