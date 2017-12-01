@@ -99,8 +99,9 @@ export class CreanuovapartitaComponent implements OnInit {
    const prenotazione = { dataid: this.firstFormGroup.controls['data'].value , oraid: this.firstFormGroup.controls['ora'].value };
     for (let obj of usr) {
       prenotazione[obj] = false;
+      console.log(prenotazione);
+
     }
-    console.log(prenotazione);
   }
 
 }
