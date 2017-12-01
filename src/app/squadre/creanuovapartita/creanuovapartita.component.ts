@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {format , subDays, addDays} from 'date-fns';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {User} from '../../user-profile/user';
+import {AuthService} from '../../core/auth.service';
 @Component({
   selector: 'app-creanuovapartita',
   templateUrl: './creanuovapartita.component.html',
@@ -22,7 +23,8 @@ export class CreanuovapartitaComponent implements OnInit {
   userstoad=[];
   serializedDate = new FormControl((new Date()).toISOString());
   Users$: Observable<User[]>;
-  constructor(private _formBuilder: FormBuilder, private afs: AngularFirestore) {
+  useractual: User;
+  constructor(private _formBuilder: FormBuilder, private afs: AngularFirestore , private userserv: AuthService) {
 
   }
   onInput(event) {
@@ -48,7 +50,8 @@ export class CreanuovapartitaComponent implements OnInit {
 
   ngOnInit() {
     this.Users$ = this.afs.collection('users').valueChanges();
-    this.firstFormGroup = this._formBuilder.group({
+     this.userserv.user.subscribe(user => this.useractual = user);
+     this.firstFormGroup = this._formBuilder.group({
       data: ['', Validators.required],
       ora: ['', Validators.required],
     });
@@ -96,7 +99,7 @@ export class CreanuovapartitaComponent implements OnInit {
   inviarichiesta() {
    console.log(this.firstFormGroup.getRawValue(), this.secondFormGroup.getRawValue());
    const usr =  this.secondFormGroup.controls['secondCtrl'].value;
-   const prenotazione = { dataid: format(this.firstFormGroup.controls['data'].value, 'DD-MM-YYYY') , oraid: this.firstFormGroup.controls['ora'].value };
+   const prenotazione = { dataid: format(this.firstFormGroup.controls['data'].value, 'DD-MM-YYYY') , oraid: this.firstFormGroup.controls['ora'].value, masteruser: this.useractual.uid  };
     for (let obj of usr) {
       prenotazione[obj] = false;
     }
