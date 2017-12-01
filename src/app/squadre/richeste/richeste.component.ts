@@ -114,7 +114,7 @@ ngOnInit() {
       for (let obj of n) {
         const prop = Object.keys(obj);
         for (let obj1 in obj) {
-          if(obj1){console.log(obj1);}
+          if(obj1){console.log(obj[obj1]);}
 
         }
 
