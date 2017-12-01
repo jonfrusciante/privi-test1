@@ -129,9 +129,7 @@ ngOnInit() {
   }
   getuserfromarr(arrayRicheste: Observable<Richieste[]>): Observable<any[]> {
     return arrayRicheste.switchMap((n) => {
-      const h = [];
-      h.concat(n);
-      console.log(h);
+      const h=[];
       for (const obj of n) {
         for (const obj1 in obj) {
           if ( typeof obj[obj1] === 'boolean') {
@@ -140,7 +138,7 @@ ngOnInit() {
           }
         }
       }
-      return Observable.of(h);
+      return arrayRicheste.concat(Observable.of(h));
     });
   }
   removeRic(id) {
