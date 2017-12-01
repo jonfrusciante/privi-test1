@@ -128,16 +128,8 @@ ngOnInit() {
 
   }
   getuserfromarr(arrayRicheste: any[]): any[]  {
-     const x = arrayRicheste.map((n) => {
-      for (const obj of n) {
-        console.log('fiest' , obj);
-        for (const obj1 in obj) {
-          if ( typeof obj[obj1] === 'boolean') {
-            console.log(obj);          }
-        }
-      }
-      console.log(x);
-    });
+     const x = arrayRicheste;
+     console.log(x);
     return x;
 
   }
