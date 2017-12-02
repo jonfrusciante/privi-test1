@@ -140,7 +140,7 @@ ngOnInit() {
          c.data = Observable.of(x);
        }
      }
-     arr.push(c.data);
+    // arr.push(c.data);
     return arr;
 
   }
