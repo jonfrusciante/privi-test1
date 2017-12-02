@@ -125,7 +125,7 @@ ngOnInit() {
         }
       }
     }); */
-    const h = this.Richestout$.map(n =>{return n  ;}  );
+    const h = this.Richestout$.map(n =>{return n.map( s => { return this.getuserfromarr(s)})  ;}  );
     h.subscribe(g => console.log(g));
   }
   getuserfromarr(arrayRicheste): any[]  {
