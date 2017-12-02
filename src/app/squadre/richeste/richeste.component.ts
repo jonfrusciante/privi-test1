@@ -140,8 +140,7 @@ ngOnInit() {
          c.data = Observable.of(x);
        }
      }
-    // arr.push(c.data);
-    return arr;
+console.log(arr);    return arr;
 
   }
   removeRic(id) {
