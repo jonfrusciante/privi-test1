@@ -125,7 +125,7 @@ ngOnInit() {
         }
       }
     }); */
-    const h = this.Richestout$.map(n =>{return n.map( s => { return this.getuserfromarr(s)})  ;}  );
+    const h = this.Richestout$.switchMap(arrairichieste =>{return arrairichieste.map( richiesta => { return this.getuserfromarr(richiesta)})  ;}  );
     h.subscribe(g => console.log(g));
   }
   getuserfromarr(arrayRicheste): any[]  {
