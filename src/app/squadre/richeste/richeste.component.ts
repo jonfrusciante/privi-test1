@@ -129,7 +129,7 @@ ngOnInit() {
     h.subscribe(g => console.log(g));
   }
   getuserfromarr(arrayRicheste): any[]  {
-    const c = [];
+    const c =[];
 
     const that = this;
      const x = arrayRicheste;
@@ -137,6 +137,7 @@ ngOnInit() {
        if (typeof x[obj] === 'boolean') {
          const user = that.afs.collection('users').doc(obj).valueChanges();
          c.push(user);
+         c.push(Observable.of(x));
        }
      }
     return c;
