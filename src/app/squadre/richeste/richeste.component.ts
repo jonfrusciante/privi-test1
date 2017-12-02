@@ -129,18 +129,19 @@ ngOnInit() {
     h.subscribe(g => console.log(g));
   }
   getuserfromarr(arrayRicheste): any[]  {
-    const c =[];
-
+    const c = {data: null };
+     const arr = [];
     const that = this;
      const x = arrayRicheste;
     for (const obj in x) {
        if (typeof x[obj] === 'boolean') {
          const user = that.afs.collection('users').doc(obj).valueChanges();
-         c.push(user);
-         c.push(Observable.of(x));
+         arr.push( user);
+         c.data = Observable.of(x);
        }
      }
-    return c;
+     arr.push(c);
+    return arr;
 
   }
   removeRic(id) {
