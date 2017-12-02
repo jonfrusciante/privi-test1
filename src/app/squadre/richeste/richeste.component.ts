@@ -127,7 +127,7 @@ ngOnInit() {
         }
       }
     }); */
-    this.RichestoutFINAL$ = this.Richestout$.map(arrairichieste =>{return arrairichieste.map( richiesta => { richiesta.user = this.getuserfromarr(richiesta) ; return richiesta})  ;}  );
+    this.RichestoutFINAL$ = this.Richestout$.map(arrairichieste =>{return arrairichieste.map( richiesta => { richiesta.user = this.getuserfromarr(richiesta) ; console.log(richiesta); return richiesta})  ;}  );
     // h.subscribe(g => console.log(g));
   }
   getuserfromarr(arrayRicheste): any[]  {
