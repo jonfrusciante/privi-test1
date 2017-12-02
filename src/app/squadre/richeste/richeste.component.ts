@@ -10,6 +10,7 @@ import 'rxjs/add/operator/switchMap';
 import {format} from 'date-fns';
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/mergeMap';
 
 
 
@@ -62,6 +63,7 @@ export class RichesteComponent implements OnInit {
   user: User;
   user$: Observable<User>;
   Richestout$: Observable<Richieste[]>;
+  RichestoutFINAL$: Observable<Richieste[]>;
 
 
   constructor(private afs: AngularFirestore , private userR: AuthService) {
@@ -125,8 +127,8 @@ ngOnInit() {
         }
       }
     }); */
-    const h = this.Richestout$.switchMap(arrairichieste =>{return arrairichieste.map( richiesta => { richiesta.user = this.getuserfromarr(richiesta) ; return richiesta})  ;}  );
-    h.subscribe(g => console.log(g));
+    this.RichestoutFINAL$ = this.Richestout$.map(arrairichieste =>{return arrairichieste.map( richiesta => { richiesta.user = this.getuserfromarr(richiesta) ; return richiesta})  ;}  );
+    // h.subscribe(g => console.log(g));
   }
   getuserfromarr(arrayRicheste): any[]  {
     const c = {data: null };
