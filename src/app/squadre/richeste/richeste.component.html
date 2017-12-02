@@ -30,13 +30,7 @@
 <div *ngFor="let item of Richestout$ | async"   >
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header  >
-      <div *ngIf="getuserfromarr(item) as arra">
-      <div *ngFor="let userr of arra">
-        <div *ngIf="userr | async as userfinal">
-          {{userfinal?.displayName}}
-        </div>
-      </div>
-      </div>
+
       <mat-card-title>{{item?.dataid}}</mat-card-title>
 
       <mat-card-title>{{item?.oraid}}</mat-card-title>
