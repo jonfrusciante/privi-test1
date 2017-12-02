@@ -128,10 +128,11 @@ ngOnInit() {
 
   }
   getuserfromarr(arrayRicheste): any[]  {
+    const that = this;
      const x = arrayRicheste;
      const fun = function (){for (const obj in x) {
        if (typeof x[obj] === 'boolean') {
-         const user = this.afs.collection('users').doc(obj).valueChanges();
+         const user = that.afs.collection('users').doc(obj).valueChanges();
          const c = [];
          c.push(user);
          return c ;
