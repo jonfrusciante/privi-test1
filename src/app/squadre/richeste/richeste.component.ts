@@ -11,6 +11,7 @@ import {format} from 'date-fns';
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/mergeMap';
+import {WathsupService} from '../../wathsup.service';
 
 
 
@@ -66,7 +67,7 @@ export class RichesteComponent implements OnInit {
   RichestoutFINAL$: Observable<Richieste[]>;
 
 
-  constructor(private afs: AngularFirestore , private userR: AuthService) {
+  constructor(private afs: AngularFirestore , private wz:WathsupService , private userR: AuthService) {
 
   }
   getRichesteOut(): Observable<RichiesteOut[]> {
@@ -152,5 +153,12 @@ console.log(arr);    return arr;
   }
   getuserfrom(item){
     console.log(item);
+  }
+  sendwhatup(number, datiprenotazione: Richieste ) {
+    const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user , getgioc : function () {return datiprenotazione.user.map(r => r.displayName ) ;
+    }};
+    const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' + '/n' + 'I giocatori invitati sono  :' + testo.getgioc();
+    console.log(testodainviare);
+   // this.wz.sendmessage(number,testodainviare);
   }
 }

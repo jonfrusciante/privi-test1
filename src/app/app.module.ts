@@ -55,6 +55,7 @@ import {MaterialModule} from './material/material.module';
 import { ImgGuruService } from './img-guru.service';
 import { StoppropagationDirective } from './directive/stoppropagation.directive';
 import { DataformComponent } from './dataform/dataform.component';
+import { WathsupService } from './wathsup.service';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,7 @@ import { DataformComponent } from './dataform/dataform.component';
       provide: DateAdapter, useClass : NativeComponent
     },
     {
-      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS,
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS, providers: [WathsupService],
     }
   ],
   entryComponents: [DialogcalendarComponent, Modaltest1Component, HometeamComponent],
