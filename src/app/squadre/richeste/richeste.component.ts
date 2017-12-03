@@ -156,7 +156,7 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
-    let c = Observable.of(datiprenotazione.user).mergeMap(val => val).scan(val => val);
+    let c = Observable.of(datiprenotazione.user).concat(val => val).scan(val => val);
 
     c.subscribe( gg => console.log(gg));
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
