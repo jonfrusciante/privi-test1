@@ -31,9 +31,10 @@
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header  >
       <div *ngFor="let userrr of item.user ">
-        <div *ngIf="userrr | async as gino">{{gino.email}}</div>
+        <div *ngIf="userrr | async as gino">{{gino.email}} <br>
 
         <button mat-raised-button (click)="sendwhatup(gino.telefon, item , item.masteruser)" color="primary">Invita con whatzup</button>
+      </div>
       </div>
 
       <mat-card-title>{{item?.dataid}}</mat-card-title>
