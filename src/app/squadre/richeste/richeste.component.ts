@@ -157,7 +157,7 @@ console.log(arr);    return arr;
   sendwhatup(number, datiprenotazione: Richieste, user ) {
     console.log(number , datiprenotazione, user);
     const obs = Observable.of(datiprenotazione.user);
-    obs.map(f => console.log(f)).subscribe();
+    obs.map((f) =>  f.map( (h) => h.displayName)).subscribe();
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
     console.log(testodainviare );
