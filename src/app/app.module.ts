@@ -108,12 +108,12 @@ import { WathsupService } from './wathsup.service';
     AppcanvasModule ,
     AppRoutingModule
   ],
-  providers: [UserService , ImgGuruService ,
+  providers: [UserService , ImgGuruService , WathsupService ,
     {
       provide: DateAdapter, useClass : NativeComponent
     },
     {
-      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS, providers: [WathsupService],
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
     }
   ],
   entryComponents: [DialogcalendarComponent, Modaltest1Component, HometeamComponent],
