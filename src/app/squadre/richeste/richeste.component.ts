@@ -159,8 +159,7 @@ console.log(arr);    return arr;
 
     const h = function () {
       for (let obj of datiprenotazione.user) {
-        obj.subscribe(r => p.push(r));
-        console.log(p);
+         console.log(obj);
       }
     };
     h();
