@@ -155,10 +155,14 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
-    const gioc = datiprenotazione.user.map(
-      r => r.map( re => re.displayName)
-    );
-    console.log(number , datiprenotazione, gioc);
+    const h = function () {
+      const p=[];
+      for (let obj of datiprenotazione.user) {
+        obj.subscribe(r => p.push(r.displayName));
+      }
+      return p;
+    };
+    console.log(number , datiprenotazione, h() );
 
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
