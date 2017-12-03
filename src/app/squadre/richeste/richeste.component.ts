@@ -159,7 +159,7 @@ console.log(arr);    return arr;
 
     const h = function () {
       for (let obj of datiprenotazione.user) {
-         console.log(obj);
+         return obj;
       }
     };
     h();
