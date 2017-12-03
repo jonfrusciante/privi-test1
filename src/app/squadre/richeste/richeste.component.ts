@@ -162,8 +162,8 @@ console.log(arr);    return arr;
          return obj;
       }
     };
-    h();
-    console.log(number , datiprenotazione, p );
+    const gino = h();
+    console.log(number , datiprenotazione, gino );
 
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
