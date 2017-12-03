@@ -159,9 +159,8 @@ console.log(arr);    return arr;
 
     const h = function () {
       for (let obj of datiprenotazione.user) {
-        let k = null;
-         obj.subscribe( b => k = b);
-         return k
+        //let k = null;
+         return obj.subscribe( b => console.log(b));
       }
     };
     const gino = h();
