@@ -10,6 +10,7 @@ import {format} from 'date-fns';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/observable/concat';
 import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/forkJoin';
 
 
 
@@ -154,7 +155,7 @@ console.log(arr);    return arr;
   }
   sendwhatup(number, datiprenotazione: Richieste, user , userarr: Observable<User>[]) {
 
-    Observable.merge(...userarr).subscribe(d => console.log(d.displayName)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+    Observable.forkJoin(...userarr).subscribe(d => console.log(d)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
 
     // c.subscribe(ff => console.log(ff));
     // console.log(c);
