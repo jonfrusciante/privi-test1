@@ -156,7 +156,7 @@ console.log(arr);    return arr;
 
     const c = Observable.merge(...datiprenotazione.user).subscribe(d => console.log(d.displayName)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
 
-    c.subscribe(ff => console.log(ff));
+    // c.subscribe(ff => console.log(ff));
     // console.log(c);
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
