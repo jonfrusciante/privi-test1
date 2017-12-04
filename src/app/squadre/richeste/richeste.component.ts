@@ -155,8 +155,8 @@ console.log(arr);    return arr;
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr: Observable<User>[]) {
 console.log(userarr)
-    Observable.merge(...userarr).subscribe(d => console.log('aa', d)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
-   // console.log(us)
+    const c= Observable.merge(...userarr)// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+   console.log(c)
     // c.subscribe(ff => console.log(ff));
     // console.log(c);
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
