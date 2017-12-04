@@ -155,7 +155,7 @@ console.log(arr);    return arr;
   }
   sendwhatup(number, datiprenotazione: Richieste, user , userarr: Observable<User>[]) {
 
-    Observable.forkJoin(...userarr).subscribe(d => console.log(d)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+    Observable.concat(...userarr).subscribe(d => console.log(d)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
 
     // c.subscribe(ff => console.log(ff));
     // console.log(c);
