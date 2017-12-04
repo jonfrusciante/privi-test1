@@ -159,7 +159,7 @@ console.log(arr);    return arr;
   sendwhatup(number, datiprenotazione: Richieste, user ) {
     // console.log (datiprenotazione.user);
 
-    let c = Observable.merge(...datiprenotazione.user).map( flat => flat).do( fla => console.log(fla)).subscribe() ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+    let c = Observable.merge(...datiprenotazione.user).map( flat => flat).subscribe(aa=>console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
     console.log(c);
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
