@@ -153,9 +153,9 @@ console.log(arr);    return arr;
   getuserfrom(item){
     console.log(item);
   }
-  sendwhatup(number, datiprenotazione: Richieste,  userarr: Observable<Observable<User>>[]) {
+  sendwhatup(number, datiprenotazione: Richieste,  userarr: Observable<Observable<Observable<User>>>[]) {
 console.log(userarr);
-    userarr[0].subscribe(aa => aa.subscribe(j => console.log(j) ) ) ;
+    userarr[0].subscribe(aa => aa.subscribe(j => j.subscribe(hh=>console.log(hh)) ) ) ;
     const c= Observable.merge(...userarr)// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
    console.log(c)
     // c.subscribe(ff => console.log(ff));
