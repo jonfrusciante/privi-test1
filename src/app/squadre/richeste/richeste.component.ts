@@ -6,14 +6,8 @@ import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/forkJoin';
 import {format} from 'date-fns';
-import 'rxjs/add/operator/concat';
-import 'rxjs/add/operator/concatAll';
-import 'rxjs/add/operator/mergeMap';
 import {WathsupService} from '../../wathsup.service';
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/concat';
 
 
 
@@ -158,8 +152,8 @@ console.log(arr);    return arr;
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
 
-    const c = Observable.merge(...datiprenotazione.user) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
-    c.subscribe(ff=>console.log(ff));
+    const c = Observable.of(...datiprenotazione.user) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+    c.subscribe(ff => console.log(ff));
     // console.log(c);
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
