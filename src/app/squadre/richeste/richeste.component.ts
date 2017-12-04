@@ -14,7 +14,7 @@ import 'rxjs/add/operator/mergeMap';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/observable/';
+import 'rxjs/add/observable/concat';
 
 
 
@@ -158,7 +158,7 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
-    let c = Observable.forkJoin(...datiprenotazione.user);
+    let c = Observable.concat(...datiprenotazione.user);
     //let c = Observable.of(datiprenotazione.user).flatMap((result: Array<User>) => Observable.f( result.map((( useri: User) => useri.displayName))));
     c.subscribe(gg => console.log(gg));
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
