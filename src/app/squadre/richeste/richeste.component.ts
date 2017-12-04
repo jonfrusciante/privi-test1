@@ -14,7 +14,6 @@ import 'rxjs/add/operator/mergeMap';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/observable/flatMap';
 
 
 
