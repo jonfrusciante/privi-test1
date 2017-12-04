@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import {format} from 'date-fns';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/operator/concatAll';
+import 'rxjs/add/observable/merge';
 
 
 
@@ -153,7 +154,7 @@ console.log(arr);    return arr;
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
 
-    const c = Observable.of(...datiprenotazione.user).concatAll() ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+    const c = Observable.merge(...datiprenotazione.user).map(d => d.displayName) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
 
     c.subscribe(ff => console.log(ff));
     // console.log(c);
