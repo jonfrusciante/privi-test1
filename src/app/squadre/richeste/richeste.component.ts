@@ -14,7 +14,7 @@ import 'rxjs/add/operator/mergeMap';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/operator/merge';
 import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/observable/concat';
+import 'rxjs/add/observable/flatMap';
 
 
 
@@ -158,9 +158,9 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
-    let c = Observable.forkJoin(...datiprenotazione.user);
-    //let c = Observable.of(datiprenotazione.user).flatMap((result: Array<User>) => Observable.f( result.map((( useri: User) => useri.displayName))));
-    c.map( gg => gg ).subscribe(css => console.log(css));
+  //  let c = Observable.forkJoin(...datiprenotazione.user);
+    let c = Observable.of(datiprenotazione.user).flatMap((result: Array<User>) => Observable.of( result.map((( useri: User) => useri.displayName))));
+    c.subscribe((f)=> console.log(f));
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
     console.log(testodainviare );
