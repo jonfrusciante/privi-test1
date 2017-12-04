@@ -33,7 +33,7 @@
       <div *ngFor="let userrr of item.user ">
         <div *ngIf="userrr | async as gino">{{gino.email}} <br>
 
-        <button mat-raised-button (click)="sendwhatup(gino.telefon, item, gino )" color="primary">Invita con whatzup</button>
+        <button mat-raised-button (click)="sendwhatup(gino.telefon, item, item.user )" color="primary">Invita con whatzup</button>
       </div>
       </div>
 
