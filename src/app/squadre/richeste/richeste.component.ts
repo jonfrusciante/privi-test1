@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
 import {format} from 'date-fns';
 import 'rxjs/add/operator/concat';
-import 'rxjs/add/operator/combineLatest';
+import 'rxjs/add/operator/concatAll';
 import 'rxjs/add/operator/mergeMap';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/observable/merge';
@@ -157,13 +157,8 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
-     const test=[];
-    for (let obj: Observable<User> of datiprenotazione.user) {
-     obj.subscribe(c => console.log(c as User));
-    }
-    console.log(test);
-    // Observable.merge(...datiprenotazione.user , c) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
-    Observable.merge(...test).subscribe(tests => console.log(tests));
+
+    Observable.merge(...datiprenotazione.user).combineAll().subscribe(a=>console.log(a)) ;// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
     // console.log(c);
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' ;
