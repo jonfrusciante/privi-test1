@@ -157,7 +157,7 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste, user ) {
-    let c = Observable.of(...datiprenotazione.user);
+    let c = Observable.forkJoin(...datiprenotazione.user);
     //let c = Observable.of(datiprenotazione.user).flatMap((result: Array<User>) => Observable.f( result.map((( useri: User) => useri.displayName))));
     c.subscribe(gg => console.log(gg));
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
