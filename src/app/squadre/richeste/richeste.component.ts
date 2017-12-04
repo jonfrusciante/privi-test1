@@ -12,7 +12,7 @@ import 'rxjs/add/operator/concat';
 import 'rxjs/add/operator/combineLatest';
 import 'rxjs/add/operator/mergeMap';
 import {WathsupService} from '../../wathsup.service';
-import 'rxjs/add/operator/merge';
+import 'rxjs/add/operator/flatMap';
 
 
 
