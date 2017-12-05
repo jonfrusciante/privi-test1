@@ -20,6 +20,6 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
    search.set('text', testo);
    const options = new RequestOptions({ headers: myHeaders, params: search });
 
-   return this.http.post( this.url, {}, options).map( r =>  r.json()  );
+   return this.http.post( this.url, {token: '30c58c744a12ef74b365686b243bec9a5a240c87e974e'}, options).map( r =>  r.json()  );
  }
 }
