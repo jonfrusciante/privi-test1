@@ -6,6 +6,8 @@ import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+
 import {format} from 'date-fns';
 import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/observable/concat';
