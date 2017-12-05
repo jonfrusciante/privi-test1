@@ -145,14 +145,14 @@ ngOnInit() {
 console.log(arr);    return arr;
 
   }
-  getuserid(arrayUserUid): string[] {
+  getuserid(arrayUserUid): Observable<any> {
     const arr = [];
     for (let obj in arrayUserUid) {
       if (typeof arrayUserUid[obj] === 'boolean') {
         arr.push(this.afs.collection('users').doc(obj).valueChanges());
       }
     }
-    return arr;
+    return Observable.merge(...arr).map((g: User) => g.displayName);
 
   }
 
@@ -165,8 +165,9 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
-   const h = this.getuserid(datiprenotazione);
-   console.log(h);
+   this.getuserid(datiprenotazione).subscribe(hh => console.log(hh));
+
+
     // const c= Observable.merge(...userarr) // .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
    // console.log(us)
     // c.subscribe(ff => console.log(ff));
