@@ -151,8 +151,8 @@ console.log(arr);    return arr;
       if (typeof arrayUserUid[obj] === 'boolean') {
         arr.push( obj);
       }
+      return arr;
     }
-    return arr;
   }
 
   removeRic(id) {
