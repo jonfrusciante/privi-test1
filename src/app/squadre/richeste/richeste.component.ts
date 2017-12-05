@@ -145,6 +145,15 @@ ngOnInit() {
 console.log(arr);    return arr;
 
   }
+  getuserid(arrayUserUid): string[] {
+    const arr = [];
+    for (let obj of arrayUserUid) {
+      if (typeof arrayUserUid[obj] === 'boolean') {
+        arr.push( obj);
+      }
+    }
+    return arr;
+  }
 
   removeRic(id) {
     console.log(id);
@@ -155,8 +164,8 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
-   console.log(datiprenotazione);
-
+   const h = this.getuserid(datiprenotazione);
+   console.log(h);
     // const c= Observable.merge(...userarr) // .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
    // console.log(us)
     // c.subscribe(ff => console.log(ff));
