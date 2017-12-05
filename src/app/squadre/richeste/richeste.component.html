@@ -31,9 +31,9 @@
   <mat-card class="mat-elevation-z9"   >
     <mat-card-header  >
       <div *ngFor="let userrr of item.user ">
-        <div *ngIf="userrr | async as gino">{{gino.email}} <br>
+        <div *ngIf="userrr | async as ginoo">{{ginoo?.email}} <br>
 
-        <button mat-raised-button (click)="sendwhatup(gino.telefon, item, item.user )" color="primary">Invita con whatzup</button>
+        <button mat-raised-button (click)="sendwhatup(ginoo?.telefon, item, item.user )" color="primary">Invita con whatzup</button>
       </div>
       </div>
 
