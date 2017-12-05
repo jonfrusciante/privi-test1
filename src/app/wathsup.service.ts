@@ -16,8 +16,8 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
    search.set('uid', '393200771189');
    search.set('to', number);
    search.set('text', testo);
-   const options = new RequestOptions({ headers: myHeaders, params: search });
+  // const options = new RequestOptions({ headers: myHeaders, params: search });
 
-   return this.http.post( this.url, {}, options).map( r =>  r.json()  );
+   return this.http.post( this.url, {}, {search}).map( r =>  r.json()  );
  }
 }
