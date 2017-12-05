@@ -149,7 +149,7 @@ console.log(arr);    return arr;
     const arr = [];
     for (let obj in arrayUserUid) {
       if (typeof arrayUserUid[obj] === 'boolean') {
-        arr.push( obj);
+        arr.push(this.afs.collection('users').doc(obj).valueChanges());
       }
     }
     return arr;
