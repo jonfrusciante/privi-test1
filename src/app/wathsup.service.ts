@@ -11,7 +11,7 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
  sendmessage(number, testo): Observable<any> {
    const myHeaders = new Headers();
    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-   myHeaders.append('Access-Control-Allow-Origin', 'http://localhost:8080');
+   myHeaders.append(    'Access-Control-Allow-Origin', '*' );
 
    const search = new URLSearchParams();
    search.set('token', '30c58c744a12ef74b365686b243bec9a5a240c87e974e');
