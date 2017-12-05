@@ -147,12 +147,13 @@ console.log(arr);    return arr;
   }
   getuserid(arrayUserUid): string[] {
     const arr = [];
-    for (let obj of arrayUserUid) {
+    for (let obj in arrayUserUid) {
       if (typeof arrayUserUid[obj] === 'boolean') {
         arr.push( obj);
       }
-      return arr;
     }
+    return arr;
+
   }
 
   removeRic(id) {
