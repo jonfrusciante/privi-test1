@@ -152,7 +152,7 @@ console.log(arr);    return arr;
         arr.push(this.afs.collection('users').doc(obj).valueChanges());
       }
     }
-    return Observable.concat(arr).map((g: User) => g.displayName);
+    return Observable.merge(...arr).mergeMap((g: User) => g.displayName);
 
   }
 
