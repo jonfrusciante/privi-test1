@@ -179,7 +179,7 @@ console.log(arr);    return arr;
      const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + userA ;
      return testodainviare ;
    }).combineLatest(x => {
-     return this.wz.sendmessage(number,x);
+     return this.wz.sendmessage(number, x);
    }).subscribe();
 
    // this.wz.sendmessage(number,testodainviare);asaas
