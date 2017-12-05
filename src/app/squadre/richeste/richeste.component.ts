@@ -155,7 +155,7 @@ console.log(arr);    return arr;
         arr.push(this.afs.collection('users').doc(obj).valueChanges());
       }
     }
-    return Observable.merge(...arr).map((g: User) => g.displayName).toArray().map(c => c);
+    return Observable.merge(...arr).map((g: User) => g.displayName);
 
   }
 
@@ -168,11 +168,17 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
-   this.getuserid(datiprenotazione).subscribe(username => {
-     console.log(username);
+    const userA=[];
+   this.getuserid(datiprenotazione).map(username => {
+     userA.push(username);
+     console.log(userA);
+     // const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
+     // const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + username ;
+     // console.log(testodainviare );
+   }).subscribe(x => {
      const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
-     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + username ;
-     console.log(testodainviare );
+     const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + userA ;
+     console.log(testodainviare , x );
    });
 
    // this.wz.sendmessage(number,testodainviare);asaas
