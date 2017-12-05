@@ -153,11 +153,11 @@ console.log(arr);    return arr;
   getuserfrom(item){
     console.log(item);
   }
-  sendwhatup(number, datiprenotazione: Richieste,  userarr: Observable<Observable<Observable<User>>>[]) {
-console.log(userarr);
-    userarr[0].subscribe(aa => aa.subscribe(j => j.subscribe(hh=>console.log(hh)) ) ) ;
+  sendwhatup(number, datiprenotazione: Richieste,  userarr: Observable<User>[]) {
+   userarr[0].take(1).subscribe(hh=>console.log(hh));
+
     const c= Observable.merge(...userarr)// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
-   console.log(c)
+   // console.log(us)
     // c.subscribe(ff => console.log(ff));
     // console.log(c);
     const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user}
