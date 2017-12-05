@@ -6,7 +6,7 @@ import {UserService} from '../../user-profile/user.service';
 import {Prenotazioni} from '../../admin/prenotazioni';
 import {AuthService} from '../../core/auth.service';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/toArray';
 
 import {format} from 'date-fns';
 import {WathsupService} from '../../wathsup.service';
@@ -155,7 +155,7 @@ console.log(arr);    return arr;
         arr.push(this.afs.collection('users').doc(obj).valueChanges());
       }
     }
-    return Observable.merge(...arr).map((g: User) => g.displayName);
+    return Observable.merge(...arr).map((g: User) => g.displayName).takeLast(1);
 
   }
 
@@ -181,9 +181,7 @@ console.log(arr);    return arr;
      return testodainviare ;
    }).map(x => {
      return this.wz.sendmessage(number, x);
-   });
-   const y = h.takeLast(1);
-   y.subscribe();
+   }).subscribe();
    // this.wz.sendmessage(number,testodainviare);asaas
   }
 }
