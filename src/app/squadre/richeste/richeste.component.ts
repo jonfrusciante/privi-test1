@@ -48,7 +48,7 @@ interface Richieste {
   dataid?: string;
   oraid?: string;
   masteruser?: string;
-  user: Observable<User>[];
+  user: any[];
 }
 @Component({
   selector: 'app-richeste',
@@ -153,10 +153,10 @@ console.log(arr);    return arr;
   getuserfrom(item){
     console.log(item);
   }
-  sendwhatup(number, datiprenotazione: Richieste,  userarr: Observable<User>[]) {
+  sendwhatup(number, datiprenotazione: Richieste,  userarr) {
    datiprenotazione.user[0].subscribe(hh => console.log(hh));
 
-    // const c= Observable.merge(...userarr)// .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
+    // const c= Observable.merge(...userarr) // .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
    // console.log(us)
     // c.subscribe(ff => console.log(ff));
     // console.log(c);
