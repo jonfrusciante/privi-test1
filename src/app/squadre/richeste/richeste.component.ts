@@ -168,7 +168,7 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
-   this.getuserid(datiprenotazione).toArray().subscribe(username => {
+   this.getuserid(datiprenotazione).subscribe(username => {
      console.log(username);
      const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + username ;
