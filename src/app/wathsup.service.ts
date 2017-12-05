@@ -10,8 +10,8 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
   }
  sendmessage(number, testo): Observable<any> {
    const myHeaders = new Headers();
-   myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-   myHeaders.append(    'Access-Control-Allow-Origin', '*' );
+   myHeaders.append('Content-Type', 'application/json');
+   myHeaders.append(    'Access-Control-Allow-Origin', 'https://www.waboxapp.com/' );
 
    const search = new URLSearchParams();
    search.set('token', '30c58c744a12ef74b365686b243bec9a5a240c87e974e');
@@ -20,6 +20,6 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
    search.set('text', testo);
    const options = new RequestOptions({ headers: myHeaders, params: search });
 
-   return this.http.post( this.url, {token: '30c58c744a12ef74b365686b243bec9a5a240c87e974e'}).map( r =>  r.json()  );
+   return this.http.post( this.url, {}, options).map( r =>  r.json()  );
  }
 }
