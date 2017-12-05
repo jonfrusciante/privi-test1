@@ -174,13 +174,13 @@ console.log(arr);    return arr;
      // const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      // const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + username ;
      // console.log(testodainviare );
-   }).combineLatest( (d) => {
+   }).map( (d) => {
      const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + userA ;
      return testodainviare ;
-   }).map( (x) =>
-     this.wz.sendmessage(number,x).map(ss => ss)
-   ).subscribe(x => console.log(x));
+   }).combineLatest(x => {
+     return this.wz.sendmessage(number,x);
+   }).subscribe();
 
    // this.wz.sendmessage(number,testodainviare);asaas
   }
