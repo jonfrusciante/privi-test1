@@ -155,7 +155,7 @@ console.log(arr);    return arr;
         arr.push(this.afs.collection('users').doc(obj).valueChanges());
       }
     }
-    return Observable.merge(...arr).map((g: User) => g.displayName).takeLast(1);
+    return Observable.merge(...arr).map((g: User) => g.displayName).toArray();
 
   }
 
@@ -169,19 +169,19 @@ console.log(arr);    return arr;
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
     const userA=[];
-   this.getuserid(datiprenotazione).map(username => {
-     userA.push(username);
+   this.getuserid(datiprenotazione).subscribe(username => {
+     console.log(username);
      // const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      // const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + username ;
      // console.log(testodainviare );
-   })
+   }); /*
      .map( () => {
      const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + userA ;
      return testodainviare ;
    }).map(x => {
      return this.wz.sendmessage(number, x);
-   }).subscribe();
+   }).subscribe();*/
    // this.wz.sendmessage(number,testodainviare);asaas
   }
 }
