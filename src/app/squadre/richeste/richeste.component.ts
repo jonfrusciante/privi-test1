@@ -13,7 +13,7 @@ import {WathsupService} from '../../wathsup.service';
 import 'rxjs/add/observable/concat';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/operator/toArray';
+import 'rxjs/add/operator/takeLast';
 
 
 
@@ -174,13 +174,13 @@ console.log(arr);    return arr;
      // const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      // const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + username ;
      // console.log(testodainviare );
-   }).map( () => {
+   }).combineLatest( (d) => {
      const testo = {data: format(datiprenotazione.dataid, 'DD-MM-YYYY'), ora: datiprenotazione.oraid , giocatori: datiprenotazione.user};
      const testodainviare = 'Salve hai un invito per la partita chr si terra i data ' + testo.data +  'alle ore' + testo.ora + 'organizzata da '  + datiprenotazione.masteruser + '.' +  'I giocatori invitati sono  :' + userA ;
      return testodainviare ;
-   }).subscribe(x => {
-     this.wz.sendmessage(number, x);
-   });
+   }).map( (x) =>
+     this.wz.sendmessage(number,x).map(ss => ss)
+   ).subscribe(x => console.log(x));
 
    // this.wz.sendmessage(number,testodainviare);asaas
   }
