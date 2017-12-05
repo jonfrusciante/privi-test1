@@ -145,9 +145,7 @@ ngOnInit() {
 console.log(arr);    return arr;
 
   }
-  tt(jj: Observable<User>) {
-    jj.subscribe(hh => console.log('tt', hh));
-  }
+
   removeRic(id) {
     console.log(id);
    this.afs.collection('match').doc(id).delete();
@@ -157,10 +155,7 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
-    const array= datiprenotazione.user;
-    const us: Observable<User> = array[0];
-    console.log(us);
-    this.tt(us);
+   console.log(datiprenotazione);
 
     // const c= Observable.merge(...userarr) // .map( (flat) => flat).subscribe( (aa) => console.log(aa)) ; // .map(( f: User) => f.displayName ).subscribe( hh => console.log(hh));
    // console.log(us)
