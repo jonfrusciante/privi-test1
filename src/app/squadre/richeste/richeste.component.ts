@@ -180,7 +180,7 @@ console.log(arr);    return arr;
      return testodainviare ;
    }).map(x => {
      return this.wz.sendmessage(number, x);
-   }).subscribe();
+   }).takeLast(1).subscribe();
 
    // this.wz.sendmessage(number,testodainviare);asaas
   }
