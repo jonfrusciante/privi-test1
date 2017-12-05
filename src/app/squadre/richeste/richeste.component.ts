@@ -168,6 +168,7 @@ console.log(arr);    return arr;
     console.log(item);
   }
   sendwhatup(number, datiprenotazione: Richieste,  userarr) {
+    console.log(number);
     const userA=[];
    this.getuserid(datiprenotazione).subscribe(username => {
      userA.push(username);
