@@ -9,15 +9,15 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
 
   }
  sendmessage(number, testo): Observable<any> {
-   let myHeaders = new Headers();
+   const myHeaders = new Headers();
    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-   let search = new URLSearchParams();
+   const search = new URLSearchParams();
    search.set('token', '30c58c744a12ef74b365686b243bec9a5a240c87e974e');
    search.set('uid', '393200771189');
    search.set('to', number);
    search.set('text', testo);
    let options = new RequestOptions({ headers: myHeaders, params: search });
-
+   console.log(this.url , options.params);
    return this.http.post( this.url, options).map( r =>  r.json()  );
  }
 }
