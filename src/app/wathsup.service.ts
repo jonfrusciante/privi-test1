@@ -4,7 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class WathsupService {
-private readonly url = 'https://www.waboxapp.com/api/send/chat';
+private readonly url = 'https://localhost:5000/sendmsg';
   constructor(private http: HttpClient) {
 
   }
@@ -14,9 +14,10 @@ private readonly url = 'https://www.waboxapp.com/api/send/chat';
    search.set('uid', '393200771189');
    search.set('to', number);
    search.set('text', testo);
-
-   return this.http.post( this.url, {}, {
-     params: new HttpParams().set('token', '69b84daf566d36551c09d108681773235a273083e7568').set('uid', '393200771189').set('to', number).set('text', testo).set('custom_uid', 'test' + Math.floor((Math.random() * 1000)) )
-   });
+   const body={
+       numero:number,
+       messaggio:testo
+   };
+   return this.http.post( this.url,  body , {});
  }
 }
