@@ -91,5 +91,5 @@ this.registerForm = this.fb.group({data: "" });
     // this.itemCollec = this.afs.collection('disponibilita_campo1/19-10-2017/slot', ref => ref.where('disponibile', '==' ,  true )) ;
     // this.itemCollec.valueChanges().subscribe( response => console.log(response));
   }
-
+  onSubmit(){}
 }

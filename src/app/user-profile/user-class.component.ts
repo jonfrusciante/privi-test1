@@ -11,5 +11,5 @@ export class UserClassComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onAction(){}
 }

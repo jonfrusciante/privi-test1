@@ -9,6 +9,7 @@ import {AuthService} from "../../core/auth.service";
 })
 export class ModalComponent implements OnInit {
   modelName: any;
+  hide: any;
   username = new FormControl('', [Validators.required]);
 
   email = new FormControl('', [Validators.required, Validators.email]);

@@ -54,7 +54,7 @@ export class ProfiloComponent implements OnInit {
       };
     }
   }
-
+  onAction1(){}
     ngOnInit() {
   }
 

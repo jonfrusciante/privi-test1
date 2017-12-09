@@ -16,6 +16,7 @@ export class DataformComponent implements OnInit {
   date: Date;
   data_grabbed: string;
   stateFlag = true;
+  show= false;
   constructor(private afs: AngularFirestore) { }
   onInput(event) {
   this.date = event.value;

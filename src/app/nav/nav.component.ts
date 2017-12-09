@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../core/auth.service";
 import {Router} from "@angular/router";
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-nav',
@@ -8,12 +9,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
-  constructor(private auth: AuthService, private router: Router) { }
-  redirectProfilo(){
+   auth: any;
+  constructor(private autha: AuthService, private router: Router) { }
+  redirectProfilo() {
     this.router.navigate(['profilo']);
   }
   ngOnInit() {
+    this.auth =  this.autha ;
   }
 
 }
