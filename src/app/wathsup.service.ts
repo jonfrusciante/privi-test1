@@ -4,7 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class WathsupService {
-private readonly url = 'https://localhost:5000/sendmsg';
+private readonly url = 'http://wz.footballclub.tk:5000/sendmsg';
   constructor(private http: HttpClient) {
 
   }
