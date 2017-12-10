@@ -15,8 +15,8 @@ private readonly url = 'http://wz.footballclub.tk:5000/sendmsg';
    search.set('to', number);
    search.set('text', testo);
    const body={
-       numero:number,
-       messaggio:testo
+      telefon: number,
+       message: testo
    };
    return this.http.post( this.url,  body , {});
  }
