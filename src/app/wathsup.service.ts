@@ -18,6 +18,6 @@ private readonly url = 'http://wz.footballclub.tk:5000/sendmsg';
       telefon: number,
        message: testo
    };
-   return this.http.post( this.url,  body , {});
+   return this.http.post( this.url,  body );
  }
 }
